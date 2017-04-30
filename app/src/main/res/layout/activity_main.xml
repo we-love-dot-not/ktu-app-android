@@ -7,6 +7,7 @@
     tools:context="lt.welovedotnot.ktu_ais_app.MainActivity">
 
     <TextView
+        android:id="@+id/textas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
