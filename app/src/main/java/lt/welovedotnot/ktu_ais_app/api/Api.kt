@@ -30,19 +30,16 @@ object Api {
         get() = retrofit.create(ApiInterface::class.java)
 
     fun login(body: LoginRequest, callback: (LoginResponse?)->(Unit)) {
-        service.loginReq(body).enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
+        service.loginReq(body).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
                 if (response!!.isSuccessful) {
-                    val respString = response.body().string()
-                    val jsonArr = JSONArray(respString)
-                    val loginResponse = LoginResponse(jsonArr)
-                    callback.invoke(loginResponse)
+                    callback.invoke(response.body())
                 } else {
                     callback.invoke(null)
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+            override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
                 callback.invoke(null)
             }
         })
