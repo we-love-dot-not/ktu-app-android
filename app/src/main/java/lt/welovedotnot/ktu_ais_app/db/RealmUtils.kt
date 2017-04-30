@@ -2,9 +2,7 @@ package lt.welovedotnot.ktu_ais_app.db
 
 import android.content.Context
 import io.realm.Realm
-import io.realm.Realm.setDefaultConfiguration
 import io.realm.RealmConfiguration
-
 
 
 /**
@@ -17,6 +15,7 @@ object RealmUtils {
 
         val config = RealmConfiguration.Builder()
                 .name("db.realm")
+                .deleteRealmIfMigrationNeeded()
                 .build()
 
         Realm.setDefaultConfiguration(config)

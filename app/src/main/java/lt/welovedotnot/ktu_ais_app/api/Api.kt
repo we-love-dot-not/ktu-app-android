@@ -3,6 +3,8 @@ package lt.welovedotnot.ktu_ais_app.api
 import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.api.models.LoginResponse
+import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
+import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONObject
@@ -30,15 +32,13 @@ object Api {
     fun login(body: LoginRequest, callback: (LoginResponse?)->(Unit)) {
         service.loginReq(body).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>?, response: Response<ResponseBody>?) {
-                response?.also {
-                    if (it.isSuccessful) {
-                        val respString = response.body().string()
-                        val jsonArr = JSONArray(respString)
-                        val loginResponse = LoginResponse(jsonArr)
-                        callback.invoke(loginResponse)
-                    } else {
-                        callback.invoke(null)
-                    }
+                if (response!!.isSuccessful) {
+                    val respString = response.body().string()
+                    val jsonArr = JSONArray(respString)
+                    val loginResponse = LoginResponse(jsonArr)
+                    callback.invoke(loginResponse)
+                } else {
+                    callback.invoke(null)
                 }
             }
 
@@ -46,5 +46,25 @@ object Api {
                 callback.invoke(null)
             }
         })
+    }
+
+    fun modules(body: ModulesRequest, cookie: String, callback: (ResponseBody?)->(Unit)) {
+        service.modulesReq(body, cookie).enqueue(object : Callback<ResponseBody?> {
+            override fun onResponse(call: Call<ResponseBody?>?, response: Response<ResponseBody?>?) {
+                if (response!!.isSuccessful) {
+                    callback.invoke(response.body())
+                } else {
+                    callback.invoke(null)
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody?>?, t: Throwable?) {
+                callback.invoke(null)
+            }
+        })
+    }
+
+    fun marks() {
+
     }
 }

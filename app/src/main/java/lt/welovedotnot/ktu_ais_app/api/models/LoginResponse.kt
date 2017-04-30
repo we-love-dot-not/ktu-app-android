@@ -9,8 +9,8 @@ import org.json.JSONObject
 open class LoginResponse() {
 
     open var cookie: String? = null
-
     open var studId: String? = null
+    open var fullName: String? = null
 
     constructor(jsonArr: JSONArray) : this() {
         for (i in 0 until jsonArr.length()) {

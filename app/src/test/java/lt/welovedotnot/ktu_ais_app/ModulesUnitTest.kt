@@ -1,10 +1,9 @@
 package lt.welovedotnot.ktu_ais_app
 
+import com.mcxiaoke.koi.log.logd
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.db.RealmUtils
-import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.db.UserModel
+import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
 import org.junit.Test
 
 import org.junit.Assert.assertEquals
@@ -16,25 +15,24 @@ import java.util.concurrent.TimeUnit
  * Created by simonas on 4/30/17.
  */
 
-class LoginUnitTest {
+class ModulesUnitTest {
 
     @Test
     @Throws(Exception::class)
     fun login_isCorrect() {
         val lock = CountDownLatch(1)
         val loginRequest = LoginRequest()
-        loginRequest.username = "test_username"
-        loginRequest.password = "test_password"
+        loginRequest.username = "simsan1"
+        loginRequest.password = "Valentin1"
 
         Api.login(loginRequest) { loginResponse ->
-            if (loginResponse != null) {
-                assert(loginResponse.cookie?.isEmpty()!!)
-
-            } else {
-                assert(false)
+            val body = ModulesRequest()
+            body.year=2016
+            body.studId=583742
+            Api.modules(body, loginResponse!!.cookie!!) { modulesResp ->
+                modulesResp.toString()
+                lock.countDown()
             }
-
-            lock.countDown()
         }
 
         lock.await()
