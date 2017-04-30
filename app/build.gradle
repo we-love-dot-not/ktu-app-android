@@ -41,6 +41,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
     compile 'com.mcxiaoke.koi:core:0.5.3'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
 
 }
 repositories {
