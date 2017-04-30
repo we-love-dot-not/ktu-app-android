@@ -7,7 +7,7 @@
     tools:context="lt.welovedotnot.ktu_ais_app.MainActivity">
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/EtUsername"
+        android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/EtPassword"
+        android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -30,12 +30,12 @@
         android:inputType="textPassword"
         tools:layout_constraintTop_creator="1"
         android:layout_marginTop="38dp"
-        app:layout_constraintTop_toBottomOf="@+id/EtUsername"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/EtUsername" />
+        app:layout_constraintLeft_toLeftOf="@+id/etUsername" />
 
     <Button
-        android:id="@+id/LoginBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/LoginBtn"
@@ -43,7 +43,7 @@
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="36dp"
-        app:layout_constraintTop_toBottomOf="@+id/EtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent" />
 
