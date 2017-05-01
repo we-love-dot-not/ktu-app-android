@@ -71,12 +71,12 @@ class HomeActivity: AppCompatActivity() {
         // Highlight the selected item, update the title, and close the drawer
         drawerListView.setItemChecked(position, true)
         title = mWindowTitles[position]
-        drawerLayout.closeDrawer(drawerListView)
+        drawerLayout.closeDrawer(navSide)
     }
 
     override fun setTitle(title: CharSequence) {
         val mTitle = title
-        actionBar!!.title = mTitle
+        actionBar?.title = mTitle
     }
 
     private inner class DrawerItemClickListener : AdapterView.OnItemClickListener {

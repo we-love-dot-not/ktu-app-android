@@ -8,20 +8,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/drawerLayout">
-
         <FrameLayout
             android:id="@+id/contentFrame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <!-- The navigation drawer -->
-        <ListView android:id="@+id/drawerListView"
-            android:layout_width="240dp"
             android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:choiceMode="singleChoice"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="0dp"
-            android:background="#fff"/>
+            />
+    <!-- The navigation drawer -->
+        <RelativeLayout
+            android:id="@+id/navSide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start">
+            <LinearLayout
+                android:layout_width="304dp"
+                android:layout_height="match_parent"
+                android:background="#81D4FA"
+                android:orientation="vertical">
+            <TextView
+                android:id="@+id/DrawerStudentName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="48dp"
+                android:text="Simonas Sankauskas"
+                android:textSize="18sp"/>
+            <TextView
+                android:id="@+id/DrawerStudentCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="27dp"
+                android:text="B6442"
+                android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/DrawerLogout"
+                android:layout_width="110dp"
+                android:layout_height="38dp"
+                android:text="LOGOUT"
+                android:layout_marginLeft="188dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"/>
+            <ListView android:id="@+id/drawerListView"
+                android:layout_width="304dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:choiceMode="singleChoice"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp"
+                android:background="#fff"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+
+
+
+
+        <!-- The navigation drawer -->
+
     </android.support.v4.widget.DrawerLayout>
 
 </RelativeLayout>
