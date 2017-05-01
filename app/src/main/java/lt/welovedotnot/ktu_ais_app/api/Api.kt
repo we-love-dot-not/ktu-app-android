@@ -2,12 +2,9 @@ package lt.welovedotnot.ktu_ais_app.api
 
 import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.api.models.LoginResponse
+import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
-import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
-import org.json.JSONArray
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,17 +26,19 @@ object Api {
     private val service: ApiInterface
         get() = retrofit.create(ApiInterface::class.java)
 
-    fun login(body: LoginRequest, callback: (LoginResponse?)->(Unit)) {
-        service.loginReq(body).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>?, response: Response<LoginResponse>?) {
+    fun login(body: LoginRequest, callback: (UserModel?)->(Unit)) {
+        service.loginReq(body).enqueue(object : Callback<UserModel> {
+            override fun onResponse(call: Call<UserModel>?, response: Response<UserModel>?) {
                 if (response!!.isSuccessful) {
+                    response.body().username = body.username
+                    response.body().password = body.password
                     callback.invoke(response.body())
                 } else {
                     callback.invoke(null)
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
+            override fun onFailure(call: Call<UserModel>?, t: Throwable?) {
                 callback.invoke(null)
             }
         })

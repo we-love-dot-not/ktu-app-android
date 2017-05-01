@@ -1,13 +1,12 @@
 package lt.welovedotnot.ktu_ais_app
 
-import android.content.Context
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.db.RealmUtils
 import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.db.UserModel
+import lt.welovedotnot.ktu_ais_app.db.models.RlUserModel
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -36,7 +35,7 @@ class LoginInstrumentedTest {
         loginRequest.password = "test_password"
 
         Api.login(loginRequest) { loginResponse ->
-            User.login(UserModel(loginResponse!!))
+            User.login(RlUserModel(loginResponse!!))
             var user = User.get()
             User.logout()
             user = User.get()

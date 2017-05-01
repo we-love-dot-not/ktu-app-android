@@ -2,15 +2,9 @@ package lt.welovedotnot.ktu_ais_app
 
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.db.RealmUtils
-import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.db.UserModel
 import org.junit.Test
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by simonas on 4/30/17.
