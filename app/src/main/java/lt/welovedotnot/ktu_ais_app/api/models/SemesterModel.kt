@@ -1,14 +1,22 @@
 package lt.welovedotnot.ktu_ais_app.api.models
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import io.realm.RealmObject
+import io.realm.annotations.RealmClass
 
 /**
  * Created by simonas on 4/30/17.
  */
-open class SemesterModel {
-    @SerializedName("year")
-    open var year: String? = null
 
-    @SerializedName("id")
+@RealmClass
+open class SemesterModel: RealmObject() {
+
+    @Expose // retro
+    @SerializedName("id") // retro
     open var id: String? = null
+
+    @Expose // retro
+    @SerializedName("year") // retro
+    open var year: String? = null
 }
