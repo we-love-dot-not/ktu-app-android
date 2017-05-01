@@ -7,6 +7,10 @@ import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
 import kotlinx.android.synthetic.main.activity_main.*
 import com.rengwuxian.materialedittext.MaterialEditText
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent
+import lt.welovedotnot.ktu_ais_app.views.activities.HomeActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 loginRequest.password = etPassword.text.toString()
 
                 Api.login(loginRequest) { loginResponse ->
-                    if (loginResponse != null) {
+                    if (loginResponse == null) {
                         onSuccess()
                     } else {
                         onFailure()
@@ -31,7 +35,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onSuccess() {
-        //TODO  implement login after correct response
+        val myIntent = Intent(this, HomeActivity::class.java)
+        this.startActivity(myIntent)
     }
     fun onFailure() {
         etPassword.setText("")
