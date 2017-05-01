@@ -1,16 +1,15 @@
-package lt.welovedotnot.ktu_ais_app
+package lt.welovedotnot.ktu_ais_app.views.activities
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.mcxiaoke.koi.log.logd
 import com.rengwuxian.materialedittext.MaterialEditText
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_main.*
-import lt.welovedotnot.ktu_ais_app.api.models.SemesterModel
+import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.db.User
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,13 +17,13 @@ class MainActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener {
 
-            if(credentialsEmpty()) {
-                var username = etUsername.text.toString()
-                var password = etPassword.text.toString()
+            if(!credentialsEmpty()) {
+                val username = etUsername.text.toString()
+                val password = etPassword.text.toString()
 
                 User.login(username, password) { isSuccess ->
                     if (isSuccess) {
-                        onSuccess()
+                        onProceed()
                     } else {
                         onFailure()
                     }
@@ -33,10 +32,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onSuccess() {
+    fun onProceed() {
         User.get {
             Toast.makeText(this, it?.fullName, Toast.LENGTH_SHORT).show()
         }
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
     }
 
     fun onFailure() {

@@ -40,9 +40,15 @@ object User {
     fun get(callback: (UserModel?)->(Unit)) {
         rl.executeTransactionAsync {
             var model = it.where(UserModel::class.java).findFirst()
-            model = it.copyFromRealm(model)
-            runUI {
-                callback.invoke(model)
+            if (model != null) {
+                model = it.copyFromRealm(model)
+                runUI {
+                    callback.invoke(model)
+                }
+            } else {
+                runUI {
+                    callback.invoke(null)
+                }
             }
         }
     }
