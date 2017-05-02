@@ -8,63 +8,74 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/drawerLayout">
+
         <FrameLayout
             android:id="@+id/contentFrame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    <!-- The navigation drawer -->
+            android:layout_height="match_parent" />
+
+        <!-- The navigation drawer -->
         <RelativeLayout
             android:id="@+id/navSide"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="#fff"
             android:layout_gravity="start">
+
             <LinearLayout
-                android:layout_width="304dp"
-                android:layout_height="match_parent"
-                android:background="#81D4FA"
+                android:id="@+id/headerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:elevation="4dp"
                 android:orientation="vertical">
-            <TextView
-                android:id="@+id/DrawerStudentName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="48dp"
-                android:text="Simonas Sankauskas"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/DrawerStudentCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="27dp"
-                android:text="B6442"
-                android:textSize="14sp"/>
 
-            <Button
-                android:id="@+id/DrawerLogout"
-                android:layout_width="110dp"
-                android:layout_height="38dp"
-                android:text="LOGOUT"
-                android:layout_marginLeft="188dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"/>
-            <ListView android:id="@+id/drawerListView"
-                android:layout_width="304dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:choiceMode="singleChoice"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="0dp"
-                android:background="#fff"/>
+                <TextView
+                    android:id="@+id/drawerStudentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="24dp"
+                    android:textColor="#fff"
+                    android:text="Simonas Sankauskas"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/drawerStudentCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:alpha="0.5"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="8dp"
+                    android:text="B6442"
+                    android:textSize="14sp"/>
+
+                <Button
+                    android:id="@+id/drawerLogout"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_gravity="right"
+                    android:text="ATSIJUNGTI"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
+
             </LinearLayout>
+
+            <ListView
+                android:id="@+id/drawerListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/headerLayout"
+                android:layout_marginTop="8dp"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="0dp" />
+
         </RelativeLayout>
-
-
-
-
-
-        <!-- The navigation drawer -->
 
     </android.support.v4.widget.DrawerLayout>
 
