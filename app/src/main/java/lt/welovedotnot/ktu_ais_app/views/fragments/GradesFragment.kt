@@ -1,18 +1,15 @@
-package lt.welovedotnot.ktu_ais_app.views.activities.fragments
+package lt.welovedotnot.ktu_ais_app.views.fragments
 
 import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_grades.view.*
 
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.api.models.GradeModel
 import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
-import lt.welovedotnot.ktu_ais_app.views.components.WeekItem
-import java.util.*
 
 /**
  * Created by Mindaugas on 5/1/2017.

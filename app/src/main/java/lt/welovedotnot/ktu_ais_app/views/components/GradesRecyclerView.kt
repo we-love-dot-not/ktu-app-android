@@ -4,7 +4,7 @@ import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
-import lt.welovedotnot.ktu_ais_app.views.activities.adapters.WeekListAdapter
+import lt.welovedotnot.ktu_ais_app.adapters.WeekListAdapter
 import android.support.v7.widget.LinearLayoutManager
 
 

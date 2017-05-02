@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.views.activities.fragments;
+package lt.welovedotnot.ktu_ais_app.views.fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;

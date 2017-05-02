@@ -13,11 +13,11 @@ import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
 import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.views.activities.adapters.DrawerItemCustomAdapter
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ContactsFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.GradesFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.MapFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ScheduleFragment
+import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
+import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
 
 
 /**

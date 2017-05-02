@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.views.activities.adapters
+package lt.welovedotnot.ktu_ais_app.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup

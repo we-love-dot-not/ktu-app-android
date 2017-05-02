@@ -1,13 +1,10 @@
-package lt.welovedotnot.ktu_ais_app.views.activities.adapters;
+package lt.welovedotnot.ktu_ais_app.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
