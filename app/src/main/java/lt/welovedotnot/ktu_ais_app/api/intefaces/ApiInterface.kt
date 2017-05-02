@@ -1,5 +1,6 @@
 package lt.welovedotnot.ktu_ais_app.api.intefaces
 
+import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
@@ -19,5 +20,8 @@ interface ApiInterface {
 
     @POST("api/get_modules")
     fun modulesReq(@Body body: ModulesRequest, @Header("cookie") cookie: String): Call<ResponseBody>
+
+    @POST("api/get_grades")
+    fun gradesReq(@Body body: ModulesRequest, @Header("cookie") cookie: String): Call<List<GetGradesResponse>>
 
 }

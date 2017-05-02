@@ -2,59 +2,66 @@ package lt.welovedotnot.ktu_ais_app.api.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import io.realm.RealmModel
+import io.realm.RealmObject
+import io.realm.annotations.Ignore
+import io.realm.annotations.RealmClass
 
 /**
  * Created by simonas on 5/2/17.
  */
 
-class GetGradesResponse {
+@RealmClass
+open class GetGradesResponse: RealmObject() {
 
     @SerializedName("name")
     @Expose
-    var name: String? = null
+    open var name: String? = null
 
     @SerializedName("id")
     @Expose
-    var id: String? = null
+    open var id: String? = null
 
     @SerializedName("semester")
     @Expose
-    var semester: String? = null
+    open var semester: String? = null
 
     @SerializedName("module_code")
     @Expose
-    var moduleCode: String? = null
+    open var moduleCode: String? = null
 
     @SerializedName("module_name")
     @Expose
-    var moduleName: String? = null
+    open var moduleName: String? = null
 
     @SerializedName("semester_number")
     @Expose
-    var semesterNumber: String? = null
+    open var semesterNumber: String? = null
 
     @SerializedName("language")
     @Expose
-    var language: String? = null
+    open var language: String? = null
 
     @SerializedName("profestor")
     @Expose
-    var profestor: String? = null
+    open var profestor: String? = null
 
     @SerializedName("typeId")
     @Expose
-    var typeId: String? = null
+    open var typeId: String? = null
 
     @SerializedName("type")
     @Expose
-    var type: String? = null
+    open var type: String? = null
 
     @SerializedName("week")
     @Expose
-    var week: String? = null
+    open var week: String? = null
 
+    @Ignore
     @SerializedName("mark")
     @Expose
-    var mark: List<String>? = null
+    open var mark: List<String>? = null
 
+    open var rlMark: String? = null
 }

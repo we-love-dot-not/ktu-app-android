@@ -4,8 +4,11 @@ import android.os.Handler
 import android.os.Looper
 import android.support.annotation.UiThread
 import io.realm.Realm
+import io.realm.RealmList
 import lt.welovedotnot.ktu_ais_app.api.Api
+import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
+import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
 import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 
 /**
@@ -26,10 +29,19 @@ object User {
                     callback.invoke(false)
                 }
             } else {
-                rl.executeTransactionAsync {
-                    it.copyToRealmOrUpdate(userModel)
-                    runUI {
-                        callback.invoke(true)
+                val moduleReq = ModulesRequest()
+                val module = userModel?.semesterList!![1]
+                moduleReq.year = module.year?.toInt()
+                moduleReq.studId = module.id?.toInt()
+                Api.grades(moduleReq, userModel!!.cookie!!) { list: List<GetGradesResponse>? ->
+                    userModel.gradesList = RealmList()
+                    userModel.gradesList?.addAll(list!!)
+
+                    rl.executeTransactionAsync {
+                        it.copyToRealmOrUpdate(userModel)
+                        runUI {
+                            callback.invoke(true)
+                        }
                     }
                 }
             }
