@@ -1,6 +1,7 @@
 package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.app.Fragment
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
@@ -10,6 +11,8 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
+import lt.welovedotnot.ktu_ais_app.api.models.UserModel
+import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.views.activities.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.activities.fragments.GradesFragment
@@ -48,7 +51,23 @@ class HomeActivity: AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
+
+        drawerLogout.setOnClickListener {
+            User.logout { success -> // neidomu
+                val intent = Intent(this, SplashActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        User.get { it?.also { setUserModel(it) } }
     }
+
+    fun setUserModel(model: UserModel) {
+        drawerStudentCode.text = model.studId
+        drawerStudentName.text = model.fullName
+    }
+
     /** Swaps fragments in the main content view  */
     private fun selectItem(position: Int) {
         // Insert the fragment by replacing any existing fragment
