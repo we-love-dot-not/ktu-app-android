@@ -7,6 +7,7 @@ import io.realm.RealmObject
 import io.realm.annotations.Ignore
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
+import retrofit2.http.GET
 
 
 /**
@@ -34,6 +35,8 @@ open class UserModel: RealmObject() {
     @Expose // retro
     @SerializedName("student_semesters") // retro
     open var semesterList: RealmList<SemesterModel>? = null
+
+    open var gradesList: RealmList<GetGradesResponse>? = null
 
     open var username: String? = null
 

@@ -1,6 +1,7 @@
 package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.app.Fragment
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
@@ -10,11 +11,13 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
-import lt.welovedotnot.ktu_ais_app.views.activities.adapters.DrawerItemCustomAdapter
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ContactsFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.GradesFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.MapFragment
-import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ScheduleFragment
+import lt.welovedotnot.ktu_ais_app.api.models.UserModel
+import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
+import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
 
 
 /**
@@ -24,6 +27,7 @@ import lt.welovedotnot.ktu_ais_app.views.activities.fragments.ScheduleFragment
 class HomeActivity: AppCompatActivity() {
     lateinit var mWindowTitles: Array<String>
     lateinit var mDrawerToggle: ActionBarDrawerToggle
+    val MAIN_FRAGMENT = GradesFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,30 +52,47 @@ class HomeActivity: AppCompatActivity() {
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
+
+        drawerLogout.setOnClickListener {
+            User.logout { success -> // neidomu
+                val intent = Intent(this, SplashActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        User.get { it?.also { setUserModel(it) } }
+
+        setFragment(MAIN_FRAGMENT)
     }
+
+    fun setUserModel(model: UserModel) {
+        drawerStudentCode.text = model.studId
+        drawerStudentName.text = model.fullName
+    }
+
     /** Swaps fragments in the main content view  */
     private fun selectItem(position: Int) {
         // Insert the fragment by replacing any existing fragment
-        var fragment: Fragment? = null
 
         when (position) {
-            0 -> fragment = GradesFragment()
-            1 -> fragment = ContactsFragment()
-            2 -> fragment = MapFragment()
-            3 -> fragment = ScheduleFragment()
-
-            else -> {
-            }
+            0 -> setFragment(GradesFragment())
+            1 -> setFragment(ContactsFragment())
+            2 -> setFragment(MapFragment())
+            3 -> setFragment(ScheduleFragment())
         }
-        val fragmentManager = fragmentManager
-        fragmentManager.beginTransaction()
-                .replace(R.id.contentFrame, fragment)
-                .commit()
 
         // Highlight the selected item, update the title, and close the drawer
         drawerListView.setItemChecked(position, true)
         title = mWindowTitles[position]
         drawerLayout.closeDrawer(navSide)
+    }
+
+    private fun setFragment(fragment: Fragment) {
+        val fragmentManager = fragmentManager
+        fragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, fragment)
+                .commit()
     }
 
     override fun setTitle(title: CharSequence) {

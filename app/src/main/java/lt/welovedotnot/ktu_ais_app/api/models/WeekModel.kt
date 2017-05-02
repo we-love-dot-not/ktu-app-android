@@ -8,9 +8,7 @@ import io.realm.annotations.RealmClass
  * Created by simonas on 5/1/17.
  */
 
-@RealmClass
-open class WeekModel : RealmObject() {
-    open var savaitesNr: String? = null
-    open var grades: RealmList<GradeModel> = RealmList()
-
+class WeekModel {
+    var savaitesNr: String? = null
+    var grades: RealmList<GradeModel> = RealmList()
 }

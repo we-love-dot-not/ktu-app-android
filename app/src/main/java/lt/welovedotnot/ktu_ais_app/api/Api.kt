@@ -1,6 +1,7 @@
 package lt.welovedotnot.ktu_ais_app.api
 
 import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
+import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
@@ -60,7 +61,20 @@ object Api {
         })
     }
 
-    fun marks() {
+    fun grades(body: ModulesRequest, cookie: String, callback: (List<GetGradesResponse>?)->(Unit)) {
+        service.gradesReq(body, cookie).enqueue(object : Callback<List<GetGradesResponse>?> {
+            override fun onResponse(call: Call<List<GetGradesResponse>?>?, response: Response<List<GetGradesResponse>?>?) {
+                if (response!!.isSuccessful) {
+                    response.body()?.forEach { it.rlMark = it.mark!![0] }
+                    callback.invoke(response.body())
+                } else {
+                    callback.invoke(null)
+                }
+            }
 
+            override fun onFailure(call: Call<List<GetGradesResponse>?>?, t: Throwable?) {
+                callback.invoke(null)
+            }
+        })
     }
 }
