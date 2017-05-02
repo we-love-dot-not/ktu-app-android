@@ -27,6 +27,7 @@ import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
 class HomeActivity: AppCompatActivity() {
     lateinit var mWindowTitles: Array<String>
     lateinit var mDrawerToggle: ActionBarDrawerToggle
+    val MAIN_FRAGMENT = GradesFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,8 @@ class HomeActivity: AppCompatActivity() {
         }
 
         User.get { it?.also { setUserModel(it) } }
+
+        setFragment(MAIN_FRAGMENT)
     }
 
     fun setUserModel(model: UserModel) {
@@ -71,26 +74,25 @@ class HomeActivity: AppCompatActivity() {
     /** Swaps fragments in the main content view  */
     private fun selectItem(position: Int) {
         // Insert the fragment by replacing any existing fragment
-        var fragment: Fragment? = null
 
         when (position) {
-            0 -> fragment = GradesFragment()
-            1 -> fragment = ContactsFragment()
-            2 -> fragment = MapFragment()
-            3 -> fragment = ScheduleFragment()
-
-            else -> {
-            }
+            0 -> setFragment(GradesFragment())
+            1 -> setFragment(ContactsFragment())
+            2 -> setFragment(MapFragment())
+            3 -> setFragment(ScheduleFragment())
         }
-        val fragmentManager = fragmentManager
-        fragmentManager.beginTransaction()
-                .replace(R.id.contentFrame, fragment)
-                .commit()
 
         // Highlight the selected item, update the title, and close the drawer
         drawerListView.setItemChecked(position, true)
         title = mWindowTitles[position]
         drawerLayout.closeDrawer(navSide)
+    }
+
+    private fun setFragment(fragment: Fragment) {
+        val fragmentManager = fragmentManager
+        fragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, fragment)
+                .commit()
     }
 
     override fun setTitle(title: CharSequence) {
