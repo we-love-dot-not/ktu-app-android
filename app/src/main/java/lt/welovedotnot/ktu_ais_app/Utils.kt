@@ -29,11 +29,14 @@ fun ViewGroup.setMargin(left: Int = -1, top: Int = -1, right: Int = -1, bottom: 
     this.requestLayout()
 }
 
-fun MutableList<GetGradesResponse>.toWeekList(): MutableList<WeekModel> {
+/**
+ * @param selectedSemester string of a number in this format ##. e.g 04
+ */
+fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
 
     val map: HashMap<String, MutableList<GetGradesResponse>> = HashMap()
 
-    this.filter { it.semesterNumber == "03" }.forEach {
+    this.filter { it.semesterNumber == selectedSemester }.forEach {
         var get = map[it.week!!]
         if (get != null) {
             get.add(it)
