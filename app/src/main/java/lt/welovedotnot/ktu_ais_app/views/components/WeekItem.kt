@@ -32,7 +32,7 @@ class WeekItem: RelativeLayout {
     }
 
     fun setModel(model: WeekModel): WeekItem {
-        weekNumber.text = model.savaitesNr
+        weekNumber.text = model.weekNumbers?.joinToString("-")
         gradesLinearLayout.removeAllViews()
 
         model.grades?.forEachIndexed { index, gradeModel ->

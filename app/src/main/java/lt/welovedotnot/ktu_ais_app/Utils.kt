@@ -47,7 +47,11 @@ fun MutableList<GetGradesResponse>.toWeekList(): MutableList<WeekModel> {
     val respList = mutableListOf<WeekModel>()
     map.forEach { t, u ->
         val model = WeekModel()
-        model.savaitesNr = t
+        val weekList = mutableListOf<Int>()
+        t.split('-').forEach {
+            weekList.add(it.toInt())
+        }
+        model.weekNumbers = weekList
         u.forEach {
             val gradeModel = GradeModel()
             gradeModel.type = it.typeId
@@ -57,6 +61,6 @@ fun MutableList<GetGradesResponse>.toWeekList(): MutableList<WeekModel> {
         }
         respList.add(model)
     }
-    respList.sortBy { it.savaitesNr }
+    respList.sortBy { it.weekNumbers?.get(0) }
     return respList
 }

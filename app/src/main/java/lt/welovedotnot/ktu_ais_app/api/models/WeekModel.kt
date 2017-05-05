@@ -9,6 +9,6 @@ import io.realm.annotations.RealmClass
  */
 
 class WeekModel {
-    var savaitesNr: String? = null
+    var weekNumbers: List<Int>? = null
     var grades: RealmList<GradeModel> = RealmList()
 }
