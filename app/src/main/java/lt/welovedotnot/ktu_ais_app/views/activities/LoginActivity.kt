@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.views.activities.background_services.GetGradesBGService
+import lt.welovedotnot.ktu_ais_app.views.activities.utils.ProgressGenerator
 
 class LoginActivity : AppCompatActivity() {
 
@@ -19,10 +20,19 @@ class LoginActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
 
             if(!credentialsEmpty()) {
+//                val progressGenerator = ProgressGenerator(object: ProgressGenerator.OnCompleteListener{
+//                    override fun onComplete() {
+//                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                    }
+//                })
+//                progressGenerator.start(loginBtn);
+                loginBtn.progress = 50
+
                 val username = etUsername.text.toString()
                 val password = etPassword.text.toString()
 
                 User.login(username, password) { isSuccess ->
+                    loginBtn.progress = 100
                     if (isSuccess) {
                         onProceed()
                     } else {
