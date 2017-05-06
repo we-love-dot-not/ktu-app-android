@@ -1,6 +1,5 @@
 package lt.welovedotnot.ktu_ais_app.views.activities
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,8 +7,9 @@ import com.rengwuxian.materialedittext.MaterialEditText
 import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.startActivityNoBack
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +33,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onProceed() {
-        User.get {
-            Toast.makeText(this, it?.fullName, Toast.LENGTH_SHORT).show()
-        }
-        val intent = Intent(this, HomeActivity::class.java)
-        startActivity(intent)
+        startActivityNoBack(HomeActivity::class.java)
     }
 
     fun onFailure() {

@@ -14,6 +14,7 @@ import android.widget.AdapterView
 import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
+import lt.welovedotnot.ktu_ais_app.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
@@ -48,16 +49,16 @@ class HomeActivity: AppCompatActivity() {
             }
         }
 
-        drawerLayout.setDrawerListener(mDrawerToggle)
+        drawerLayout.addDrawerListener(mDrawerToggle)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
         drawerLogout.setOnClickListener {
-            User.logout { success -> // neidomu
-                val intent = Intent(this, SplashActivity::class.java)
-                startActivity(intent)
-                finish()
+            User.logout { isSuccess ->
+                if (isSuccess) {
+                    startActivityNoBack(SplashActivity::class.java)
+                }
             }
         }
 

@@ -1,9 +1,12 @@
 package lt.welovedotnot.ktu_ais_app
 
+import android.app.Activity
+import android.content.Intent
 import android.view.ViewGroup
 import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.api.models.GradeModel
 import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
+import lt.welovedotnot.ktu_ais_app.views.activities.HomeActivity
 
 /**
  * Created by simonas on 5/2/17.
@@ -62,6 +65,13 @@ fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableL
     }
     respList.sortBy { it.weekNumbers[0] }
     return respList
+}
+
+fun Activity.startActivityNoBack(target: Class<*>) {
+    val intent = Intent(this, target)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    this.startActivity(intent)
 }
 
 //fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>) {
