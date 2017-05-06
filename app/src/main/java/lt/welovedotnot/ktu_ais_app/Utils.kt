@@ -32,7 +32,7 @@ fun ViewGroup.setMargin(left: Int = -1, top: Int = -1, right: Int = -1, bottom: 
 /**
  * @param selectedSemester string of a number in this format ##. e.g 04
  */
-fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
+fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
 
     val map: HashMap<String, MutableList<GetGradesResponse>> = HashMap()
 
@@ -48,14 +48,10 @@ fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): Mutable
     }
 
     val respList = mutableListOf<WeekModel>()
-    map.forEach { t, u ->
+    map.forEach { key, item ->
         val model = WeekModel()
-        val weekList = mutableListOf<Int>()
-        t.split('-').forEach {
-            weekList.add(it.toInt())
-        }
-        model.weekNumbers = weekList
-        u.forEach {
+        model.weekNumbersString = key
+        item.forEach {
             val gradeModel = GradeModel()
             gradeModel.type = it.typeId
             gradeModel.name = it.name
@@ -64,6 +60,12 @@ fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): Mutable
         }
         respList.add(model)
     }
-    respList.sortBy { it.weekNumbers?.get(0) }
+    respList.sortBy { it.weekNumbers[0] }
     return respList
 }
+
+//fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>) {
+//    this.forEach { oldItem ->
+//        oldItem.
+//    }
+//}

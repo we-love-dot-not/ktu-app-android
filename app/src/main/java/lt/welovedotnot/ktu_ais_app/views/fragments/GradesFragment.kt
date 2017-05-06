@@ -16,17 +16,26 @@ import lt.welovedotnot.ktu_ais_app.toWeekList
  */
 
 class GradesFragment : Fragment() {
+    lateinit var mView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_grades, null)
-        return view
+        mView = inflater.inflate(R.layout.fragment_grades, null)
+        return mView
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        User.update {
+            setListData()
+        }
+
+        setListData()
+    }
+
+    fun setListData() {
         User.get {
-            view?.gradesListView?.setModels(it?.gradesList!!.toWeekList("04"))
+            mView.gradesListView?.setModels(it?.weekList!!.toList())
         }
     }
 

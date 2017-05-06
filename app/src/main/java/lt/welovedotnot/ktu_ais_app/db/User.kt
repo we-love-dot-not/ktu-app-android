@@ -6,10 +6,8 @@ import android.support.annotation.UiThread
 import io.realm.Realm
 import io.realm.RealmList
 import lt.welovedotnot.ktu_ais_app.api.Api
-import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
-import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
-import lt.welovedotnot.ktu_ais_app.api.models.UserModel
+import lt.welovedotnot.ktu_ais_app.api.models.*
+import lt.welovedotnot.ktu_ais_app.toWeekList
 
 /**
  * Created by simonas on 4/30/17.
@@ -28,20 +26,29 @@ object User {
                     callback.invoke(false)
                 }
             } else {
-                val moduleReq = ModulesRequest()
-                val module = userModel?.semesterList!![1]
-                moduleReq.year = module.year?.toInt()
-                moduleReq.studId = module.id?.toInt()
-                Api.grades(moduleReq, userModel!!.cookie!!) { list: List<GetGradesResponse>? ->
-                    userModel.gradesList = RealmList()
-                    userModel.gradesList?.addAll(list!!)
+                updateGrades(userModel, callback)
+            }
+        }
+    }
 
-                    rl.executeTransactionAsync {
-                        it.copyToRealmOrUpdate(userModel)
-                        runUI {
-                            callback.invoke(true)
-                        }
-                    }
+    fun updateGrades(userModel: UserModel, callback: (Boolean) -> (Unit)) {
+        val moduleReq = ModulesRequest()
+        val module = userModel.semesterList[1]
+        moduleReq.year = module.year?.toInt()
+        moduleReq.studId = module.id?.toInt()
+        Api.grades(moduleReq, userModel.cookie!!) { gradeList: List<GetGradesResponse>? ->
+            val weekList = gradeList?.toWeekList("04")
+
+            userModel.weekList.clear()
+            userModel.gradeList.clear()
+
+            userModel.weekList.addAll(weekList!!.toList())
+            userModel.gradeList.addAll(gradeList)
+
+            rl.executeTransactionAsync {
+                it.copyToRealmOrUpdate(userModel)
+                runUI {
+                    callback.invoke(true)
                 }
             }
         }
@@ -73,7 +80,7 @@ object User {
 
     fun logout(callback:(Boolean)->(Unit)) {
         rl.executeTransactionAsync {
-            var del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
+            val del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
             runUI {
                 callback.invoke(del)
             }

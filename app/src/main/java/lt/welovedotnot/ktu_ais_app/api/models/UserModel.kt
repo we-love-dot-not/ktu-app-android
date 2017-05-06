@@ -34,9 +34,11 @@ open class UserModel: RealmObject() {
 
     @Expose // retro
     @SerializedName("student_semesters") // retro
-    open var semesterList: RealmList<SemesterModel>? = null
+    open var semesterList: RealmList<SemesterModel> = RealmList()
 
-    open var gradesList: RealmList<GetGradesResponse>? = null
+    open var weekList: RealmList<WeekModel> = RealmList()
+
+    open var gradeList: RealmList<GetGradesResponse> = RealmList()
 
     open var username: String? = null
 

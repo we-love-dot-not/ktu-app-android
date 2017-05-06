@@ -32,15 +32,15 @@ class WeekItem: RelativeLayout {
     }
 
     fun setModel(model: WeekModel): WeekItem {
-        weekNumber.text = model.weekNumbers?.joinToString("-")
+        weekNumber.text = model.weekNumbersString
         gradesLinearLayout.removeAllViews()
 
-        model.grades?.forEachIndexed { index, gradeModel ->
+        model.grades.forEachIndexed { index, gradeModel ->
             val gradeView = GradeItem(context)
             gradeView.setModel(gradeModel)
             gradesLinearLayout.addView(gradeView)
 
-            if (index < model?.grades.size-1) {
+            if (index < model.grades.size-1) {
                 gradeView.setMargin(bottom = 12.dpToPx())
             }
         }

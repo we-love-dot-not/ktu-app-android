@@ -31,7 +31,7 @@ class GradesRecyclerView : RecyclerView {
         setAdapter(adapter)
     }
 
-    fun setModels(modelList: MutableList<WeekModel>) {
+    fun setModels(modelList: Collection<WeekModel>) {
         adapter.list.clear()
         adapter.list.addAll(modelList)
         adapter.notifyDataSetChanged()
