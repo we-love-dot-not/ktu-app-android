@@ -63,10 +63,21 @@ object User {
         }
     }
 
+    fun isLoggedIn(callback: (Boolean) -> Unit) {
+        User.get { model ->
+            callback(model!=null)
+        }
+    }
+
     fun update(callback: (Boolean) -> (Unit)) {
         User.get { userModel ->
-            User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
-                callback.invoke(isSuccess)
+            if(userModel!!.username != null && userModel!!.password != null) {
+                User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
+                    callback.invoke(isSuccess)
+                }
+            }
+            else {
+                throw RuntimeException("Username or password is null")
             }
         }
     }
