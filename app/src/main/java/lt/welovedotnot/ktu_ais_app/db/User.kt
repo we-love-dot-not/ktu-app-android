@@ -17,7 +17,6 @@ import lt.welovedotnot.ktu_ais_app.api.models.UserModel
 object User {
     private var rl: Realm = Realm.getDefaultInstance()
 
-    @UiThread
     fun login(username: String, password:String, callback: (Boolean) -> (Unit)) {
         val loginReq = LoginRequest()
         loginReq.username = username
@@ -48,7 +47,6 @@ object User {
         }
     }
 
-    @UiThread
     fun get(callback: (UserModel?)->(Unit)) {
         rl.executeTransactionAsync {
             var model = it.where(UserModel::class.java).findFirst()
@@ -65,7 +63,14 @@ object User {
         }
     }
 
-    @UiThread
+    fun update(callback: (Boolean) -> (Unit)) {
+        User.get { userModel ->
+            User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
+                callback.invoke(isSuccess)
+            }
+        }
+    }
+
     fun logout(callback:(Boolean)->(Unit)) {
         rl.executeTransactionAsync {
             var del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
