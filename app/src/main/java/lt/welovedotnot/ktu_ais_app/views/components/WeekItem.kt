@@ -32,7 +32,7 @@ class WeekItem: RelativeLayout {
     }
 
     fun setModel(model: WeekModel): WeekItem {
-        weekNumber.text = model.weekNumbersString
+        weekNumber.text = "${model.weekNumbersString} ${context.getString(R.string.week)}"
         gradesLinearLayout.removeAllViews()
 
         model.grades.forEachIndexed { index, gradeModel ->
