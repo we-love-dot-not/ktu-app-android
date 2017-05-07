@@ -28,7 +28,14 @@ public class KTUNotification {
 
     public void sendUpcomingTestNotification(WeekModel model, Context context) {
         String title = "Kitos savaitės atsiskaitymai";
-        String text = "a\na\na\n";
+        String text = "";
+        StringBuilder mStringBuilder = new StringBuilder();
+
+        for (int i = 0; i < model.getGrades().size(); i++){
+            text = mStringBuilder.append(model.getGrades().get(i).getName()).append(", ").append(model.getGrades().get(i).
+                    getTypeId()).append(System.getProperty("line.separator")).toString();
+        }
+
         sendNotification(title, text, context);
     }
 
@@ -40,8 +47,8 @@ public class KTUNotification {
                         .setContentText(text);
         Intent resultIntent = new Intent(context, LoginActivity.class);
 
-// The stack builder object will contain an artificial back stack for the
-// started Activity.
+    // The stack builder object will contain an artificial back stack for the
+    // started Activity.
 // This ensures that navigating backward from the Activity leads out of
 // your application to the Home screen.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
