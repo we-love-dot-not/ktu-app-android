@@ -19,6 +19,7 @@ import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
+import java.util.*
 
 
 /**
@@ -68,7 +69,12 @@ class HomeActivity: AppCompatActivity() {
     }
 
     fun setUserModel(model: UserModel) {
-        drawerStudentCode.text = model.studId
+        val updateCal = Calendar.getInstance()
+        updateCal.timeInMillis = model.timestamp
+        val hour: String = updateCal.get(Calendar.HOUR_OF_DAY).toString()
+        val minute: String = updateCal.get(Calendar.MINUTE).toString()
+        val studentId: String = model.studId!!
+        drawerStudentCode.text = "$studentId $hour:$minute"
         drawerStudentName.text = model.fullName
     }
 

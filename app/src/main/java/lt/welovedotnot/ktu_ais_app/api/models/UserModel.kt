@@ -43,4 +43,6 @@ open class UserModel: RealmObject() {
     open var username: String? = null
 
     open var password: String? = null
+
+    open var timestamp: Long = 0L
 }

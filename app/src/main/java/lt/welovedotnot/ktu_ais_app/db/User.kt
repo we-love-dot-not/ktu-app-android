@@ -2,9 +2,7 @@ package lt.welovedotnot.ktu_ais_app.db
 
 import android.os.Handler
 import android.os.Looper
-import android.support.annotation.UiThread
 import io.realm.Realm
-import io.realm.RealmList
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.api.models.*
 import lt.welovedotnot.ktu_ais_app.toWeekList
@@ -39,6 +37,7 @@ object User {
         Api.grades(moduleReq, userModel.cookie!!) { gradeList: List<GetGradesResponse>? ->
             val weekList = gradeList?.toWeekList("04")
 
+            userModel.timestamp = System.currentTimeMillis()
             userModel.weekList.clear()
             userModel.gradeList.clear()
 
