@@ -34,6 +34,7 @@ object User {
         val module = userModel.semesterList[1]
         moduleReq.year = module.year?.toInt()
         moduleReq.studId = module.id?.toInt()
+
         Api.grades(moduleReq, userModel.cookie!!) { gradeList: List<GetGradesResponse>? ->
             val weekList = gradeList?.toWeekList("04")
 
@@ -77,12 +78,11 @@ object User {
 
     fun update(callback: (Boolean) -> (Unit)) {
         User.get { userModel ->
-            if(userModel!!.username != null && userModel!!.password != null) {
+            if (userModel!!.username != null && userModel!!.password != null) {
                 User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
                     callback.invoke(isSuccess)
                 }
-            }
-            else {
+            } else {
                 throw RuntimeException("Username or password is null")
             }
         }
