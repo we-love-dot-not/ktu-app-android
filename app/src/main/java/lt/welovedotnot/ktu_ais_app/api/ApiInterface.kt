@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.api.intefaces
+package lt.welovedotnot.ktu_ais_app.api
 
 import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.models.LoginRequest

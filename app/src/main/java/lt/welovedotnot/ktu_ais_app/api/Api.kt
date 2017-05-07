@@ -1,6 +1,5 @@
 package lt.welovedotnot.ktu_ais_app.api
 
-import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
 import lt.welovedotnot.ktu_ais_app.models.*
 import okhttp3.ResponseBody
 import retrofit2.Call
