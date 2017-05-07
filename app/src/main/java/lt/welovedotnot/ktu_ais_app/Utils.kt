@@ -3,10 +3,10 @@ package lt.welovedotnot.ktu_ais_app
 import android.app.Activity
 import android.content.Intent
 import android.view.ViewGroup
-import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
-import lt.welovedotnot.ktu_ais_app.api.models.GradeModel
-import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
-import lt.welovedotnot.ktu_ais_app.views.activities.HomeActivity
+import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
+import lt.welovedotnot.ktu_ais_app.models.GradeModel
+import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel
+import lt.welovedotnot.ktu_ais_app.models.WeekModel
 
 /**
  * Created by simonas on 5/2/17.

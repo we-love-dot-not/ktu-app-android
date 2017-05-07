@@ -1,13 +1,11 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
 import io.realm.RealmObject
-import io.realm.annotations.Ignore
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
-import retrofit2.http.GET
 
 
 /**

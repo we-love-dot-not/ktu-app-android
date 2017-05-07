@@ -1,15 +1,11 @@
 package lt.welovedotnot.ktu_ais_app
 
-import com.mcxiaoke.koi.log.logd
 import lt.welovedotnot.ktu_ais_app.api.Api
-import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
+import lt.welovedotnot.ktu_ais_app.models.LoginRequest
+import lt.welovedotnot.ktu_ais_app.models.ModulesRequest
 import org.junit.Test
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by simonas on 4/30/17.

@@ -1,7 +1,7 @@
 package lt.welovedotnot.ktu_ais_app
 
 import lt.welovedotnot.ktu_ais_app.api.Api
-import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
+import lt.welovedotnot.ktu_ais_app.models.LoginRequest
 import org.junit.Test
 
 import java.util.concurrent.CountDownLatch

@@ -1,8 +1,7 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import io.realm.RealmModel
 import io.realm.RealmObject
 import io.realm.annotations.Ignore
 import io.realm.annotations.RealmClass
@@ -64,4 +63,11 @@ open class GetGradesResponse: RealmObject() {
     open var mark: List<String>? = null
 
     open var rlMark: String? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (other instance GetGradesResponse) {
+
+        }
+        return super.equals(other)
+    }
 }

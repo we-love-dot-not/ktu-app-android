@@ -4,7 +4,7 @@ import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
 import lt.welovedotnot.ktu_ais_app.api.Api
-import lt.welovedotnot.ktu_ais_app.api.models.*
+import lt.welovedotnot.ktu_ais_app.models.*
 import lt.welovedotnot.ktu_ais_app.toWeekList
 
 /**

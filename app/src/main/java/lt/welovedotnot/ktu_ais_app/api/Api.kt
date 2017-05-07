@@ -1,8 +1,7 @@
 package lt.welovedotnot.ktu_ais_app.api
 
 import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
-import lt.welovedotnot.ktu_ais_app.api.models.*
-import lt.welovedotnot.ktu_ais_app.toWeekList
+import lt.welovedotnot.ktu_ais_app.models.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback

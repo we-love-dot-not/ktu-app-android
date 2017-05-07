@@ -1,9 +1,9 @@
 package lt.welovedotnot.ktu_ais_app.api.intefaces
 
-import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
-import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.api.models.UserModel
-import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
+import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
+import lt.welovedotnot.ktu_ais_app.models.LoginRequest
+import lt.welovedotnot.ktu_ais_app.models.UserModel
+import lt.welovedotnot.ktu_ais_app.models.ModulesRequest
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body

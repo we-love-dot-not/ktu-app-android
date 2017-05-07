@@ -1,7 +1,6 @@
 package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.app.Fragment
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
@@ -11,7 +10,7 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
-import lt.welovedotnot.ktu_ais_app.api.models.UserModel
+import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.startActivityNoBack
