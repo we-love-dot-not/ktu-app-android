@@ -32,6 +32,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:textSize="14sp"
+                android:alpha="0.5"
                 android:text="11 savaite" />
 
             <LinearLayout

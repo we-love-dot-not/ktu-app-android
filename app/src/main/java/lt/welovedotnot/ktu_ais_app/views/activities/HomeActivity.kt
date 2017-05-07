@@ -1,7 +1,6 @@
 package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.app.Fragment
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
@@ -11,13 +10,16 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
-import lt.welovedotnot.ktu_ais_app.api.models.UserModel
+import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
+import lt.welovedotnot.ktu_ais_app.startActivityNoBack
+import lt.welovedotnot.ktu_ais_app.views.activities.background_services.GetGradesBGService
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
+import java.util.*
 
 
 /**
@@ -34,6 +36,8 @@ class HomeActivity: AppCompatActivity() {
         setContentView(R.layout.activity_home)
         mWindowTitles = resources.getStringArray(R.array.windowTitles)
 
+        GetGradesBGService.startBackgroundService(this)
+
         val adapter = DrawerItemCustomAdapter(this, R.layout.drawer_list_item, mWindowTitles)
         drawerListView.adapter = adapter
         drawerListView.onItemClickListener = DrawerItemClickListener()
@@ -48,16 +52,16 @@ class HomeActivity: AppCompatActivity() {
             }
         }
 
-        drawerLayout.setDrawerListener(mDrawerToggle)
+        drawerLayout.addDrawerListener(mDrawerToggle)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
         drawerLogout.setOnClickListener {
-            User.logout { success -> // neidomu
-                val intent = Intent(this, SplashActivity::class.java)
-                startActivity(intent)
-                finish()
+            User.logout { isSuccess ->
+                if (isSuccess) {
+                    startActivityNoBack(SplashActivity::class.java)
+                }
             }
         }
 
@@ -67,7 +71,12 @@ class HomeActivity: AppCompatActivity() {
     }
 
     fun setUserModel(model: UserModel) {
-        drawerStudentCode.text = model.studId
+        val updateCal = Calendar.getInstance()
+        updateCal.timeInMillis = model.timestamp
+        val hour: String = updateCal.get(Calendar.HOUR_OF_DAY).toString()
+        val minute: String = updateCal.get(Calendar.MINUTE).toString()
+        val studentId: String = model.studId!!
+        drawerStudentCode.text = "$studentId $hour:$minute"
         drawerStudentName.text = model.fullName
     }
 

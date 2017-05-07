@@ -3,7 +3,7 @@ package lt.welovedotnot.ktu_ais_app.views.components
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
+import lt.welovedotnot.ktu_ais_app.models.WeekModel
 import lt.welovedotnot.ktu_ais_app.adapters.WeekListAdapter
 import android.support.v7.widget.LinearLayoutManager
 
@@ -31,7 +31,7 @@ class GradesRecyclerView : RecyclerView {
         setAdapter(adapter)
     }
 
-    fun setModels(modelList: MutableList<WeekModel>) {
+    fun setModels(modelList: Collection<WeekModel>) {
         adapter.list.clear()
         adapter.list.addAll(modelList)
         adapter.notifyDataSetChanged()

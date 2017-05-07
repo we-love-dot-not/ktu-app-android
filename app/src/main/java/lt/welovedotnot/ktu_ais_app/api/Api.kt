@@ -1,10 +1,7 @@
 package lt.welovedotnot.ktu_ais_app.api
 
 import lt.welovedotnot.ktu_ais_app.api.intefaces.ApiInterface
-import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
-import lt.welovedotnot.ktu_ais_app.api.models.LoginRequest
-import lt.welovedotnot.ktu_ais_app.api.models.UserModel
-import lt.welovedotnot.ktu_ais_app.api.models.ModulesRequest
+import lt.welovedotnot.ktu_ais_app.models.*
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -65,8 +62,9 @@ object Api {
         service.gradesReq(body, cookie).enqueue(object : Callback<List<GetGradesResponse>?> {
             override fun onResponse(call: Call<List<GetGradesResponse>?>?, response: Response<List<GetGradesResponse>?>?) {
                 if (response!!.isSuccessful) {
-                    response.body()?.forEach { it.rlMark = it.mark!![0] }
-                    callback.invoke(response.body())
+                    val gradesList = response.body()!!
+                    gradesList.forEach { it.rlMark = it.mark!![0] }
+                    callback.invoke(gradesList)
                 } else {
                     callback.invoke(null)
                 }

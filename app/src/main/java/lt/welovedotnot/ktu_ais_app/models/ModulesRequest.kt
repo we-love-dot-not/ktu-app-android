@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

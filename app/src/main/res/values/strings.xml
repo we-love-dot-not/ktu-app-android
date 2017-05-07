@@ -3,6 +3,7 @@
     <string name="EtUserHint">username</string>
     <string name="EtPwHint">password</string>
     <string name="LoginBtn">Login</string>
+    <string name="week">savaitė</string>
     <string name="login_success">Success</string>
     <string name="login_progress">Loading..</string>
     <string-array name="windowTitles">

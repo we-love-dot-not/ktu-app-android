@@ -2,9 +2,7 @@ package lt.welovedotnot.ktu_ais_app.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import com.mcxiaoke.koi.ext.dpToPx
-import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
-import lt.welovedotnot.ktu_ais_app.setMargin
+import lt.welovedotnot.ktu_ais_app.models.WeekModel
 import lt.welovedotnot.ktu_ais_app.views.components.WeekItem
 
 /**

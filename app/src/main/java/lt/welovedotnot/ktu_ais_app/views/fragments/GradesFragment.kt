@@ -26,7 +26,7 @@ class GradesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         User.get {
-            view?.gradesListView?.setModels(it?.gradesList!!.toWeekList("04"))
+            view?.gradesListView?.setModels(it?.weekList!!.toList())
         }
     }
 

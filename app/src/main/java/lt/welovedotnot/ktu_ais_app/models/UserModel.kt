@@ -1,13 +1,11 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
 import io.realm.RealmObject
-import io.realm.annotations.Ignore
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
-import retrofit2.http.GET
 
 
 /**
@@ -34,11 +32,15 @@ open class UserModel: RealmObject() {
 
     @Expose // retro
     @SerializedName("student_semesters") // retro
-    open var semesterList: RealmList<SemesterModel>? = null
+    open var semesterList: RealmList<SemesterModel> = RealmList()
 
-    open var gradesList: RealmList<GetGradesResponse>? = null
+    open var weekList: RealmList<WeekModel> = RealmList()
+
+    open var gradeList: RealmList<GetGradesResponse> = RealmList()
 
     open var username: String? = null
 
     open var password: String? = null
+
+    open var timestamp: Long = 0L
 }

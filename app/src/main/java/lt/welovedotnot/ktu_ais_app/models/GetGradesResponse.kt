@@ -1,8 +1,7 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import io.realm.RealmModel
 import io.realm.RealmObject
 import io.realm.annotations.Ignore
 import io.realm.annotations.RealmClass
@@ -61,7 +60,28 @@ open class GetGradesResponse: RealmObject() {
     @Ignore
     @SerializedName("mark")
     @Expose
-    open var mark: List<String>? = null
+    open var mark: List<String> = listOf()
 
     open var rlMark: String? = null
+
+    override fun equals(other: Any?): Boolean {
+        if (other is GetGradesResponse) {
+            return id == other.id && semesterNumber == other.semesterNumber && week == other.week
+        } else {
+            return super.equals(other)
+        }
+    }
+
+    fun diff(model: GetGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
+        mark.forEachIndexed { index, item ->
+            if (model.mark[index] != item) {
+                val updateModel = GradeUpdateModel(
+                        name = name!!,
+                        type = type!!,
+                        mark = item
+                )
+                callback.invoke(updateModel)
+            }
+        }
+    }
 }

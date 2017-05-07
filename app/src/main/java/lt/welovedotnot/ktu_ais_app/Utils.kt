@@ -1,9 +1,12 @@
 package lt.welovedotnot.ktu_ais_app
 
+import android.app.Activity
+import android.content.Intent
 import android.view.ViewGroup
-import lt.welovedotnot.ktu_ais_app.api.models.GetGradesResponse
-import lt.welovedotnot.ktu_ais_app.api.models.GradeModel
-import lt.welovedotnot.ktu_ais_app.api.models.WeekModel
+import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
+import lt.welovedotnot.ktu_ais_app.models.GradeModel
+import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel
+import lt.welovedotnot.ktu_ais_app.models.WeekModel
 
 /**
  * Created by simonas on 5/2/17.
@@ -32,7 +35,7 @@ fun ViewGroup.setMargin(left: Int = -1, top: Int = -1, right: Int = -1, bottom: 
 /**
  * @param selectedSemester string of a number in this format ##. e.g 04
  */
-fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
+fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
 
     val map: HashMap<String, MutableList<GetGradesResponse>> = HashMap()
 
@@ -48,14 +51,10 @@ fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): Mutable
     }
 
     val respList = mutableListOf<WeekModel>()
-    map.forEach { t, u ->
+    map.forEach { key, item ->
         val model = WeekModel()
-        val weekList = mutableListOf<Int>()
-        t.split('-').forEach {
-            weekList.add(it.toInt())
-        }
-        model.weekNumbers = weekList
-        u.forEach {
+        model.weekNumbersString = key
+        item.forEach {
             val gradeModel = GradeModel()
             gradeModel.type = it.typeId
             gradeModel.name = it.name
@@ -64,6 +63,24 @@ fun MutableList<GetGradesResponse>.toWeekList(selectedSemester: String): Mutable
         }
         respList.add(model)
     }
-    respList.sortBy { it.weekNumbers?.get(0) }
+    respList.sortBy { it.weekNumbers[0] }
     return respList
+}
+
+fun Activity.startActivityNoBack(target: Class<*>) {
+    val intent = Intent(this, target)
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    this.startActivity(intent)
+}
+
+fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): Collection<GradeUpdateModel> {
+    val resultList = mutableListOf<GradeUpdateModel>()
+    this.forEach { oldItem ->
+        val newItem = newList.find { it.equals(oldItem) }
+        newItem?.diff(oldItem) { newGrade ->
+            resultList.add(newGrade)
+        }
+    }
+    return resultList
 }
