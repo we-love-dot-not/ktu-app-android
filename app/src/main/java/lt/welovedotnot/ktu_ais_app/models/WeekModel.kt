@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.api.models
+package lt.welovedotnot.ktu_ais_app.models
 
 import io.realm.RealmList
 import io.realm.RealmObject

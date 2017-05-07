@@ -60,14 +60,28 @@ open class GetGradesResponse: RealmObject() {
     @Ignore
     @SerializedName("mark")
     @Expose
-    open var mark: List<String>? = null
+    open var mark: List<String> = listOf()
 
     open var rlMark: String? = null
 
     override fun equals(other: Any?): Boolean {
-        if (other instance GetGradesResponse) {
-
+        if (other is GetGradesResponse) {
+            return id == other.id && semesterNumber == other.semesterNumber && week == other.week
+        } else {
+            return super.equals(other)
         }
-        return super.equals(other)
+    }
+
+    fun diff(model: GetGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
+        mark.forEachIndexed { index, item ->
+            if (model.mark[index] != item) {
+                val updateModel = GradeUpdateModel(
+                        name = name!!,
+                        type = type!!,
+                        mark = item
+                )
+                callback.invoke(updateModel)
+            }
+        }
     }
 }
