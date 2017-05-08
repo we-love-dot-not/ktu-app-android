@@ -23,7 +23,7 @@ public class KTUNotification {
     public void sendGradeNotification(GradeModel model, Context context) {
         String title = "Gavai " + model.getMark();
         String text = model.getName() + ", " + model.getTypeId();
-        sendNotification(title, text, context);
+        sendNotification(model.hashCode(), title, text, context);
     }
 
     public void sendUpcomingTestNotification(WeekModel model, Context context) {
@@ -36,10 +36,10 @@ public class KTUNotification {
                     getTypeId()).append(System.getProperty("line.separator")).toString();
         }
 
-        sendNotification(title, text, context);
+        sendNotification(model.hashCode(), title, text, context);
     }
 
-    private void sendNotification(String title, String text, Context context) {
+    private void sendNotification(int notificationId, String title, String text, Context context) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_priority_high_black_48dp)
@@ -64,6 +64,6 @@ public class KTUNotification {
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         // mId allows you to update the notification later on.
-        mNotificationManager.notify(1, mBuilder.build());
+        mNotificationManager.notify(notificationId, mBuilder.build());
     }
 }
