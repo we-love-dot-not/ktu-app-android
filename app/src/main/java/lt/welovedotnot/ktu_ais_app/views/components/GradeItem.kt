@@ -25,6 +25,6 @@ class GradeItem: RelativeLayout {
     fun setModel(model: GradeModel) {
         className.text = model.name
         gradeType.text = model.type
-        grade.text = model.mark
+        grade.text = model.mark?.split(";")?.joinToString(" ")
     }
 }

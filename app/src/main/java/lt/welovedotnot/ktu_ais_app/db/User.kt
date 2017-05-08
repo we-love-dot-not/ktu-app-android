@@ -4,8 +4,10 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
+import lt.welovedotnot.ktu_ais_app.AppConf
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.diff
+import lt.welovedotnot.ktu_ais_app.filterSemester
 import lt.welovedotnot.ktu_ais_app.models.*
 import lt.welovedotnot.ktu_ais_app.toWeekList
 
@@ -38,7 +40,7 @@ object User {
         moduleReq.studId = module.id?.toInt()
 
         Api.grades(moduleReq, userModel.cookie!!) { gradeList: List<GetGradesResponse>? ->
-            val weekList = gradeList?.toWeekList("04")
+            val weekList = gradeList?.toWeekList(AppConf.CURRENT_SEMESTER)
 
             userModel.timestamp = System.currentTimeMillis()
             userModel.weekList.clear()
@@ -80,9 +82,11 @@ object User {
 
     fun update(callback: (Boolean, Collection<GradeUpdateModel>) -> (Unit)) {
         User.get { userModel ->
-            User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
+            val oldGrades = userModel!!.gradeList.filterSemester(AppConf.CURRENT_SEMESTER)
+            User.login(userModel.username!!, userModel.password!!) { isSuccess ->
                 User.get { freshUser ->
-                    val diff = userModel.gradeList.diff(freshUser!!.gradeList)
+                    val freshGrades = freshUser!!.gradeList.filterSemester(AppConf.CURRENT_SEMESTER)
+                    val diff = oldGrades.diff(freshGrades)
                     callback.invoke(isSuccess, diff)
                 }
             }

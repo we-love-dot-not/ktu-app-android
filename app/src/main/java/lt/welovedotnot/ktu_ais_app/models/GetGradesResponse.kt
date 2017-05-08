@@ -60,9 +60,16 @@ open class GetGradesResponse: RealmObject() {
     @Ignore
     @SerializedName("mark")
     @Expose
-    open var mark: List<String> = listOf()
+    open var mark: MutableList<String> = mutableListOf()
+        get() {
+            if (field.isEmpty()) {
+                return rlMark.split(";").toMutableList()
+            } else {
+                return field
+            }
+        }
 
-    open var rlMark: String? = null
+    open var rlMark: String = ""
 
     override fun equals(other: Any?): Boolean {
         if (other is GetGradesResponse) {
@@ -77,7 +84,7 @@ open class GetGradesResponse: RealmObject() {
             if (model.mark[index] != item) {
                 val updateModel = GradeUpdateModel(
                         name = name!!,
-                        type = type!!,
+                        type = typeId!!,
                         mark = item
                 )
                 callback.invoke(updateModel)

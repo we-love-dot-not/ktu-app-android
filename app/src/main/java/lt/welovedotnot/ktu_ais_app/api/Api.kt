@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object Api {
     private val TAG = "Api"
+
     private val retrofit: Retrofit
         get() =
         Retrofit.Builder()
@@ -62,7 +63,14 @@ object Api {
             override fun onResponse(call: Call<List<GetGradesResponse>?>?, response: Response<List<GetGradesResponse>?>?) {
                 if (response!!.isSuccessful) {
                     val gradesList = response.body()!!
-                    gradesList.forEach { it.rlMark = it.mark!![0] }
+                    gradesList.forEach {
+                        it.mark.forEachIndexed { index, string ->
+                            if (string == "") {
+                                it.mark[index] = "–"
+                            }
+                        }
+                        it.rlMark = it.mark.joinToString(";")
+                    }
                     callback.invoke(gradesList)
                 } else {
                     callback.invoke(null)

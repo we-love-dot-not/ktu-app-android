@@ -84,3 +84,6 @@ fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): 
     }
     return resultList
 }
+
+fun Collection<GetGradesResponse>.filterSemester(semersterNum: String)
+        = this.filter { it.semesterNumber == semersterNum }

@@ -8,6 +8,7 @@ import android.content.Intent
 import android.os.Handler
 import android.os.Looper
 import com.mcxiaoke.koi.ext.getAlarmManager
+import com.mcxiaoke.koi.log.logd
 
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.views.notifications.KTUNotificationsK
@@ -20,7 +21,7 @@ import java.util.*
 class GetGradesIntentService : IntentService("GetGradesIntentService") {
 
     companion object {
-        val RUN_IN_HOURS = 1
+        val RUN_IN_HOURS = 0.05 // 3 min
         fun startBackgroundService(context: Context) {
             val cal = Calendar.getInstance()
             cal.add(Calendar.SECOND, 10)
