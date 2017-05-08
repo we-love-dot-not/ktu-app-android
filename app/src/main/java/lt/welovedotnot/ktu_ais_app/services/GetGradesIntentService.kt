@@ -16,7 +16,7 @@ import java.util.*
  * Created by Mindaugas on 5/6/2017.
  */
 
-class GetGradesBGService : IntentService("GetGradesBGService") {
+class GetGradesIntentService : IntentService("GetGradesIntentService") {
 
     companion object {
         val RUN_IN_HOURS = 1
@@ -31,7 +31,7 @@ class GetGradesBGService : IntentService("GetGradesBGService") {
         }
 
         fun getServiceIntent(context: Context): PendingIntent {
-            val intent = Intent(context, GetGradesBGService::class.java)
+            val intent = Intent(context, GetGradesIntentService::class.java)
             val pintent = PendingIntent.getService(context, 0, intent, 0)
             return pintent
         }

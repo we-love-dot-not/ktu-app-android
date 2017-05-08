@@ -14,7 +14,7 @@ import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.startActivityNoBack
-import lt.welovedotnot.ktu_ais_app.services.GetGradesBGService
+import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
@@ -36,7 +36,7 @@ class HomeActivity: AppCompatActivity() {
         setContentView(R.layout.activity_home)
         mWindowTitles = resources.getStringArray(R.array.windowTitles)
 
-        GetGradesBGService.startBackgroundService(this)
+        GetGradesIntentService.startBackgroundService(this)
 
         val adapter = DrawerItemCustomAdapter(this, R.layout.drawer_list_item, mWindowTitles)
         drawerListView.adapter = adapter
