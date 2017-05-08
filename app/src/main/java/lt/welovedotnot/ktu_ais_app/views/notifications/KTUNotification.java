@@ -40,7 +40,7 @@ public class KTUNotification {
     }
 
     private void sendNotification(int notificationId, String title, String text, Context context) {
-        NotificationCompat.Builder mBuilder =
+        NotificationCompat.Builder builder =
                 new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_priority_high_black_48dp)
                         .setContentTitle(title)
@@ -61,9 +61,9 @@ public class KTUNotification {
                         0,
                         PendingIntent.FLAG_UPDATE_CURRENT
                 );
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
+        builder.setContentIntent(resultPendingIntent);
+        NotificationManager manager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
         // mId allows you to update the notification later on.
-        mNotificationManager.notify(notificationId, mBuilder.build());
+        manager.notify(notificationId, builder.build());
     }
 }
