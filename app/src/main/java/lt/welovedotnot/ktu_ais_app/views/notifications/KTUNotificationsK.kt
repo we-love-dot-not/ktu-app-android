@@ -2,6 +2,7 @@ package lt.welovedotnot.ktu_ais_app.views.notifications
 
 import android.content.Context
 import lt.welovedotnot.ktu_ais_app.models.GradeModel
+import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel
 import lt.welovedotnot.ktu_ais_app.models.WeekModel
 
 /**
@@ -11,7 +12,7 @@ import lt.welovedotnot.ktu_ais_app.models.WeekModel
 object KTUNotificationsK {
     val notificationUtil = KTUNotification()
 
-    fun notifyGradeUpdated(context: Context, model: GradeModel) {
+    fun notifyGradeUpdated(context: Context, model: GradeUpdateModel) {
         notificationUtil.sendGradeNotification(model, context)
     }
 

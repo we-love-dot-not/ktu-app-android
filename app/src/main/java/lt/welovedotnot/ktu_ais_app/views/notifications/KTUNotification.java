@@ -9,6 +9,7 @@ import android.support.v4.app.TaskStackBuilder;
 
 import lt.welovedotnot.ktu_ais_app.R;
 import lt.welovedotnot.ktu_ais_app.models.GradeModel;
+import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel;
 import lt.welovedotnot.ktu_ais_app.models.WeekModel;
 import lt.welovedotnot.ktu_ais_app.views.activities.LoginActivity;
 
@@ -20,9 +21,9 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class KTUNotification {
 
-    public void sendGradeNotification(GradeModel model, Context context) {
+    public void sendGradeNotification(GradeUpdateModel model, Context context) {
         String title = "Gavai " + model.getMark();
-        String text = model.getName() + ", " + model.getTypeId();
+        String text = model.getName() + ", " + model.getType();
         sendNotification(model.hashCode(), title, text, context);
     }
 
