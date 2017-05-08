@@ -1,9 +1,11 @@
 package lt.welovedotnot.ktu_ais_app.db
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
 import lt.welovedotnot.ktu_ais_app.api.Api
+import lt.welovedotnot.ktu_ais_app.diff
 import lt.welovedotnot.ktu_ais_app.models.*
 import lt.welovedotnot.ktu_ais_app.toWeekList
 
@@ -76,14 +78,13 @@ object User {
         }
     }
 
-    fun update(callback: (Boolean) -> (Unit)) {
+    fun update(callback: (Boolean, Collection<GradeUpdateModel>) -> (Unit)) {
         User.get { userModel ->
-            if (userModel!!.username != null && userModel!!.password != null) {
-                User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
-                    callback.invoke(isSuccess)
+            User.login(userModel?.username!!, userModel.password!!) { isSuccess ->
+                User.get { freshUser ->
+                    val diff = userModel.gradeList.diff(freshUser!!.gradeList)
+                    callback.invoke(isSuccess, diff)
                 }
-            } else {
-                throw RuntimeException("Username or password is null")
             }
         }
     }
