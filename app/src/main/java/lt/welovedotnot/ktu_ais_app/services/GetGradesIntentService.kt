@@ -21,7 +21,7 @@ import java.util.*
 class GetGradesIntentService : IntentService("GetGradesIntentService") {
 
     companion object {
-        val RUN_IN_HOURS = 0.05 // 3 min
+        val RUN_IN_HOURS = 0.15 // ~    10 min
         fun startBackgroundService(context: Context) {
             val cal = Calendar.getInstance()
             cal.add(Calendar.SECOND, 10)
