@@ -8,8 +8,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 import lt.welovedotnot.ktu_ais_app.R;
-import lt.welovedotnot.ktu_ais_app.api.models.GradeModel;
-import lt.welovedotnot.ktu_ais_app.api.models.WeekModel;
+import lt.welovedotnot.ktu_ais_app.models.GradeModel;
+import lt.welovedotnot.ktu_ais_app.models.WeekModel;
 import lt.welovedotnot.ktu_ais_app.views.activities.LoginActivity;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
