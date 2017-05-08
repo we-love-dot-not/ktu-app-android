@@ -10,6 +10,7 @@ import android.os.Looper
 import com.mcxiaoke.koi.ext.getAlarmManager
 
 import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.views.notifications.KTUNotificationsK
 import java.util.*
 
 /**
@@ -43,7 +44,9 @@ class GetGradesIntentService : IntentService("GetGradesIntentService") {
             User.isLoggedIn { isLoggedIn ->
                 if (isLoggedIn) {
                     User.update { _, updatedGrades ->
-                        // Show notification
+                        updatedGrades.forEach { updatedGrade ->
+                            KTUNotificationsK.notifyGradeUpdated(this, updatedGrade)
+                        }
                     }
                 } else {
                     getAlarmManager().cancel(getServiceIntent(this))
