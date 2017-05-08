@@ -42,7 +42,9 @@ class GetGradesBGService : IntentService("GetGradesBGService") {
         Handler(Looper.getMainLooper()).post {
             User.isLoggedIn { isLoggedIn ->
                 if (isLoggedIn) {
-                    User.update { isSuccess ->  }
+                    User.update { _, updatedGrades ->
+                        // Show notification
+                    }
                 } else {
                     getAlarmManager().cancel(getServiceIntent(this))
                 }
