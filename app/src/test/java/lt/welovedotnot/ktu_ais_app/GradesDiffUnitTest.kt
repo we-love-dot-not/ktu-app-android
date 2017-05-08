@@ -19,7 +19,7 @@ class GradesDiffUnitTest {
         grade1.type = "Labaratornis darbas"
         grade1.semesterNumber = "04"
         grade1.week = "3"
-        grade1.mark = listOf("1", "2", "3")
+        grade1.mark = mutableListOf("1", "2", "3")
 
         val grade2 = GetGradesResponse()
         grade2.id = "MODULE2"
@@ -28,7 +28,7 @@ class GradesDiffUnitTest {
         grade2.type = "Labaratornis darbas"
         grade2.semesterNumber = "04"
         grade2.week = "2"
-        grade2.mark = listOf("1", "", "3")
+        grade2.mark = mutableListOf("1", "", "3")
 
         val grade3 = GetGradesResponse()
         grade3.id = "MODULE3"
@@ -37,7 +37,7 @@ class GradesDiffUnitTest {
         grade3.type = "Labaratornis darbas"
         grade3.semesterNumber = "04"
         grade3.week = "5"
-        grade3.mark = listOf("", "", "1")
+        grade3.mark = mutableListOf("", "", "1")
 
         oldData.add(grade1)
         oldData.add(grade2)
@@ -50,7 +50,7 @@ class GradesDiffUnitTest {
         grade2Fresh.type = "Labaratornis darbas"
         grade2Fresh.semesterNumber = "04"
         grade2Fresh.week = "2"
-        grade2Fresh.mark = listOf("1", "4", "3")
+        grade2Fresh.mark = mutableListOf("1", "4", "3")
 
         val grade3Fresh = GetGradesResponse()
         grade3Fresh.id = "MODULE3"
@@ -59,7 +59,7 @@ class GradesDiffUnitTest {
         grade3Fresh.type = "Labaratornis darbas"
         grade3Fresh.semesterNumber = "04"
         grade3Fresh.week = "5"
-        grade3Fresh.mark = listOf("", "", "7")
+        grade3Fresh.mark = mutableListOf("", "", "7")
 
         newData.add(grade1)
         newData.add(grade2Fresh)

@@ -73,15 +73,23 @@ open class GetGradesResponse: RealmObject() {
 
     override fun equals(other: Any?): Boolean {
         if (other is GetGradesResponse) {
-            return id == other.id && semesterNumber == other.semesterNumber && week == other.week
+            val eqList = listOf(
+                    id == other.id,
+                    semesterNumber == other.semesterNumber,
+                    week == other.week,
+                    typeId == other.typeId
+            )
+            return eqList.filter { it == false}.size == 0
         } else {
             return super.equals(other)
         }
     }
 
     fun diff(model: GetGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
-        mark.forEachIndexed { index, item ->
-            if (model.mark[index] != item) {
+        val marksCopy = mark
+        marksCopy.forEachIndexed { index, item ->
+            val updatedMark = model.mark[index]
+            if (updatedMark != item) {
                 val updateModel = GradeUpdateModel(
                         name = name!!,
                         type = typeId!!,
