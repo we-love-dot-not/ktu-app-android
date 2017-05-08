@@ -23,7 +23,7 @@
         <activity android:name=".views.activities.HomeActivity" />
         <activity android:name=".views.activities.LoginActivity" />
         <service
-            android:name=".views.activities.background_services.GetGradesBGService"
+            android:name=".services.GetGradesBGService"
             android:exported="false"/>
 
     </application>

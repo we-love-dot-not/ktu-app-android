@@ -1,4 +1,4 @@
-package lt.welovedotnot.ktu_ais_app.views.activities.background_services
+package lt.welovedotnot.ktu_ais_app.services
 
 import android.app.AlarmManager
 import android.app.IntentService

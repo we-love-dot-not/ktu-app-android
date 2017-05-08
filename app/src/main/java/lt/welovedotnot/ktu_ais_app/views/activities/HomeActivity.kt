@@ -14,7 +14,7 @@ import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.startActivityNoBack
-import lt.welovedotnot.ktu_ais_app.views.activities.background_services.GetGradesBGService
+import lt.welovedotnot.ktu_ais_app.services.GetGradesBGService
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
