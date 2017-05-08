@@ -31,7 +31,7 @@ public class KTUNotification {
         String text = "";
         StringBuilder mStringBuilder = new StringBuilder();
 
-        for (int i = 0; i < model.getGrades().size(); i++){
+        for (int i = 0; i < model.getGrades().size(); i++) {
             text = mStringBuilder.append(model.getGrades().get(i).getName()).append(", ").append(model.getGrades().get(i).
                     getTypeId()).append(System.getProperty("line.separator")).toString();
         }
@@ -47,14 +47,14 @@ public class KTUNotification {
                         .setContentText(text);
         Intent resultIntent = new Intent(context, LoginActivity.class);
 
-    // The stack builder object will contain an artificial back stack for the
-    // started Activity.
-// This ensures that navigating backward from the Activity leads out of
-// your application to the Home screen.
+        // The stack builder object will contain an artificial back stack for the
+        // started Activity.
+        // This ensures that navigating backward from the Activity leads out of
+        // your application to the Home screen.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-// Adds the back stack for the Intent (but not the Intent itself)
+        // Adds the back stack for the Intent (but not the Intent itself)
         stackBuilder.addParentStack(LoginActivity.class);
-// Adds the Intent that starts the Activity to the top of the stack
+        // Adds the Intent that starts the Activity to the top of the stack
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(
@@ -63,7 +63,7 @@ public class KTUNotification {
                 );
         mBuilder.setContentIntent(resultPendingIntent);
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(NOTIFICATION_SERVICE);
-// mId allows you to update the notification later on.
+        // mId allows you to update the notification later on.
         mNotificationManager.notify(1, mBuilder.build());
     }
 }
