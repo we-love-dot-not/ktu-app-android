@@ -59,7 +59,8 @@ fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableL
         model.weekNumbersString = key
         item.forEach {
             val gradeModel = GradeModel()
-            gradeModel.type = it.typeId
+            gradeModel.typeId = it.typeId
+            gradeModel.type = it.type
             gradeModel.name = it.name
             gradeModel.mark = it.rlMark
             model.grades.add(gradeModel)
@@ -92,13 +93,11 @@ fun View.addOnViewShrinkListener(isSmaller: (Boolean)->(Unit)) {
     this.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
         if (bottom < oldBottom) {
             // Opened
-            Log.d("wat", "Opened $bottom $oldBottom")
             v.postDelayed({
                 isSmaller.invoke(true)
             }, 1) // 1ms delay is required.
         } else if (bottom != oldBottom) {
             // Closed
-            Log.d("wat", "Closed $bottom $oldBottom")
             v.postDelayed({
                 isSmaller.invoke(false)
             }, 1) // 1ms delay is required.

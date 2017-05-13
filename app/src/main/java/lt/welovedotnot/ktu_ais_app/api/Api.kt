@@ -66,7 +66,7 @@ object Api {
                     gradesList.forEach {
                         it.mark.forEachIndexed { index, string ->
                             if (string == "") {
-                                it.mark[index] = "–"
+                                it.mark[index] = GradeModel.EMPTY_MARK
                             }
                         }
                         it.rlMark = it.mark.joinToString(";")
