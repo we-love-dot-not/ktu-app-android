@@ -2,7 +2,10 @@ package lt.welovedotnot.ktu_ais_app
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
+import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.models.GradeModel
 import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel
@@ -83,6 +86,24 @@ fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): 
         }
     }
     return resultList
+}
+
+fun View.addOnViewShrinkListener(isSmaller: (Boolean)->(Unit)) {
+    this.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+        if (bottom < oldBottom) {
+            // Opened
+            Log.d("wat", "Opened $bottom $oldBottom")
+            v.postDelayed({
+                isSmaller.invoke(true)
+            }, 1) // 1ms delay is required.
+        } else if (bottom != oldBottom) {
+            // Closed
+            Log.d("wat", "Closed $bottom $oldBottom")
+            v.postDelayed({
+                isSmaller.invoke(false)
+            }, 1) // 1ms delay is required.
+        }
+    }
 }
 
 fun Collection<GetGradesResponse>.filterSemester(semersterNum: String)
