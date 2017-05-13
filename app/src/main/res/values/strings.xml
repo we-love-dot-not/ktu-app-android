@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">ktu-ais-app</string>
-    <string name="EtUserHint">username</string>
-    <string name="EtPwHint">password</string>
-    <string name="LoginBtn">Login</string>
+    <string name="app_name">Ktu AIS</string>
+    <string name="EtUserHint">Vardas</string>
+    <string name="EtPwHint">Slaptažodis</string>
+    <string name="LoginBtn">Prisijungti</string>
     <string name="week">savaitė</string>
-    <string name="login_success">Success</string>
-    <string name="login_progress">Loading..</string>
+    <string name="login_success">Prisijungta</string>
+    <string name="login_progress">Krauna...</string>
     <string-array name="windowTitles">
         <item>Grades</item>
         <item>Contacts</item>

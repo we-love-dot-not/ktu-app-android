@@ -2,18 +2,25 @@ package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
+import com.mcxiaoke.koi.log.logd
 import com.rengwuxian.materialedittext.MaterialEditText
 import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.R
+import lt.welovedotnot.ktu_ais_app.addOnViewShrinkListener
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.startActivityNoBack
+import java.util.zip.GZIPOutputStream
 
 class LoginActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        supportActionBar!!.hide()
 
         loginBtn.setOnClickListener {
 
@@ -33,6 +40,15 @@ class LoginActivity: AppCompatActivity() {
                 }
             }
         }
+
+        mainLayout.addOnViewShrinkListener({ isSmaller ->
+            if (isSmaller) {
+                logoLayout.visibility = View.GONE
+            } else {
+                logoLayout.visibility = View.VISIBLE
+            }
+        })
+
     }
 
     fun onProceed() {
