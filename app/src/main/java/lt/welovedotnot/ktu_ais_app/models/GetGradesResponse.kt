@@ -92,7 +92,7 @@ open class GetGradesResponse: RealmObject() {
             if (updatedMark != item) {
                 val updateModel = GradeUpdateModel(
                         name = name!!,
-                        type = typeId!!,
+                        type = type!!,
                         mark = item
                 )
                 callback.invoke(updateModel)
