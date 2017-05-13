@@ -6,10 +6,8 @@
     <string name="week">savaitė</string>
     <string name="login_success">Prisijungta</string>
     <string name="login_progress">Krauna...</string>
-    <string-array name="windowTitles">
-        <item>Grades</item>
-        <item>Contacts</item>
-        <item>Map</item>
-        <item>Schedule</item>
-    </string-array>
+    <string name="grades">Pažymiai</string>
+    <string name="contacts">Dėstytojai</string>
+    <string name="map">Žemėlapis</string>
+    <string name="schedule">Tvarkaraštis</string>
 </resources>
