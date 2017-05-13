@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "55383701502",
+    "firebase_url": "https://ktu-ais-app.firebaseio.com",
+    "project_id": "ktu-ais-app",
+    "storage_bucket": "ktu-ais-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55383701502:android:236de5ac19d03674",
+        "android_client_info": {
+          "package_name": "lt.welovedotnot.ktu_ais_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55383701502-o4aj8thork5rfsvfhaa0v9e3phbqtr6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzzQqtQkKojPjP8sxfHZCLacJS-vECl_E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
