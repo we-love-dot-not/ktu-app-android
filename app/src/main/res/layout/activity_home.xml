@@ -67,6 +67,7 @@
             </LinearLayout>
 
             <ListView
+                android:background="#fff"
                 android:id="@+id/drawerListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
