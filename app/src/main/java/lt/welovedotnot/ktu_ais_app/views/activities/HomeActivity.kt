@@ -10,9 +10,12 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
+import io.realm.internal.SharedRealm
 import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
+import lt.welovedotnot.ktu_ais_app.models.ScreenModel
+import lt.welovedotnot.ktu_ais_app.models.toStringList
 import lt.welovedotnot.ktu_ais_app.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
@@ -27,18 +30,41 @@ import java.util.*
  */
 
 class HomeActivity: AppCompatActivity() {
-    lateinit var mWindowTitles: Array<String>
     lateinit var mDrawerToggle: ActionBarDrawerToggle
     val MAIN_FRAGMENT = GradesFragment()
+
+    lateinit var mScreenList: List<ScreenModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        mWindowTitles = resources.getStringArray(R.array.windowTitles)
+
+        mScreenList = listOf(
+                ScreenModel(
+                    name = getString(R.string.grades),
+                    fragment = GradesFragment(),
+                    isEnabled = true),
+                ScreenModel(
+                    name = getString(R.string.contacts),
+                    fragment = ContactsFragment(),
+                    isEnabled = false),
+                ScreenModel(
+                    name = getString(R.string.map),
+                    fragment = MapFragment(),
+                    isEnabled = false),
+                ScreenModel(
+                    name = getString(R.string.schedule),
+                    fragment = ScheduleFragment(),
+                    isEnabled = false)
+        )
+
+        // filter out stuff that is in dev stage.
+        // TODO rework this before 1.0 release.
+        mScreenList = mScreenList.filter { it.isEnabled == true }
 
         GetGradesIntentService.startBackgroundService(this)
 
-        val adapter = DrawerItemCustomAdapter(this, R.layout.drawer_list_item, mWindowTitles)
+        val adapter = DrawerItemCustomAdapter(this, mScreenList)
         drawerListView.adapter = adapter
         drawerListView.onItemClickListener = DrawerItemClickListener()
 
@@ -83,17 +109,11 @@ class HomeActivity: AppCompatActivity() {
     /** Swaps fragments in the main content view  */
     private fun selectItem(position: Int) {
         // Insert the fragment by replacing any existing fragment
-
-        when (position) {
-            0 -> setFragment(GradesFragment())
-            1 -> setFragment(ContactsFragment())
-            2 -> setFragment(MapFragment())
-            3 -> setFragment(ScheduleFragment())
-        }
-
+        val selectedScreen = mScreenList[position]
+        setFragment(selectedScreen.fragment)
         // Highlight the selected item, update the title, and close the drawer
         drawerListView.setItemChecked(position, true)
-        title = mWindowTitles[position]
+        title = mScreenList[position].name
         drawerLayout.closeDrawer(navSide)
     }
 
