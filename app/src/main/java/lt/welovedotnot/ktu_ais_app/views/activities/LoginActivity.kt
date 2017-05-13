@@ -15,26 +15,6 @@ class LoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO Clean up this mess
-//        val gradeUpdate = KTUNotification()
-//
-//        val gradeModel = GradeModel()
-//        gradeModel.name = "Diskrečiosios struktūros"
-//        gradeModel.id = "P170B008"
-//        gradeModel.type = "Inžinerinis projektas"
-//        gradeModel.typeId = "IR"
-//        gradeModel.profestor = "Koordinuojantysis dėstytojas doc. M. Patašius"
-//        gradeModel.mark = "09"
-//
-//        val weekNum: MutableList<Int> = mutableListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-//        val gradesList: RealmList<GradeModel> = RealmList(gradeModel)
-//        val week = WeekModel()
-//        gradesList.add(gradeModel)
-//        gradesList.add(gradeModel)
-//        week.weekNumbers = weekNum
-//        week.grades = gradesList
-//        gradeUpdate.sendUpcomingTestNotification(week, this)
-
         loginBtn.setOnClickListener {
 
             if(!credentialsEmpty()) {
