@@ -1,6 +1,8 @@
 package lt.welovedotnot.ktu_ais_app
 
 import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertThat
 import org.junit.Test
 
 /**
@@ -70,6 +72,6 @@ class GradesDiffUnitTest {
     @Throws(Exception::class)
     fun login_isCorrect() {
         val diff = oldData.diff(newData)
-        assert(diff.size == 2)
+        assertEquals(diff.size, 2)
     }
 }
