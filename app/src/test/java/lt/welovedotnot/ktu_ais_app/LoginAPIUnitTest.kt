@@ -14,7 +14,12 @@ import java.util.concurrent.CountDownLatch
  * Created by simonas on 4/30/17.
  */
 
-class LoginUnitTest {
+class LoginAPIUnitTest {
+    val FAILED_LOGIN = "Bad creds"
+    val FAILED_COOKIE = "Cookie is empty."
+
+    val USERNAME = "test_username"
+    val PASSWORD = "test_password"
 
     @Test
     @Throws(Exception::class)
@@ -22,8 +27,8 @@ class LoginUnitTest {
         var loginResponse: UserModel? = null
         val lock = CountDownLatch(1)
         val loginRequest = LoginRequest()
-        loginRequest.username = "test_username"
-        loginRequest.password = "test_password"
+        loginRequest.username = USERNAME
+        loginRequest.password = PASSWORD
 
         Api.login(loginRequest) {
             loginResponse = it
@@ -32,7 +37,7 @@ class LoginUnitTest {
 
         lock.await()
 
-        assertNotNull("Bad creds", loginResponse)
-        assertNotEquals("Cookie is empty.", loginResponse!!.cookie!!.isEmpty(), "")
+        assertNotNull(FAILED_LOGIN, loginResponse)
+        assertNotEquals(FAILED_COOKIE, loginResponse!!.cookie!!, "")
     }
 }
