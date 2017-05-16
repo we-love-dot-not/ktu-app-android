@@ -70,7 +70,7 @@ class GradesDiffUnitTest {
 
     @Test
     @Throws(Exception::class)
-    fun login_isCorrect() {
+    fun grade_diff_isCorrect() {
         val diff = oldData.diff(newData)
         assertEquals(diff.size, 2)
     }

@@ -19,18 +19,14 @@ class LoginAPIUnitTest {
     val FAILED_LOGIN = "Bad creds"
     val FAILED_COOKIE = "Cookie is empty."
 
-    val USERNAME = LocalProps.getUsername()
-    val PASSWORD = LocalProps.getPassword()
-
-
     @Test
     @Throws(Exception::class)
     fun login_isCorrect() {
         var loginResponse: UserModel? = null
         val lock = CountDownLatch(1)
         val loginRequest = LoginRequest()
-        loginRequest.username = USERNAME
-        loginRequest.password = PASSWORD
+        loginRequest.username = TestConf.USER
+        loginRequest.password = TestConf.PASS
 
         Api.login(loginRequest) {
             loginResponse = it
