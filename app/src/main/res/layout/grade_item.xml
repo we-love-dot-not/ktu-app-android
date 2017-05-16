@@ -11,6 +11,7 @@
         android:id="@+id/className"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/textPrimary"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="32dp"
@@ -21,7 +22,7 @@
     <TextView
         android:id="@+id/gradeType"
         android:textSize="12sp"
-        android:alpha="0.5"
+        android:textColor="@color/textSecondary"
         android:layout_below="@id/className"
         android:layout_marginTop="4dp"
         android:text="Inžinerinis projektas	"

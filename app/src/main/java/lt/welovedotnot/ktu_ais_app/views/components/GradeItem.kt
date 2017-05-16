@@ -1,7 +1,6 @@
 package lt.welovedotnot.ktu_ais_app.views.components
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.grade_item.view.*
@@ -45,8 +44,8 @@ class GradeItem: RelativeLayout {
         }
 
         textList.forEachIndexed { index, text ->
-            val primColor = getColor(context, android.R.color.primary_text_light)
-            val secColor = getColor(context, android.R.color.secondary_text_dark)
+            val primColor = getColor(context, R.color.textPrimary)
+            val secColor = getColor(context, R.color.textDisabled)
             var color = secColor
             if (index == lastMarkIndex) {
                 color = primColor
