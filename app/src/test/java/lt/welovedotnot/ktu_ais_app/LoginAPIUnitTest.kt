@@ -6,6 +6,7 @@ import org.junit.Test
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.models.UserModel
+import lt.welovedotnot.ktu_ais_app.utils.LocalProps
 import org.junit.Assert.*
 
 import java.util.concurrent.CountDownLatch
@@ -18,8 +19,9 @@ class LoginAPIUnitTest {
     val FAILED_LOGIN = "Bad creds"
     val FAILED_COOKIE = "Cookie is empty."
 
-    val USERNAME = "test_username"
-    val PASSWORD = "test_password"
+    val USERNAME = LocalProps.getUsername()
+    val PASSWORD = LocalProps.getPassword()
+
 
     @Test
     @Throws(Exception::class)

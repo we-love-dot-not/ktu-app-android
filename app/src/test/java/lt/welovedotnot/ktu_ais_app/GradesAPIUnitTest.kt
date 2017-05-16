@@ -5,6 +5,7 @@ import org.junit.Test
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.models.LoginRequest
 import lt.welovedotnot.ktu_ais_app.models.UserModel
+import lt.welovedotnot.ktu_ais_app.utils.LocalProps
 import org.junit.Assert.*
 
 import java.util.concurrent.CountDownLatch
@@ -18,8 +19,8 @@ class GradesAPIUnitTest {
     val FAILED_ZERO_COUNT = "There should be more than 0 grades."
     val FAILED_PARSE = "Grades from API and Parsed count doesn't match"
 
-    val USERNAME = "test_username"
-    val PASSWORD = "test_password"
+    val USERNAME = LocalProps.getUsername()
+    val PASSWORD = LocalProps.getPassword()
 
     @Test
     @Throws(Exception::class)
