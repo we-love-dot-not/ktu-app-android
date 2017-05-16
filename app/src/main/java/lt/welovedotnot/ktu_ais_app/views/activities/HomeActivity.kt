@@ -10,13 +10,11 @@ import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
 import android.widget.AdapterView
-import io.realm.internal.SharedRealm
 import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.models.ScreenModel
-import lt.welovedotnot.ktu_ais_app.models.toStringList
-import lt.welovedotnot.ktu_ais_app.startActivityNoBack
+import lt.welovedotnot.ktu_ais_app.utils.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
 import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment

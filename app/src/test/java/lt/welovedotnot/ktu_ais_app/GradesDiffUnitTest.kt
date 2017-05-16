@@ -1,8 +1,8 @@
 package lt.welovedotnot.ktu_ais_app
 
 import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
+import lt.welovedotnot.ktu_ais_app.utils.diff
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
 import org.junit.Test
 
 /**

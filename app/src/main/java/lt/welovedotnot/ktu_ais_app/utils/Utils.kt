@@ -1,11 +1,9 @@
-package lt.welovedotnot.ktu_ais_app
+package lt.welovedotnot.ktu_ais_app.utils
 
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.models.GetGradesResponse
 import lt.welovedotnot.ktu_ais_app.models.GradeModel
 import lt.welovedotnot.ktu_ais_app.models.GradeUpdateModel

@@ -7,7 +7,7 @@ import com.mcxiaoke.koi.ext.dpToPx
 import kotlinx.android.synthetic.main.week_item.view.*
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.models.WeekModel
-import lt.welovedotnot.ktu_ais_app.setMargin
+import lt.welovedotnot.ktu_ais_app.utils.setMargin
 
 
 /**

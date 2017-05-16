@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.fragment_grades.view.*
 
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.toWeekList
 
 /**
  * Created by Mindaugas on 5/1/2017.

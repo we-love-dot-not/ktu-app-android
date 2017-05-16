@@ -1,15 +1,14 @@
 package lt.welovedotnot.ktu_ais_app.db
 
-import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
 import lt.welovedotnot.ktu_ais_app.AppConf
 import lt.welovedotnot.ktu_ais_app.api.Api
-import lt.welovedotnot.ktu_ais_app.diff
-import lt.welovedotnot.ktu_ais_app.filterSemester
+import lt.welovedotnot.ktu_ais_app.utils.diff
+import lt.welovedotnot.ktu_ais_app.utils.filterSemester
 import lt.welovedotnot.ktu_ais_app.models.*
-import lt.welovedotnot.ktu_ais_app.toWeekList
+import lt.welovedotnot.ktu_ais_app.utils.toWeekList
 
 /**
  * Created by simonas on 4/30/17.

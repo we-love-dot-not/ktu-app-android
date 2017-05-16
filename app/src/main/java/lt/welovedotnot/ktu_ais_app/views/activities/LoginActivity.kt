@@ -2,17 +2,14 @@ package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.mcxiaoke.koi.log.logd
 import com.rengwuxian.materialedittext.MaterialEditText
 import kotlinx.android.synthetic.main.activity_main.*
 import lt.welovedotnot.ktu_ais_app.R
-import lt.welovedotnot.ktu_ais_app.addOnViewShrinkListener
+import lt.welovedotnot.ktu_ais_app.utils.addOnViewShrinkListener
 import lt.welovedotnot.ktu_ais_app.db.User
-import lt.welovedotnot.ktu_ais_app.startActivityNoBack
-import java.util.zip.GZIPOutputStream
+import lt.welovedotnot.ktu_ais_app.utils.startActivityNoBack
 
 class LoginActivity: AppCompatActivity() {
 
