@@ -6,6 +6,9 @@
 
     <lt.welovedotnot.ktu_ais_app.views.components.GradesRecyclerView
         android:id="@+id/gradesListView"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
