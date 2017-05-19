@@ -52,7 +52,7 @@ fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableL
     }
 
     val respList = mutableListOf<WeekModel>()
-    map.forEach { key, item ->
+    map.forEach { (key, item) ->
         val model = WeekModel()
         model.weekNumbersString = key
         item.forEach {
