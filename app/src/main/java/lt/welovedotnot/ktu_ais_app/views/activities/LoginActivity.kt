@@ -17,8 +17,6 @@ class LoginActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar!!.hide()
-
         loginBtn.setOnClickListener {
 
             if(!credentialsEmpty()) {

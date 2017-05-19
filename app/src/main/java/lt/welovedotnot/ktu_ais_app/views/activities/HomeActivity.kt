@@ -9,7 +9,6 @@ import android.view.MenuItem
 import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
-import android.widget.AdapterView
 import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
@@ -20,7 +19,6 @@ import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
 import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
-import java.util.*
 
 
 /**
@@ -36,6 +34,7 @@ class HomeActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        setSupportActionBar(toolbar)
 
         mScreenList = listOf(
                 ScreenModel(
@@ -64,7 +63,10 @@ class HomeActivity: AppCompatActivity() {
 
         val adapter = DrawerItemCustomAdapter(this, mScreenList)
         drawerListView.adapter = adapter
-        drawerListView.onItemClickListener = DrawerItemClickListener()
+
+        drawerListView.setOnItemClickListener { _, _, position, _ ->
+            selectItem(position)
+        }
 
         mDrawerToggle = object : ActionBarDrawerToggle(this, drawerLayout, 0, 0) {
             override fun onDrawerClosed(view: View) {
@@ -95,16 +97,13 @@ class HomeActivity: AppCompatActivity() {
     }
 
     fun setUserModel(model: UserModel) {
-        val updateCal = Calendar.getInstance()
-        updateCal.timeInMillis = model.timestamp
-        val hour: String = updateCal.get(Calendar.HOUR_OF_DAY).toString()
-        val minute: String = updateCal.get(Calendar.MINUTE).toString()
-        val studentId: String = model.studId!!
-        drawerStudentCode.text = "$studentId $hour:$minute"
+        drawerStudentCode.text = model.studId
         drawerStudentName.text = model.fullName
     }
 
-    /** Swaps fragments in the main content view  */
+    /**
+     *  Swaps fragments in the main content view
+     */
     private fun selectItem(position: Int) {
         // Insert the fragment by replacing any existing fragment
         val selectedScreen = mScreenList[position]
@@ -125,12 +124,6 @@ class HomeActivity: AppCompatActivity() {
     override fun setTitle(title: CharSequence) {
         val mTitle = title
         actionBar?.title = mTitle
-    }
-
-    private inner class DrawerItemClickListener : AdapterView.OnItemClickListener {
-        override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-            selectItem(position)
-        }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
