@@ -8,6 +8,7 @@ import android.app.Fragment
 
 class ScreenModel(
         val name: String,
+        val subtitle: String? = null,
         val fragment: Fragment,
         val isEnabled: Boolean
 )
