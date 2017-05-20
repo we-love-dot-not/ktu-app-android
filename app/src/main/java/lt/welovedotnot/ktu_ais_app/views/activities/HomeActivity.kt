@@ -84,14 +84,6 @@ class HomeActivity: AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
-        drawerLogout.setOnClickListener {
-            User.logout { isSuccess ->
-                if (isSuccess) {
-                    startActivityNoBack(SplashActivity::class.java)
-                }
-            }
-        }
-
         User.get { it?.also { setUserModel(it) } }
 
         setFragment(MAIN_FRAGMENT)
