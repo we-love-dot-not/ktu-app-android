@@ -10,7 +10,7 @@ import io.realm.annotations.RealmClass
  */
 
 @RealmClass
-open class SemesterModel: RealmObject() {
+open class YearModel : RealmObject() {
 
     @Expose // retro
     @SerializedName("id") // retro

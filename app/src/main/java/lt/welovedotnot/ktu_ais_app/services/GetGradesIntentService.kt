@@ -11,6 +11,7 @@ import com.mcxiaoke.koi.ext.getAlarmManager
 import com.mcxiaoke.koi.log.logd
 
 import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.utils.Prefs
 import lt.welovedotnot.ktu_ais_app.views.notifications.KTUNotificationsK
 import java.util.*
 
@@ -21,15 +22,16 @@ import java.util.*
 class GetGradesIntentService : IntentService("GetGradesIntentService") {
 
     companion object {
-        val RUN_IN_HOURS = 0.15 // ~    10 min
         fun startBackgroundService(context: Context) {
             val cal = Calendar.getInstance()
             cal.add(Calendar.SECOND, 10)
 
-            val pintent = getServiceIntent(context)
+            val RUN_IN_MINUTES = Prefs.getRefreshInterval()
+
+            val pIntent = getServiceIntent(context)
             val alarm = context.getAlarmManager()
             alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.timeInMillis,
-                    (RUN_IN_HOURS * 60 * 60 * 1000).toLong(), pintent)
+                    (RUN_IN_MINUTES * 60 * 1000).toLong(), pIntent)
         }
 
         fun getServiceIntent(context: Context): PendingIntent {
@@ -45,8 +47,10 @@ class GetGradesIntentService : IntentService("GetGradesIntentService") {
             User.isLoggedIn { isLoggedIn ->
                 if (isLoggedIn) {
                     User.update { _, updatedGrades ->
-                        updatedGrades.forEach { updatedGrade ->
-                            KTUNotificationsK.notifyGradeUpdated(this, updatedGrade)
+                        if (Prefs.areNotificationEnabled()) {
+                            updatedGrades.forEach { updatedGrade ->
+                                KTUNotificationsK.notifyGradeUpdated(this, updatedGrade)
+                            }
                         }
                     }
                 } else {

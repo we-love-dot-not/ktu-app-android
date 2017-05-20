@@ -9,6 +9,13 @@ import android.preference.ListPreference
 import android.preference.CheckBoxPreference
 import android.widget.ListView
 import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
+import lt.welovedotnot.ktu_ais_app.utils.Prefs
+import lt.welovedotnot.ktu_ais_app.utils.Prefs.ABOUT
+import lt.welovedotnot.ktu_ais_app.utils.Prefs.LOGOUT
+import lt.welovedotnot.ktu_ais_app.utils.Prefs.SELECTED_SEMESTER
+import lt.welovedotnot.ktu_ais_app.utils.Prefs.SHOW_NOTIFICATION
+import lt.welovedotnot.ktu_ais_app.utils.Prefs.UPDATE_INTERVAL
 import lt.welovedotnot.ktu_ais_app.utils.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.views.activities.SplashActivity
 
@@ -18,11 +25,6 @@ import lt.welovedotnot.ktu_ais_app.views.activities.SplashActivity
  */
 
 class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
-    val SELECTED_SEMESTER = "selected_semester"
-    val UPDATE_INTERVAL = "update_interval"
-    val SHOW_NOTIFICATION = "show_notification"
-    val LOGOUT = "logout"
-    val ABOUT = "about"
 
     lateinit var selectedSemester: ListPreference
     lateinit var updateInterval: ListPreference
@@ -40,24 +42,17 @@ class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferen
         logout = findPreference(LOGOUT) as Preference
         about = findPreference(ABOUT) as Preference
 
-        User.get { userModel ->
-            val semesterEntries = mutableSetOf<String>()
-            val semesterValues = mutableSetOf<String>()
-            userModel?.semesterList?.forEachIndexed { index, yearModel ->
-                val autumNo = index + 1
-                val springNo = index + 2
-                val autumNoStr = String.format("%02d", autumNo)
-                val springNoStr = String.format("%02d", springNo)
-                val year = yearModel.year
-                semesterEntries.add("$year Rudens. $autumNoStr")
-                semesterValues.add(autumNoStr)
-
-                semesterEntries.add("$year Pavasario. $springNoStr")
-                semesterValues.add(springNoStr)
-            }
-            selectedSemester.entries = semesterEntries.toTypedArray()
-            selectedSemester.entryValues = semesterValues.toTypedArray()
+        User.getSemesters { userModel, entries, values ->
+            selectedSemester.entries = entries
+            selectedSemester.entryValues = values
+            selectedSemester.value = Prefs.getCurrentSemester(userModel).toDataString()
         }
+
+        updateInterval.entries = Prefs.UPDATE_INTERVAL_ENTRIES_NAMES
+        updateInterval.entryValues = Prefs.UPDATE_INTERVAL_ENTRIES_VALUES
+        updateInterval.value = Prefs.UPDATE_INTERVAL_DEFAULT
+
+        showNotification.isChecked = Prefs.SHOW_NOTIFICATION_DEFAULT
 
         logout.setOnPreferenceClickListener { _ ->
             User.logout { isSuccess ->
@@ -85,18 +80,12 @@ class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferen
         preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 
-    /**
-     * Shows selected values
-     */
-    private fun showSelected() {
-
-    }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
-            SELECTED_SEMESTER -> {
-                User.update { _, _ -> }
-            }
+            SELECTED_SEMESTER -> User.update { _, _ -> }
+            SHOW_NOTIFICATION -> GetGradesIntentService.startBackgroundService(activity)
+            UPDATE_INTERVAL -> GetGradesIntentService.startBackgroundService(activity)
         }
     }
 }

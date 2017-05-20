@@ -9,6 +9,7 @@ import kotlinx.android.synthetic.main.fragment_grades.view.*
 
 import lt.welovedotnot.ktu_ais_app.R
 import lt.welovedotnot.ktu_ais_app.db.User
+import lt.welovedotnot.ktu_ais_app.utils.Prefs
 
 /**
  * Created by Mindaugas on 5/1/2017.
@@ -23,7 +24,6 @@ class GradesFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         User.get {
             view?.gradesListView?.setModels(it?.weekList!!.toList())
         }

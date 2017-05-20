@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
 import io.realm.RealmObject
+import io.realm.annotations.Ignore
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 
@@ -32,7 +33,7 @@ open class UserModel: RealmObject() {
 
     @Expose // retro
     @SerializedName("student_semesters") // retro
-    open var semesterList: RealmList<SemesterModel> = RealmList()
+    open var yearList: RealmList<YearModel> = RealmList()
 
     open var weekList: RealmList<WeekModel> = RealmList()
 
@@ -43,4 +44,12 @@ open class UserModel: RealmObject() {
     open var password: String? = null
 
     open var timestamp: Long = 0L
+
+    open var defaultSemesterDataString: String? = null
+
+    var defaultSemester: SemesterInfoModel
+        set(value) {
+            defaultSemesterDataString = value.toDataString()
+        }
+        get() = SemesterInfoModel.fromString(defaultSemesterDataString!!)
 }

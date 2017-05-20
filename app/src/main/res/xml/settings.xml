@@ -13,14 +13,12 @@
         <ListPreference
             android:key="update_interval"
             android:title="Atnaujinti kas"
-            android:defaultValue="15"
             android:summary="Duomenų atnaujinimo intervalas" />
 
         <CheckBoxPreference
             android:key="show_notification"
             android:title="Rodyti pranešimus"
-            android:summary="Gavus naują pažymį apie tai bus prenešta pranešimu."
-            android:defaultValue="true" />
+            android:summary="Gavus naują pažymį apie tai bus prenešta pranešimu." />
 
     </PreferenceCategory>
 

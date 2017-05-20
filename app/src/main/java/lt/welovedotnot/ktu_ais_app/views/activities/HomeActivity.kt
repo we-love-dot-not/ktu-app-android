@@ -9,12 +9,13 @@ import android.view.MenuItem
 import android.view.View
 import lt.welovedotnot.ktu_ais_app.R
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.grade_item.*
 import lt.welovedotnot.ktu_ais_app.models.UserModel
 import lt.welovedotnot.ktu_ais_app.db.User
 import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.models.ScreenModel
-import lt.welovedotnot.ktu_ais_app.utils.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
+import lt.welovedotnot.ktu_ais_app.utils.Prefs
 import lt.welovedotnot.ktu_ais_app.views.fragments.*
 
 
@@ -24,7 +25,7 @@ import lt.welovedotnot.ktu_ais_app.views.fragments.*
 
 class HomeActivity: AppCompatActivity() {
     lateinit var mDrawerToggle: ActionBarDrawerToggle
-    val MAIN_FRAGMENT = GradesFragment()
+    var MAIN_FRAGMENT = GradesFragment()
 
     lateinit var mScreenList: List<ScreenModel>
 
@@ -33,9 +34,12 @@ class HomeActivity: AppCompatActivity() {
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
+        val semesterNum = Prefs.getCurrentSemester().semesterString.toInt()
+
         mScreenList = listOf(
                 ScreenModel(
                     name = getString(R.string.grades),
+                    subtitle = "$semesterNum semestras",
                     fragment = GradesFragment(),
                     isEnabled = true),
                 ScreenModel(
@@ -86,14 +90,22 @@ class HomeActivity: AppCompatActivity() {
 
         User.get { it?.also { setUserModel(it) } }
 
-        setFragment(MAIN_FRAGMENT)
+        selectItem(MAIN_FRAGMENT)
     }
 
     fun setUserModel(model: UserModel) {
         drawerStudentCode.text = model.studId
         drawerStudentName.text = model.fullName
+        val currentSemester = Prefs.getCurrentSemester(model)
+        val year = currentSemester.year
+        val semester = currentSemester.semesterString.toInt()
+        drawerSemesterNo.text = "$semester semestras, $year"
     }
 
+    private fun selectItem(fragment: Fragment) {
+        val findLast = mScreenList.findLast { it.fragment.javaClass.name == fragment.javaClass.name}
+        selectItem(mScreenList.indexOf(findLast))
+    }
     /**
      *  Swaps fragments in the main content view
      */
@@ -103,7 +115,8 @@ class HomeActivity: AppCompatActivity() {
         setFragment(selectedScreen.fragment)
         // Highlight the selected item, update the title, and close the drawer
         drawerListView.setItemChecked(position, true)
-        title = mScreenList[position].name
+        supportActionBar?.title = mScreenList[position].name
+        supportActionBar?.subtitle = mScreenList[position].subtitle
         drawerLayout.closeDrawer(navSide)
     }
 
@@ -112,11 +125,6 @@ class HomeActivity: AppCompatActivity() {
         fragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, fragment)
                 .commit()
-    }
-
-    override fun setTitle(title: CharSequence) {
-        val mTitle = title
-        actionBar?.title = mTitle
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
