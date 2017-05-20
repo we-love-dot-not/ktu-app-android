@@ -34,6 +34,10 @@ class GetGradesIntentService : IntentService("GetGradesIntentService") {
                     (RUN_IN_MINUTES * 60 * 1000).toLong(), pIntent)
         }
 
+        fun cancel(context: Context) {
+            context.getAlarmManager().cancel(getServiceIntent(context))
+        }
+
         fun getServiceIntent(context: Context): PendingIntent {
             val intent = Intent(context, GetGradesIntentService::class.java)
             val pintent = PendingIntent.getService(context, 0, intent, 0)

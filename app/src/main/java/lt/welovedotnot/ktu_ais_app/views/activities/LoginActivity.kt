@@ -2,6 +2,8 @@ package lt.welovedotnot.ktu_ais_app.views.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import com.rengwuxian.materialedittext.MaterialEditText
@@ -26,11 +28,15 @@ class LoginActivity: AppCompatActivity() {
                 val password = etPassword.text.toString()
 
                 User.login(username, password) { isSuccess ->
-                    loginBtn.progress = 100
                     if (isSuccess) {
+                        loginBtn.progress = 100
                         onProceed()
                     } else {
+                        loginBtn.progress = -1
                         onFailure()
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            loginBtn.progress = 0
+                        }, 3000)
                     }
                 }
             }
@@ -52,12 +58,11 @@ class LoginActivity: AppCompatActivity() {
 
     fun onFailure() {
         etPassword.setText("")
-        Toast.makeText(this, "Error message", Toast.LENGTH_SHORT).show()
     }
 
     fun credentialsEmpty(): Boolean {
         if (etUsername.isEmpty() || etPassword.isEmpty()) {
-            Toast.makeText(this, "Enter credentials", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Įveskite prisijungimo duomenis.", Toast.LENGTH_SHORT).show()
             return true
         }
         return false

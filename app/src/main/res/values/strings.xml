@@ -11,6 +11,7 @@
     <string name="map">Žemėlapis</string>
     <string name="schedule">Tvarkaraštis</string>
     <string name="settings">Nustatymai</string>
+    <string name="error">Klaida</string>
 
     <array name="update_interval_entries">
         <item>15 min</item>

@@ -3,10 +3,12 @@ package lt.welovedotnot.ktu_ais_app.db
 import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
+import lt.welovedotnot.ktu_ais_app.App
 import lt.welovedotnot.ktu_ais_app.api.Api
 import lt.welovedotnot.ktu_ais_app.utils.diff
 import lt.welovedotnot.ktu_ais_app.utils.filterSemester
 import lt.welovedotnot.ktu_ais_app.models.*
+import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
 import lt.welovedotnot.ktu_ais_app.utils.Prefs
 import lt.welovedotnot.ktu_ais_app.utils.toWeekList
 import java.util.*
@@ -175,8 +177,9 @@ object User {
      */
     fun logout(callback:(Boolean)->(Unit)) {
         rl.executeTransactionAsync {
-            val del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
             Prefs.clear()
+            GetGradesIntentService.cancel(App.context)
+            val del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
             runUI {
                 callback.invoke(del)
             }

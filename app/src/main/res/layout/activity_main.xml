@@ -77,7 +77,9 @@
                     android:textColor="@color/colorWhite"
                     custom:pb_colorNormal="#616161"
                     custom:pb_colorPressed="#616161"
-                    app:pb_colorComplete="#5F8D66"
+                    app:pb_colorError="#765D5C"
+                    app:pb_colorComplete="#5F6C5F"
+                    app:pb_textError="@string/error"
                     custom:pb_textComplete="@string/login_success"
                     custom:pb_textProgress="@string/login_progress" />
 
