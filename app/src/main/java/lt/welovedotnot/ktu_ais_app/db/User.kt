@@ -16,6 +16,9 @@ import lt.welovedotnot.ktu_ais_app.utils.toWeekList
 object User {
     private var rl: Realm = Realm.getDefaultInstance()
 
+    /**
+     * Login and get all user data.
+     */
     fun login(username: String, password:String, callback: (Boolean) -> (Unit)) {
         val loginReq = LoginRequest()
         loginReq.username = username
@@ -32,7 +35,10 @@ object User {
         }
     }
 
-    fun updateGrades(userModel: UserModel, callback: (Boolean) -> (Unit)) {
+    /**
+     * Loads new grades on existing user.
+     */
+    private fun updateGrades(userModel: UserModel, callback: (Boolean) -> (Unit)) {
         val moduleReq = ModulesRequest()
         val module = userModel.semesterList[1]
         moduleReq.year = module.year?.toInt()
@@ -57,6 +63,9 @@ object User {
         }
     }
 
+    /**
+     * Gets cached user data.
+     */
     fun get(callback: (UserModel?)->(Unit)) {
         rl.executeTransactionAsync {
             var model = it.where(UserModel::class.java).findFirst()
@@ -73,12 +82,18 @@ object User {
         }
     }
 
+    /**
+     * Checks if cached user data exists.
+     */
     fun isLoggedIn(callback: (Boolean) -> Unit) {
         User.get { model ->
             callback(model!=null)
         }
     }
 
+    /**
+     * Full relogin
+     */
     fun update(callback: (Boolean, Collection<GradeUpdateModel>) -> (Unit)) {
         User.get { userModel ->
             val oldGrades = userModel!!.gradeList.filterSemester(AppConf.CURRENT_SEMESTER)
@@ -92,6 +107,9 @@ object User {
         }
     }
 
+    /**
+     * Clear user data cache
+     */
     fun logout(callback:(Boolean)->(Unit)) {
         rl.executeTransactionAsync {
             val del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
@@ -101,7 +119,7 @@ object User {
         }
     }
 
-    fun runUI(run: (Unit)->(Unit)) {
+    private fun runUI(run: (Unit)->(Unit)) {
         Handler(Looper.getMainLooper()).post {
             run.invoke(Unit)
         }
