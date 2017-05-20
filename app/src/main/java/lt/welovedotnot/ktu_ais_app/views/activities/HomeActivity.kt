@@ -15,10 +15,7 @@ import lt.welovedotnot.ktu_ais_app.adapters.DrawerItemCustomAdapter
 import lt.welovedotnot.ktu_ais_app.models.ScreenModel
 import lt.welovedotnot.ktu_ais_app.utils.startActivityNoBack
 import lt.welovedotnot.ktu_ais_app.services.GetGradesIntentService
-import lt.welovedotnot.ktu_ais_app.views.fragments.ContactsFragment
-import lt.welovedotnot.ktu_ais_app.views.fragments.GradesFragment
-import lt.welovedotnot.ktu_ais_app.views.fragments.MapFragment
-import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
+import lt.welovedotnot.ktu_ais_app.views.fragments.*
 
 
 /**
@@ -44,15 +41,19 @@ class HomeActivity: AppCompatActivity() {
                 ScreenModel(
                     name = getString(R.string.contacts),
                     fragment = ContactsFragment(),
-                    isEnabled = false),
+                    isEnabled = false), // TODO
                 ScreenModel(
                     name = getString(R.string.map),
                     fragment = MapFragment(),
-                    isEnabled = false),
+                    isEnabled = false), // TODO
                 ScreenModel(
                     name = getString(R.string.schedule),
                     fragment = ScheduleFragment(),
-                    isEnabled = false)
+                    isEnabled = false), // TODO
+                ScreenModel(
+                    name = getString(R.string.settings),
+                    fragment = SettingsFragment(),
+                    isEnabled = true)
         )
 
         // filter out stuff that is in dev stage.
