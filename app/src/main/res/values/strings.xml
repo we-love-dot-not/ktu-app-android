@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Ktu AIS</string>
+    <string name="app_name">KTU AIS</string>
     <string name="EtUserHint">Vardas</string>
     <string name="EtPwHint">Slaptažodis</string>
     <string name="LoginBtn">Prisijungti</string>
