@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="Bendri nustatymai">
+
+        <ListPreference
+            android:key="selected_semester"
+            android:title="Einamas semsteras" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Pažymiai">
+
+        <ListPreference
+            android:key="update_interval"
+            android:title="Atnaujinti kas" />
+
+        <CheckBoxPreference
+            android:key="show_notification"
+            android:title="Rodyti pranešimus" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory android:title="Kiti">
+
+        <PreferenceScreen
+            android:title="Atsijungti">
+
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://www.android.com" />
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:title="Apie">
+
+            <intent android:action="android.intent.action.VIEW"
+                android:data="http://www.android.com" />
+
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
