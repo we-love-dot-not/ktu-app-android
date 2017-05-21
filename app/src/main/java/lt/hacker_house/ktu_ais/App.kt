@@ -16,6 +16,7 @@ class App: MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         context = this
+        
         RealmUtils.init(this)
     }
 }
