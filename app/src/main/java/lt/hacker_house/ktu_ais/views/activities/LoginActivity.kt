@@ -1,6 +1,5 @@
 package lt.hacker_house.ktu_ais.views.activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,9 +10,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.utils.addOnViewShrinkListener
 import lt.hacker_house.ktu_ais.db.User
+import lt.hacker_house.ktu_ais.events.EventActivity
 import lt.hacker_house.ktu_ais.utils.startActivityNoBack
 
-class LoginActivity: AppCompatActivity() {
+class LoginActivity: EventActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
