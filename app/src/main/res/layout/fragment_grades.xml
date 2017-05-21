@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <lt.welovedotnot.ktu_ais_app.views.components.GradesRecyclerView
+    <lt.hacker_house.ktu_ais.views.components.GradesRecyclerView
         android:id="@+id/gradesListView"
         android:paddingBottom="4dp"
         android:paddingTop="4dp"
