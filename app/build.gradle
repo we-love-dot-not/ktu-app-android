@@ -59,7 +59,7 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
     compile 'com.tonyodev.fetch:fetch:1.1.1'
-    compile 'ical4j:ical4j:0.9.20'
+    compile 'com.google.guava:guava:20.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

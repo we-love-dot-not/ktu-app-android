@@ -5,23 +5,19 @@ import android.provider.CalendarContract
 import android.util.Log
 
 import net.fortuna.ical4j.data.CalendarBuilder
-import net.fortuna.ical4j.data.ParserException
 import net.fortuna.ical4j.model.Calendar
 import net.fortuna.ical4j.model.Component
 import net.fortuna.ical4j.model.Property
 import net.fortuna.ical4j.model.component.VEvent
 
-import java.io.IOException
 import java.io.InputStream
 
-import lt.hacker_house.ktu_ais.views.activities.HomeActivity
 
 /**
  * Created by Mindaugas on 5/21/2017.
  */
 
-class iCalParser @Throws(IOException::class, ParserException::class)
-constructor(ics: InputStream) {
+class iCalParser(ics: InputStream) {
 
     private val calendar: Calendar
     private val event: VEvent?
@@ -30,10 +26,14 @@ constructor(ics: InputStream) {
         val builder = CalendarBuilder()
         calendar = builder.build(ics)
         event = findFirstEvent()
+
     }
 
     internal var DEBUG = true
 
+    /**
+     * USE THIS PROB https://codepen.io/asommer70/post/adding-multiple-android-calendar-events-at-once
+     */
     fun buildIntent(): Intent {
         val i = Intent(Intent.ACTION_INSERT, CalendarContract.Events.CONTENT_URI)
 
@@ -59,6 +59,8 @@ constructor(ics: InputStream) {
         i.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, allDayEvent)
 
         i.putExtra(CalendarContract.Events.RRULE, getValueOrNull(Property.RRULE))
+
+
 
         return i
     }

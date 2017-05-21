@@ -13,11 +13,9 @@ import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.utils.FileDl
 import lt.hacker_house.ktu_ais.utils.iCalParser
-import java.io.FileInputStream
-import android.content.Intent.getIntent
-import android.content.Intent
-
-
+import com.google.common.io.Files
+import java.io.*
+import java.nio.charset.StandardCharsets
 
 
 /**
@@ -36,22 +34,28 @@ class ScheduleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         openScheduleButton.setOnClickListener {
-            FileDl.download(getScheduleDownloadUrl()) { file ->
-                Log.d(TAG, file.toString())
-                try {
-                    startActivity(iCalParser(FileInputStream(file)).buildIntent())
-                } catch (e: Exception) {
-                    if (DEBUG) Log.e(TAG, "Couldn't parse", e)
+            User.getScheduleUrl { url ->
+                FileDl.download(url) { file ->
+                    Log.d(TAG, file.toString())
+                    try {
+                        val string = file!!.readFile()
+                        file.writeFile(string.replace(";CHARSET=UTF-8", ""))
+                        val fileInputStream = FileInputStream(file)
+                        val buildIntent = iCalParser(fileInputStream).buildIntent()
+                        startActivity(buildIntent)
+                    } catch (e: Exception) {
+                        if (DEBUG) Log.e(TAG, "Couldn't parse", e)
+                    }
                 }
             }
         }
     }
 
-    private fun getScheduleDownloadUrl(): String {
-        val sb = StringBuilder("https://uais.cr.ktu.lt/ktuis/tv_rprt2.ical1?p=")
-        User.get { it?.also { sb.append(it.studId) } }
-        sb.append("&t=basic.ics")
-        return sb.toString()
+    fun File.readFile(): String {
+        return Files.toString(this, StandardCharsets.UTF_8)
     }
 
+    fun File.writeFile(data: String) {
+        Files.write(data, this, StandardCharsets.UTF_8)
+    }
 }

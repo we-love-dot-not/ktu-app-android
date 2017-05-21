@@ -100,6 +100,14 @@ object User {
         }
     }
 
+    fun getScheduleUrl(callback: (String)->(Unit)) {
+        User.get {
+            it?.also {
+                callback.invoke("https://uais.cr.ktu.lt/ktuis/tv_rprt2.ical1?p=${it.studId}&t=basic.ics")
+            }
+        }
+    }
+
     fun getSync(): UserModel? {
         var model: UserModel? = null
         rl.executeTransaction {
