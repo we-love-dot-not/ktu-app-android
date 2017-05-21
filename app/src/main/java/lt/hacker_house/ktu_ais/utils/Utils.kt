@@ -78,10 +78,27 @@ fun Activity.startActivityNoBack(target: Class<*>) {
 
 fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): Collection<GradeUpdateModel> {
     val resultList = mutableListOf<GradeUpdateModel>()
+
     this.forEach { oldItem ->
-        val newItem = newList.find { it.equals(oldItem) }
-        newItem?.diff(oldItem) { newGrade ->
-            resultList.add(newGrade)
+        val newItemList = newList.findAll(oldItem)
+        val oldItemList = this.findAll(oldItem)
+        newItemList.forEachIndexed { index, newListItem ->
+            var oldListItem = oldItemList[index]
+            newListItem.diff(oldListItem) { newGrade ->
+                val comp = oldListItem
+                val new = newListItem
+                resultList.add(newGrade)
+            }
+        }
+    }
+    return resultList
+}
+
+fun Collection<GetGradesResponse>.findAll(other: GetGradesResponse): List<GetGradesResponse> {
+    val resultList = mutableListOf<GetGradesResponse>()
+    this.forEach { item ->
+        if (item == other) {
+            resultList.add(item)
         }
     }
     return resultList

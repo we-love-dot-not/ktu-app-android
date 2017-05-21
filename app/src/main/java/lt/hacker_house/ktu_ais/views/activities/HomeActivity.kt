@@ -4,7 +4,6 @@ import android.app.Fragment
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import lt.hacker_house.ktu_ais.R
@@ -12,6 +11,8 @@ import kotlinx.android.synthetic.main.activity_home.*
 import lt.hacker_house.ktu_ais.models.UserModel
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.adapters.DrawerItemCustomAdapter
+import lt.hacker_house.ktu_ais.events.EventActivity
+import lt.hacker_house.ktu_ais.events.UpdateEvent
 import lt.hacker_house.ktu_ais.models.ScreenModel
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
 import lt.hacker_house.ktu_ais.utils.Prefs
@@ -22,55 +23,19 @@ import lt.hacker_house.ktu_ais.views.fragments.*
  * Created by simonas on 4/30/17.
  */
 
-class HomeActivity: AppCompatActivity() {
+class HomeActivity: EventActivity() {
     lateinit var mDrawerToggle: ActionBarDrawerToggle
-    var MAIN_FRAGMENT = GradesFragment()
-
     lateinit var mScreenList: List<ScreenModel>
+
+    var MAIN_FRAGMENT = GradesFragment()
+    var currentFragmentIndex = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
-        val semesterNum = Prefs.getCurrentSemester().semesterString.toInt()
-
-        mScreenList = listOf(
-                ScreenModel(
-                    name = getString(R.string.grades),
-                    subtitle = "$semesterNum semestras",
-                    fragment = GradesFragment(),
-                    isEnabled = true),
-                ScreenModel(
-                    name = getString(R.string.contacts),
-                    fragment = ContactsFragment(),
-                    isEnabled = false), // TODO
-                ScreenModel(
-                    name = getString(R.string.map),
-                    fragment = MapFragment(),
-                    isEnabled = false), // TODO
-                ScreenModel(
-                    name = getString(R.string.schedule),
-                    fragment = ScheduleFragment(),
-                    isEnabled = false), // TODO
-                ScreenModel(
-                    name = getString(R.string.settings),
-                    fragment = SettingsFragment(),
-                    isEnabled = true)
-        )
-
-        // filter out stuff that is in dev stage.
-        // TODO rework this before 1.0 release.
-        mScreenList = mScreenList.filter { it.isEnabled == true }
-
         GetGradesIntentService.startBackgroundService(this)
-
-        val adapter = DrawerItemCustomAdapter(this, mScreenList)
-        drawerListView.adapter = adapter
-
-        drawerListView.setOnItemClickListener { _, _, position, _ ->
-            selectItem(position)
-        }
 
         mDrawerToggle = object : ActionBarDrawerToggle(this, drawerLayout, 0, 0) {
             override fun onDrawerClosed(view: View) {
@@ -87,9 +52,61 @@ class HomeActivity: AppCompatActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
-        User.get { it?.also { setUserModel(it) } }
+        User.get { it?.also { loadData(it) } }
+    }
 
-        selectItem(MAIN_FRAGMENT)
+    override fun onUpdateEvent(event: UpdateEvent) {
+        super.onUpdateEvent(event)
+        loadData(event.userModel)
+    }
+
+    fun loadData(userModel: UserModel) {
+        setUserModel(userModel)
+        loadDrawer(userModel)
+
+        if (currentFragmentIndex == -1) {
+            selectItem(indexOfFragmentItem(MAIN_FRAGMENT))
+        } else {
+            selectItem(currentFragmentIndex)
+        }
+    }
+
+    fun loadDrawer(model: UserModel) {
+        val semesterNum = Prefs.getCurrentSemester(model).semesterString.toInt()
+        mScreenList = listOf(
+                ScreenModel(
+                        name = getString(R.string.grades),
+                        subtitle = "$semesterNum semestras",
+                        fragment = GradesFragment(),
+                        isEnabled = true),
+                ScreenModel(
+                        name = getString(R.string.contacts),
+                        fragment = ContactsFragment(),
+                        isEnabled = false), // TODO
+                ScreenModel(
+                        name = getString(R.string.map),
+                        fragment = MapFragment(),
+                        isEnabled = false), // TODO
+                ScreenModel(
+                        name = getString(R.string.schedule),
+                        fragment = ScheduleFragment(),
+                        isEnabled = false), // TODO
+                ScreenModel(
+                        name = getString(R.string.settings),
+                        fragment = SettingsFragment(),
+                        isEnabled = true)
+        )
+
+        // filter out stuff that is in dev stage.
+        // TODO rework this before 1.0 release.
+        mScreenList = mScreenList.filter { it.isEnabled == true }
+
+        val adapter = DrawerItemCustomAdapter(this, mScreenList)
+        drawerListView.adapter = adapter
+
+        drawerListView.setOnItemClickListener { _, _, position, _ ->
+            selectItem(position)
+        }
     }
 
     fun setUserModel(model: UserModel) {
@@ -101,21 +118,25 @@ class HomeActivity: AppCompatActivity() {
         drawerSemesterNo.text = "$semester semestras, $year"
     }
 
-    private fun selectItem(fragment: Fragment) {
+    private fun indexOfFragmentItem(fragment: Fragment): Int {
         val findLast = mScreenList.findLast { it.fragment.javaClass.name == fragment.javaClass.name}
-        selectItem(mScreenList.indexOf(findLast))
+        return mScreenList.indexOf(findLast)
     }
     /**
      *  Swaps fragments in the main content view
      */
     private fun selectItem(position: Int) {
-        // Insert the fragment by replacing any existing fragment
-        val selectedScreen = mScreenList[position]
-        setFragment(selectedScreen.fragment)
-        // Highlight the selected item, update the title, and close the drawer
-        drawerListView.setItemChecked(position, true)
-        supportActionBar?.title = mScreenList[position].name
-        supportActionBar?.subtitle = mScreenList[position].subtitle
+        currentFragmentIndex = position
+        if (position != -1) {
+            val selectedScreen = mScreenList[currentFragmentIndex]
+            setFragment(selectedScreen.fragment)
+            // Highlight the selected item, update the title, and close the drawer
+            drawerListView.setItemChecked(position, true)
+            supportActionBar?.title = mScreenList[position].name
+            supportActionBar?.subtitle = mScreenList[position].subtitle
+        } else {
+            setFragment(Fragment())
+        }
         drawerLayout.closeDrawer(navSide)
     }
 

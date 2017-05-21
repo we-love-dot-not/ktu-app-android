@@ -5,6 +5,7 @@ import android.os.Looper
 import io.realm.Realm
 import lt.hacker_house.ktu_ais.App
 import lt.hacker_house.ktu_ais.api.Api
+import lt.hacker_house.ktu_ais.events.UpdateEvent
 import lt.hacker_house.ktu_ais.utils.diff
 import lt.hacker_house.ktu_ais.utils.filterSemester
 import lt.hacker_house.ktu_ais.models.*
@@ -132,6 +133,7 @@ object User {
                     val freshGrades = freshUser!!.gradeList.filterSemester(semesterString)
                     val diff = oldGrades.diff(freshGrades)
                     callback.invoke(isSuccess, diff)
+                    UpdateEvent.send(freshUser) // Notify about updated data.
                 }
             }
         }

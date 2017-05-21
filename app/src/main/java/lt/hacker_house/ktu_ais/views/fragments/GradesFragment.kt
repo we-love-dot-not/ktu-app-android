@@ -1,6 +1,5 @@
 package lt.hacker_house.ktu_ais.views.fragments
 
-import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +8,15 @@ import kotlinx.android.synthetic.main.fragment_grades.view.*
 
 import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.db.User
+import lt.hacker_house.ktu_ais.events.EventFragment
+import lt.hacker_house.ktu_ais.events.UpdateEvent
+import lt.hacker_house.ktu_ais.models.UserModel
 
 /**
  * Created by Mindaugas on 5/1/2017.
  */
 
-class GradesFragment : Fragment() {
+class GradesFragment : EventFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_grades, null)
@@ -23,9 +25,16 @@ class GradesFragment : Fragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        User.get {
-            view?.gradesListView?.setModels(it?.weekList!!.toList())
-        }
+        User.get { it?.also { loadData(it) } }
+    }
+
+    fun loadData(userModel: UserModel) {
+        view?.gradesListView?.setModels(userModel.weekList!!.toList())
+    }
+
+    override fun onUpdateEvent(event: UpdateEvent) {
+        super.onUpdateEvent(event)
+        loadData(event.userModel)
     }
 
 }
