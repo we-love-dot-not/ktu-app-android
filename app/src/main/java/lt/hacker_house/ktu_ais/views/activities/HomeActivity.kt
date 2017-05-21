@@ -4,7 +4,6 @@ import android.app.Fragment
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import lt.hacker_house.ktu_ais.R
@@ -22,7 +21,7 @@ import lt.hacker_house.ktu_ais.views.fragments.*
  * Created by simonas on 4/30/17.
  */
 
-class HomeActivity: AppCompatActivity() {
+class HomeActivity: AbsBaseActivity() {
     lateinit var mDrawerToggle: ActionBarDrawerToggle
     var MAIN_FRAGMENT = GradesFragment()
 
