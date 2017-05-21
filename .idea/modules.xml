@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ktu-ais-app.iml" filepath="$PROJECT_DIR$/ktu-ais-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ktu-app-android.iml" filepath="$PROJECT_DIR$/ktu-app-android.iml" />
     </modules>
   </component>
 </project>

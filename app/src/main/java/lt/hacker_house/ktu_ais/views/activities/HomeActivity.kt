@@ -16,6 +16,7 @@ import lt.hacker_house.ktu_ais.models.ScreenModel
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
 import lt.hacker_house.ktu_ais.utils.Prefs
 import lt.hacker_house.ktu_ais.views.fragments.*
+import lt.welovedotnot.ktu_ais_app.views.fragments.ScheduleFragment
 
 
 /**
@@ -52,7 +53,7 @@ class HomeActivity: AppCompatActivity() {
                 ScreenModel(
                     name = getString(R.string.schedule),
                     fragment = ScheduleFragment(),
-                    isEnabled = false), // TODO
+                    isEnabled = true), // TODO
                 ScreenModel(
                     name = getString(R.string.settings),
                     fragment = SettingsFragment(),
