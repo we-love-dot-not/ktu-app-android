@@ -8,6 +8,8 @@ import android.content.SharedPreferences
 import android.preference.ListPreference
 import android.preference.CheckBoxPreference
 import android.widget.ListView
+import android.widget.Toast
+import com.mcxiaoke.koi.ext.toast
 import lt.hacker_house.ktu_ais.BuildConfig
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
@@ -87,9 +89,16 @@ class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferen
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
         when(key) {
-            SELECTED_SEMESTER -> User.update { _, _ -> }
-            SHOW_NOTIFICATION -> GetGradesIntentService.startBackgroundService(activity)
-            UPDATE_INTERVAL -> GetGradesIntentService.startBackgroundService(activity)
+            SELECTED_SEMESTER -> {
+                User.update { _, _ -> }
+                activity.toast(getString(R.string.loading_new_grades))
+            }
+            SHOW_NOTIFICATION -> {
+                GetGradesIntentService.startBackgroundService(activity)
+            }
+            UPDATE_INTERVAL -> {
+                GetGradesIntentService.startBackgroundService(activity)
+            }
         }
     }
 }

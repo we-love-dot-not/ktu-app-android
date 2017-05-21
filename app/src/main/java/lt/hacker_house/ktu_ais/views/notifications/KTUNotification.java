@@ -4,8 +4,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import lt.hacker_house.ktu_ais.R;
 import lt.hacker_house.ktu_ais.models.GradeUpdateModel;

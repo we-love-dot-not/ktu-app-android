@@ -12,6 +12,7 @@
     <string name="schedule">Tvarkaraštis</string>
     <string name="settings">Nustatymai</string>
     <string name="error">Klaida</string>
+    <string name="loading_new_grades">Kraunami nauji pažymiai</string>
 
     <array name="update_interval_entries">
         <item>15 min</item>
