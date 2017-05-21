@@ -62,7 +62,7 @@ class LoginActivity: EventActivity() {
 
     fun credentialsEmpty(): Boolean {
         if (etUsername.isEmpty() || etPassword.isEmpty()) {
-            Toast.makeText(this, "Įveskite prisijungimo duomenis.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.input_login_infomation), Toast.LENGTH_SHORT).show()
             return true
         }
         return false

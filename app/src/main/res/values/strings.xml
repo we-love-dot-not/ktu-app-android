@@ -1,26 +1,42 @@
 <resources>
     <string name="app_name">KTU AIS</string>
-    <string name="EtUserHint">Vardas</string>
-    <string name="EtPwHint">Slaptažodis</string>
-    <string name="LoginBtn">Prisijungti</string>
-    <string name="week">savaitė</string>
-    <string name="login_success">Prisijungta</string>
-    <string name="login_progress">Krauna...</string>
-    <string name="grades">Pažymiai</string>
-    <string name="contacts">Dėstytojai</string>
-    <string name="map">Žemėlapis</string>
-    <string name="schedule">Tvarkaraštis</string>
-    <string name="settings">Nustatymai</string>
-    <string name="error">Klaida</string>
-    <string name="loading_new_grades">Kraunami nauji pažymiai</string>
+    <string name="EtUserHint">Username</string>
+    <string name="EtPwHint">Password</string>
+    <string name="LoginBtn">Log In</string>
+    <string name="week">week</string>
+    <string name="login_success">Logged in</string>
+    <string name="login_progress">Loading…</string>
+    <string name="grades">Grades</string>
+    <string name="contacts">Professors</string>
+    <string name="map">Map</string>
+    <string name="schedule">Schedule</string>
+    <string name="settings">Settings</string>
+    <string name="error">Error</string>
+    <string name="loading_new_grades">Loading new grades</string>
+    <string name="received">Received</string>
+    <string name="version">Version:</string>
+    <string name="input_login_infomation">Input login information.</string>
+    <string name="semester">semester</string>
+    <string name="autumn">Autumn</string>
+    <string name="spring">Sprint</string>
+    <string name="current_semestras">Current semester</string>
+    <string name="update_interval_title">Update Interval</string>
+    <string name="update_interval_summary">Specifies how ofter user data will be refreshed.</string>
+    <string name="show_notification_title">Show Notifications</string>
+    <string name="show_notification_summary">A notification will tell you about new grades.</string>
+    <string name="general_settings">Genral Settings</string>
+    <string name="cat_grades">Grades</string>
+    <string name="cat_other">Other</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
 
     <array name="update_interval_entries">
         <item>15 min</item>
         <item>30 min</item>
-        <item>1 val</item>
-        <item>2 val</item>
-        <item>4 val</item>
-        <item>8 val</item>
+        <item>1 hr</item>
+        <item>2 hr</item>
+        <item>4 hr</item>
+        <item>8 hr</item>
     </array>
 
     <array name="update_interval_entry_values">

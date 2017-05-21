@@ -25,11 +25,12 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class KTUNotification {
 
     public void sendGradeNotification(GradeUpdateModel model, Context context) {
-        String title = "Gavai " + model.getMark();
+        String title = context.getString(R.string.received) + model.getMark();
         String text = model.getName() + ", " + model.getType();
         sendNotification(model.hashCode(), title, text, context);
     }
 
+    @Deprecated
     public void sendUpcomingTestNotification(WeekModel model, Context context) {
         String title = "Kitos savaitės atsiskaitymai";
         String text = "";

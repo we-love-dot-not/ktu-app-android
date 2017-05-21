@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Bendri nustatymai">
+    <PreferenceCategory android:title="@string/general_settings">
 
         <ListPreference
             android:key="selected_semester"
-            android:title="Einamas semsteras" />
+            android:title="@string/current_semestras" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Pažymiai">
+    <PreferenceCategory android:title="@string/cat_grades">
 
         <ListPreference
             android:key="update_interval"
-            android:title="Atnaujinti kas"
-            android:summary="Duomenų atnaujinimo intervalas" />
+            android:title="@string/update_interval_title"
+            android:summary="@string/update_interval_summary" />
 
         <CheckBoxPreference
             android:key="show_notification"
-            android:title="Rodyti pranešimus"
-            android:summary="Gavus naują pažymį apie tai bus prenešta pranešimu." />
+            android:title="@string/show_notification_title"
+            android:summary="@string/show_notification_summary" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Kiti">
+    <PreferenceCategory android:title="@string/cat_other">
 
         <Preference
             android:key="logout"
-            android:title="Atsijungti">
+            android:title="@string/logout">
 
         </Preference>
 
         <Preference
             android:key="about"
-            android:title="Apie">
+            android:title="@string/about">
 
         </Preference>
 

@@ -16,7 +16,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginRight="32dp"
         android:layout_toStartOf="@+id/gradeText"
-        android:text="Algoritmų sudarymas ir analizė"
         android:textSize="16sp" />
 
     <TextView
@@ -25,7 +24,6 @@
         android:textColor="@color/textSecondary"
         android:layout_below="@id/className"
         android:layout_marginTop="4dp"
-        android:text="Inžinerinis projektas	"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -34,7 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        tools:text="NE"
         android:textSize="16sp"/>
 
 </RelativeLayout>

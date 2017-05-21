@@ -76,7 +76,7 @@ class HomeActivity: EventActivity() {
         mScreenList = listOf(
                 ScreenModel(
                         name = getString(R.string.grades),
-                        subtitle = "$semesterNum semestras",
+                        subtitle = "$semesterNum ${getString(R.string.semester)}",
                         fragment = GradesFragment(),
                         isEnabled = true),
                 ScreenModel(
@@ -115,7 +115,7 @@ class HomeActivity: EventActivity() {
         val currentSemester = Prefs.getCurrentSemester(model)
         val year = currentSemester.year
         val semester = currentSemester.semesterString.toInt()
-        drawerSemesterNo.text = "$semester semestras, $year"
+        drawerSemesterNo.text = "$semester ${getString(R.string.semester)}, $year"
     }
 
     private fun indexOfFragmentItem(fragment: Fragment): Int {

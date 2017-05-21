@@ -4,6 +4,8 @@ import android.os.Handler
 import android.os.Looper
 import io.realm.Realm
 import lt.hacker_house.ktu_ais.App
+import lt.hacker_house.ktu_ais.App.Companion.context
+import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.api.Api
 import lt.hacker_house.ktu_ais.events.UpdateEvent
 import lt.hacker_house.ktu_ais.utils.diff
@@ -154,10 +156,10 @@ object User {
                 val autumNoStr = autumnNo.toKtuSemesterString()
                 val springNoStr = springNo.toKtuSemesterString()
                 val year = yearModel.year.toString()
-                semesterEntries.add("$year Rudens. $autumNoStr")
+                semesterEntries.add("$year ${App.context.getString(R.string.autumn)}. $autumNoStr")
                 semesterValues.add(year + "-" + autumNoStr)
 
-                semesterEntries.add("$year Pavasario. $springNoStr")
+                semesterEntries.add("$year ${App.context.getString(R.string.spring)}. $springNoStr")
                 semesterValues.add(year + "-" + springNoStr)
 
                 callback.invoke(userModel, semesterEntries.toTypedArray(), semesterValues.toTypedArray())

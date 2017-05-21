@@ -67,7 +67,7 @@ class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferen
         }
 
         val appVersionName = BuildConfig.VERSION_NAME
-        about.summary = "Versija: $appVersionName"
+        about.summary = getString(R.string.version) + appVersionName
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

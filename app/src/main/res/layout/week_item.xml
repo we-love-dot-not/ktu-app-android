@@ -32,8 +32,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
-                android:text="11 savaite" />
+                android:textColor="@color/textSecondary" />
 
             <LinearLayout
                 android:id="@+id/gradesLinearLayout"
