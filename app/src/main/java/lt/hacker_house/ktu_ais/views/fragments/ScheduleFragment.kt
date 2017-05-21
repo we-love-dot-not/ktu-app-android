@@ -1,21 +1,23 @@
 package lt.welovedotnot.ktu_ais_app.views.fragments
 
 import android.app.Fragment
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mcxiaoke.koi.log.logd
 
-import com.tonyodev.fetch.Fetch
-import com.tonyodev.fetch.request.Request
 import kotlinx.android.synthetic.main.fragment_schedule.*
+import lt.hacker_house.ktu_ais.BuildConfig.DEBUG
 import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.utils.FileDl
+import lt.hacker_house.ktu_ais.utils.iCalParser
+import java.io.FileInputStream
+import android.content.Intent.getIntent
+import android.content.Intent
+
+
 
 
 /**
@@ -36,6 +38,11 @@ class ScheduleFragment : Fragment() {
         openScheduleButton.setOnClickListener {
             FileDl.download(getScheduleDownloadUrl()) { file ->
                 Log.d(TAG, file.toString())
+                try {
+                    startActivity(iCalParser(FileInputStream(file)).buildIntent())
+                } catch (e: Exception) {
+                    if (DEBUG) Log.e(TAG, "Couldn't parse", e)
+                }
             }
         }
     }
