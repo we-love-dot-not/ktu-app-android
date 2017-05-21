@@ -11,7 +11,7 @@
         android:textColor="#000000"
         android:textSize="15sp"/>
     <Button
-        android:id="@+id/OpenScheduleButton"
+        android:id="@+id/openScheduleButton"
         android:layout_height="50dp"
         android:layout_width="100dp"
         android:text="@string/Open"
