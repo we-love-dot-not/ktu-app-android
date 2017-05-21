@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/mainLayout"
-    tools:context="lt.welovedotnot.ktu_ais_app.views.activities.LoginActivity">
+    tools:context="lt.hacker_house.ktu_ais.views.activities.LoginActivity">
 
     <RelativeLayout
         android:id="@+id/logoLayout"
@@ -77,6 +77,9 @@
                     android:textColor="@color/colorWhite"
                     custom:pb_colorNormal="#616161"
                     custom:pb_colorPressed="#616161"
+                    app:pb_colorError="#765D5C"
+                    app:pb_colorComplete="#5F6C5F"
+                    app:pb_textError="@string/error"
                     custom:pb_textComplete="@string/login_success"
                     custom:pb_textProgress="@string/login_progress" />
 

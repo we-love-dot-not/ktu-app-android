@@ -36,6 +36,50 @@
           "status": 2
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55383701502:android:b729c73e49e4c4dc",
+        "android_client_info": {
+          "package_name": "lt.hacker_house.ktu_ais"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55383701502-uksclm871kqjc2b2jbodh5ibs1i2k0kp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lt.hacker_house.ktu_ais",
+            "certificate_hash": "722b8b94376746fb2963b3e0929932848570cdf1"
+          }
+        },
+        {
+          "client_id": "55383701502-o4aj8thork5rfsvfhaa0v9e3phbqtr6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzzQqtQkKojPjP8sxfHZCLacJS-vECl_E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55383701502-o4aj8thork5rfsvfhaa0v9e3phbqtr6v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
     }
   ],
   "configuration_version": "1"

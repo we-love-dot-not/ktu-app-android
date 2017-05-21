@@ -5,9 +5,9 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
     defaultConfig {
-        applicationId "lt.welovedotnot.ktu_ais_app"
+        applicationId "lt.hacker_house.ktu_ais"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
