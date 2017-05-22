@@ -1,0 +1,1000 @@
+[
+  {
+    "location_code": "CR",
+    "description": "Centriniai rūmai",
+    "address": "K. Donelaičio g. 73, 44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "44029"
+  },
+  {
+    "location_code": "000 - Pagrindinė",
+    "description": "000 - Pagrindinė",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "001 - Medžiagos mokslo ir mokymo tikslams",
+    "description": "001 - Medžiagos mokslo ir mokymo tikslams",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "002 - Ūkinės medžiagos ir raštinės reikmenys",
+    "description": "002 - Ūkinės medžiagos ir raštinės reikmenys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "005 - Atsarginės dalys",
+    "description": "005 - Atsarginės dalys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "007 - Atsargos kelyje",
+    "description": "007 - Atsargos kelyje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "009 - Nebaigtos statybos atsargos",
+    "description": "009 - Nebaigtos statybos atsargos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "010 - Montuotinos dalys",
+    "description": "010 - Montuotinos dalys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "012 - Medžiagos moksliniams tiriamiesiems darbams",
+    "description": "012 - Medžiagos moksliniams tiriamiesiems darbams",
+    "address": "Studentų g. 54, LT-51424, Kaunas",
+    "address_line_1": "Studentų g. 54",
+    "city": "Kaunas",
+    "postal_code": "LT-51424"
+  },
+  {
+    "location_code": "014 - Knygynas Nr.1",
+    "description": "014 - Knygynas Nr.1",
+    "address": "Radvilėnų pl. 19, LT-50254, Kaunas",
+    "address_line_1": "Radvilėnų pl. 19",
+    "city": "Kaunas",
+    "postal_code": "LT-50254"
+  },
+  {
+    "location_code": "015 - Knygynas Nr.2",
+    "description": "015 - Knygynas Nr.2",
+    "address": "K. Donelaičio g.  73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g.  73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "10B",
+    "description": "10 bendrabutis",
+    "address": "Gričiupio g. 13, 51376, Kaunas",
+    "address_line_1": "Gričiupio g. 13",
+    "city": "Kaunas",
+    "postal_code": "51376"
+  },
+  {
+    "location_code": "11B",
+    "description": "11 bendrabutis",
+    "address": "Pašilės g. 37, 51377, Kaunas",
+    "address_line_1": "Pašilės g. 37",
+    "city": "Kaunas",
+    "postal_code": "51377"
+  },
+  {
+    "location_code": "13 bendrabutis",
+    "description": "13 bendrabutis",
+    "address": "Vydūno al. 25b, 50288, Kaunas",
+    "address_line_1": "Vydūno al. 25b",
+    "city": "Kaunas",
+    "postal_code": "50288"
+  },
+  {
+    "location_code": "14B",
+    "description": "14 bendrabutis",
+    "address": "Vydūno al. 25, 50287, Kaunas",
+    "address_line_1": "Vydūno al. 25",
+    "city": "Kaunas",
+    "postal_code": "50287"
+  },
+  {
+    "location_code": "15B",
+    "description": "15 bendrabutis",
+    "address": "Vydūno al. 25a, 50289, Kaunas",
+    "address_line_1": "Vydūno al. 25a",
+    "city": "Kaunas",
+    "postal_code": "50289"
+  },
+  {
+    "location_code": "16B",
+    "description": "16 bendrabutis",
+    "address": "Pašilėsg. 39, 51358, Kaunas",
+    "address_line_1": "Pašilėsg. 39",
+    "city": "Kaunas",
+    "postal_code": "51358"
+  },
+  {
+    "location_code": "02B",
+    "description": "2 bendrabutis",
+    "address": "Studentų g. 67, 51392, Kaunas",
+    "address_line_1": "Studentų g. 67",
+    "city": "Kaunas",
+    "postal_code": "51392"
+  },
+  {
+    "location_code": "03B",
+    "description": "3 bendrabutis",
+    "address": "Studentų g. 69, 51393, Kaunas",
+    "address_line_1": "Studentų g. 69",
+    "city": "Kaunas",
+    "postal_code": "51393"
+  },
+  {
+    "location_code": "04B",
+    "description": "4 bendrabutis",
+    "address": "Studentų g. 71, 51394, Kaunas",
+    "address_line_1": "Studentų g. 71",
+    "city": "Kaunas",
+    "postal_code": "51394"
+  },
+  {
+    "location_code": "05B",
+    "description": "5 bendrabutis",
+    "address": "Gričiupio g. 9, 51373, Kaunas",
+    "address_line_1": "Gričiupio g. 9",
+    "city": "Kaunas",
+    "postal_code": "51373"
+  },
+  {
+    "location_code": "08B",
+    "description": "8 bendrabutis",
+    "address": "A. Purėno g. 20, 51374, Kaunas",
+    "address_line_1": "A. Purėno g. 20",
+    "city": "Kaunas",
+    "postal_code": "51374"
+  },
+  {
+    "location_code": "ITPI Administracija",
+    "description": "ITPI Administracija",
+    "address": "Studentų g. 48a, LT-51367, Kaunas",
+    "address_line_1": "Studentų g. 48a",
+    "city": "Kaunas",
+    "postal_code": "LT-51367"
+  },
+  {
+    "location_code": "Bendrabučių valdyba",
+    "description": "Bendrabučių valdyba, bendrabutis",
+    "address": "Gričiupio g. 13, 51376, Kaunas",
+    "address_line_1": "Gričiupio g. 13",
+    "city": "Kaunas",
+    "postal_code": "51376"
+  },
+  {
+    "location_code": "I dirbtuvės",
+    "description": "I dirbtuvės",
+    "address": "Intako g. 7, 52181, Kaunas",
+    "address_line_1": "Intako g. 7",
+    "city": "Kaunas",
+    "postal_code": "52181"
+  },
+  {
+    "location_code": "IR",
+    "description": "Mechanikos ir  mechatronikos laboratorija, TSC",
+    "address": "A. Mickevičiaus g. 37, 44244, Kaunas",
+    "address_line_1": "A. Mickevičiaus g. 37",
+    "city": "Kaunas",
+    "postal_code": "44244"
+  },
+  {
+    "location_code": "II dirbtuvės",
+    "description": "II dirbtuvės",
+    "address": "Intako g. 4A, 52181, Kaunas",
+    "address_line_1": "Intako g. 4A",
+    "city": "Kaunas",
+    "postal_code": "52181"
+  },
+  {
+    "location_code": "IIR",
+    "description": "II rūmai",
+    "address": "Gedimino g. 50, 44239, Kaunas",
+    "address_line_1": "Gedimino g. 50",
+    "city": "Kaunas",
+    "postal_code": "44239"
+  },
+  {
+    "location_code": "IIIR",
+    "description": "III rūmai",
+    "address": "Laisvės al. 13, 44238, Kaunas",
+    "address_line_1": "Laisvės al. 13",
+    "city": "Kaunas",
+    "postal_code": "44238"
+  },
+  {
+    "location_code": "XR",
+    "description": "X rūmai",
+    "address": "Studentų g. 48A, 51367, Kaunas",
+    "address_line_1": "Studentų g. 48A",
+    "city": "Kaunas",
+    "postal_code": "51367"
+  },
+  {
+    "location_code": "IV rūmai",
+    "description": "Cheminės technologijos fakultetas",
+    "address": "Radvilėnų pl. 19, 50254, Kaunas",
+    "address_line_1": "Radvilėnų pl. 19",
+    "city": "Kaunas",
+    "postal_code": "50254"
+  },
+  {
+    "location_code": "IX rūmai",
+    "description": "Statybos rūmai",
+    "address": "Studentų g. 48, 51367, Kaunas",
+    "address_line_1": "Studentų g. 48",
+    "city": "Kaunas",
+    "postal_code": "51367"
+  },
+  {
+    "location_code": "KTU sandėliai",
+    "description": "KTU sandėliai",
+    "address": "Prancūzų g. 145, 44411, Kaunas",
+    "address_line_1": "Prancūzų g. 145",
+    "city": "Kaunas",
+    "postal_code": "44411"
+  },
+  {
+    "location_code": "Mechanikos dirbtuvės",
+    "description": "Mechanikos dirbtuvės",
+    "address": "Studentų g. 54, 51424, Kaunas",
+    "address_line_1": "Studentų g. 54",
+    "city": "Kaunas",
+    "postal_code": "51424"
+  },
+  {
+    "location_code": "Metalo laboratorija",
+    "description": "Metalo laboratorija",
+    "address": "R. Kalantos g. 49, 52303, Kaunas",
+    "address_line_1": "R. Kalantos g. 49",
+    "city": "Kaunas",
+    "postal_code": "52303"
+  },
+  {
+    "location_code": "Pakavimo problemų ML",
+    "description": "Pakavimo problemų mokslo laboratorija",
+    "address": "Karaliaus Mindaugo pr. 21, 44295, Kaunas",
+    "address_line_1": "Karaliaus Mindaugo pr. 21",
+    "city": "Kaunas",
+    "postal_code": "44295"
+  },
+  {
+    "location_code": "Panevėžio bendrabutis",
+    "description": "Panevėžio instituto bendrabutis",
+    "address": "Klaipėdos  g. 27, Panevėžys",
+    "address_line_1": "Klaipėdos  g. 27",
+    "city": "Panevėžys"
+  },
+  {
+    "location_code": "Sporto ir mokymo bazių grupė",
+    "description": "Sporto ir mokymo bazių grupė",
+    "address": "Studentų g. 48, LT-51367, Kaunas",
+    "address_line_1": "Studentų g. 48",
+    "city": "Kaunas",
+    "postal_code": "LT-51367"
+  },
+  {
+    "location_code": "07B",
+    "description": "7 bendrabutis",
+    "address": "A. Purėno g. 18, LT-51370, Kaunas",
+    "address_line_1": "A. Purėno g. 18",
+    "city": "Kaunas",
+    "postal_code": "LT-51370"
+  },
+  {
+    "location_code": "V rūmai",
+    "description": "Humanitarinių mokslių fakultetas",
+    "address": "Gedimino g. 43, 44240, Kaunas",
+    "address_line_1": "Gedimino g. 43",
+    "city": "Kaunas",
+    "postal_code": "44240"
+  },
+  {
+    "location_code": "VII rūmai",
+    "description": "Vadybos ir  ekonomikos fakultetas",
+    "address": "Laisvės al. 55, 44309, Kaunas",
+    "address_line_1": "Laisvės al. 55",
+    "city": "Kaunas",
+    "postal_code": "44309"
+  },
+  {
+    "location_code": "VIIIR",
+    "description": "VIII rūmai",
+    "address": "Kęstučio g. 27, 44312, Kaunas",
+    "address_line_1": "Kęstučio g. 27",
+    "city": "Kaunas",
+    "postal_code": "44312"
+  },
+  {
+    "location_code": "XI rūmai",
+    "description": "Elektronikos rūmai",
+    "address": "Studentų g. 50, 51368, Kaunas",
+    "address_line_1": "Studentų g. 50",
+    "city": "Kaunas",
+    "postal_code": "51368"
+  },
+  {
+    "location_code": "XII rūmai",
+    "description": "Dizaino fakultetas",
+    "address": "Studentų g. 56, 51424, Kaunas",
+    "address_line_1": "Studentų g. 56",
+    "city": "Kaunas",
+    "postal_code": "51424"
+  },
+  {
+    "location_code": "XIIIR",
+    "description": "XIII rūmai",
+    "address": "Studentų g. 65, 51369, Kaunas",
+    "address_line_1": "Studentų g. 65",
+    "city": "Kaunas",
+    "postal_code": "51369"
+  },
+  {
+    "location_code": "XIV rūmai",
+    "description": "Vadybos ir  ekonomikos fakultetas",
+    "address": "Kęstučio g. 8, 44320, Kaunas",
+    "address_line_1": "Kęstučio g. 8",
+    "city": "Kaunas",
+    "postal_code": "44320"
+  },
+  {
+    "location_code": "Fizikinių problemų institutas",
+    "description": "Savanorių pr. 271",
+    "address": "Savanorių pr. 271, LT-50131, Kaunas",
+    "address_line_1": "Savanorių pr. 271",
+    "city": "Kaunas",
+    "postal_code": "LT-50131"
+  },
+  {
+    "location_code": "9 bendrabutis",
+    "description": "9 bendrabutis",
+    "address": "Gričiupio g. 11, 51375, Kaunas",
+    "address_line_1": "Gričiupio g. 11",
+    "city": "Kaunas",
+    "postal_code": "51375"
+  },
+  {
+    "location_code": "017 - Ilgalaikis materialusis turtas skirtas parduoti",
+    "description": "017 - Ilgalaikis materialusis turtas skirtas parduoti",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "018 - Griežtos atskaitomybės blankai",
+    "description": "018 - Griežtos atskaitomybės blankai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "12 bendrabutis",
+    "description": "12 bendrabutis",
+    "address": "A. Mickevičiaus g. 39, 44244, Kaunas",
+    "address_line_1": "A. Mickevičiaus g. 39",
+    "city": "Kaunas",
+    "postal_code": "44244"
+  },
+  {
+    "location_code": "KTU MGB",
+    "description": "Eksperimentinis cechas",
+    "address": "K. Griniaus g. 2, 48397, Kaunas",
+    "address_line_1": "K. Griniaus g. 2",
+    "city": "Kaunas",
+    "postal_code": "48397"
+  },
+  {
+    "location_code": "Poilsio namai \"Šlavantėlis\"",
+    "description": "Poilsio namai \"Šlavantėlis\"",
+    "address": "Kalvelių km, 67333, Lazdijų raj.",
+    "address_line_1": "Kalvelių km",
+    "city": "Lazdijų raj.",
+    "postal_code": "67333"
+  },
+  {
+    "location_code": "Sporto ir sveikatingumo bazė",
+    "description": "Sporto ir poilsio bazė Kapitoniškėse",
+    "address": "Kapitoniškės, 56322, Kaišiadorių raj.",
+    "address_line_1": "Kapitoniškės",
+    "city": "Kaišiadorių raj.",
+    "postal_code": "56322"
+  },
+  {
+    "location_code": "POL",
+    "description": "Politechnika",
+    "address": "S. Dariaus ir S. Girėno g. 41, 131, Palanga",
+    "address_line_1": "S. Dariaus ir S. Girėno g. 41",
+    "city": "Palanga",
+    "postal_code": "131"
+  },
+  {
+    "location_code": "\"Kolegos\"",
+    "description": "Kavinė valgykla \"Kolegos\"",
+    "address": "Studentų g. 63A, 51369, Kaunas",
+    "address_line_1": "Studentų g. 63A",
+    "city": "Kaunas",
+    "postal_code": "51369"
+  },
+  {
+    "location_code": "SMC",
+    "description": "Savivaldos mokymo centras",
+    "address": "Laisvės al. 46, 44246, Kaunas",
+    "address_line_1": "Laisvės al. 46",
+    "city": "Kaunas",
+    "postal_code": "44246"
+  },
+  {
+    "location_code": "Panevėžio CR",
+    "description": "Panevėžio institutas",
+    "address": "Klaipėdos g. 1, 35209, Panevėžys",
+    "address_line_1": "Klaipėdos g. 1",
+    "city": "Panevėžys",
+    "postal_code": "35209"
+  },
+  {
+    "location_code": "PIIR",
+    "description": "Panevėžio II rūmai",
+    "address": "Nemuno g. 33, 37164, Panevėžys",
+    "address_line_1": "Nemuno g. 33",
+    "city": "Panevėžys",
+    "postal_code": "37164"
+  },
+  {
+    "location_code": "PIR",
+    "description": "Panevėžio I rūmai",
+    "address": "S. Daukanto g. 12, 35212, Panevėžys",
+    "address_line_1": "S. Daukanto g. 12",
+    "city": "Panevėžys",
+    "postal_code": "35212"
+  },
+  {
+    "location_code": "Panevėžio VMC",
+    "description": "Panevėžio instituto Vadybos mokymo centras",
+    "address": "Klaipėdos g. 3, 35209, Panevėžys",
+    "address_line_1": "Klaipėdos g. 3",
+    "city": "Panevėžys",
+    "postal_code": "35209"
+  },
+  {
+    "location_code": "Poilsio namai \"Politechnika\"",
+    "description": "Poilsio namai \"Politechnika\"",
+    "address": "S. Dariaus ir S. Girėno g. 37, 00131, Palanga",
+    "address_line_1": "S. Dariaus ir S. Girėno g. 37",
+    "city": "Palanga",
+    "postal_code": "00131"
+  },
+  {
+    "location_code": "019 - Ūkinis inventorius",
+    "description": "019 - Ūkinis inventorius",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "020 - Išlaidos",
+    "description": "020 - Išlaidos",
+    "address": "Studentų g.54, LT-51424, Kaunas",
+    "address_line_1": "Studentų g.54",
+    "city": "Kaunas",
+    "postal_code": "LT-51424"
+  },
+  {
+    "location_code": "040 - Turtas",
+    "description": "040 - Turtas",
+    "address": "K.Donelaičio g.73, LT-44029, Kaunas",
+    "address_line_1": "K.Donelaičio g.73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "016 -  Knygynas Nr.3",
+    "description": "016 -  Knygynas Nr.3",
+    "address": "K. Donelaičio g.  73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g.  73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "013 - Pagaminta produkcija (Leidyba)",
+    "description": "013 - Pagaminta produkcija (Leidyba)",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "011 - Maisto produktai",
+    "description": "011 - Maisto produktai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "008 - Statybinės  medžiagos",
+    "description": "008 - Statybinės  medžiagos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "006 - Tara",
+    "description": "006 - Tara",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "004 - Kitos medžiagos",
+    "description": "004 - Kitos medžiagos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "003 - Kuras, degalai ir tepalai",
+    "description": "003 - Kuras, degalai ir tepalai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "XVIIR",
+    "description": "XVII rūmai",
+    "address": "Tunelio g. 60, 44405, Kaunas",
+    "address_line_1": "Tunelio g. 60",
+    "city": "Kaunas",
+    "postal_code": "44405"
+  },
+  {
+    "location_code": "MI",
+    "description": "Maisto institutas, Taikos pr. 92",
+    "address": "Taikos pr. 92, LT51180, Kaunas",
+    "address_line_1": "Taikos pr. 92",
+    "city": "Kaunas",
+    "postal_code": "LT51180"
+  },
+  {
+    "location_code": "609",
+    "description": "609- Pagaminta produkcija",
+    "address": "Saulėtelio al. 11, LT-10223, Vilnius",
+    "address_line_1": "Saulėtelio al. 11",
+    "city": "Vilnius",
+    "postal_code": "LT-10223"
+  },
+  {
+    "location_code": "Kuro sandelys",
+    "address": "Sporto g. 6, LT 44221, Kaunas",
+    "address_line_1": "Sporto g. 6",
+    "city": "Kaunas",
+    "postal_code": "LT 44221"
+  },
+  {
+    "location_code": "609 - Pagaminta produkcija",
+    "description": "609 - Pagaminta produkcija",
+    "address": "Saulėtekio al. 11, LT-10223, Vilnius",
+    "address_line_1": "Saulėtekio al. 11",
+    "city": "Vilnius",
+    "postal_code": "LT-10223"
+  },
+  {
+    "location_code": "041 - Ūkinis inventorius nebalansinėje apskaitoje",
+    "description": "041 - Ūkinis inventorius nebalansinėje apskaitoje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "042 - Griežtos apskaitos blankai nebalansinėje apskaitoje",
+    "description": "042 - Griežtos apskaitos blankai nebalansinėje apskaitoje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "412-Ūkinis inventorius nebalansinėje apskaitoje",
+    "description": "412-Ūkinis inventorius nebalansinėje apskaitoje",
+    "address": "Vilniaus g. 88, LT-76285, Šiauliai",
+    "address_line_1": "Vilniaus g. 88",
+    "city": "Šiauliai",
+    "postal_code": "LT-76285"
+  },
+  {
+    "location_code": "413-Griežtos apskaitos blankai neblansinėje apskaitoje",
+    "description": "413-Griežtos apskaitos blankai neblansinėje apskaitoje",
+    "address": "Vilniaus g.88, LT-76285, Šiauliai",
+    "address_line_1": "Vilniaus g.88",
+    "city": "Šiauliai",
+    "postal_code": "LT-76285"
+  },
+  {
+    "location_code": "514-Trumpalikis turtas ir griežtos apskaitos bla",
+    "description": "514-Trumpalikis turtas ir griežtos apskaitos bla",
+    "address": "Liepų g.1, Girionys, LT-53101, Kauno rajonas",
+    "address_line_1": "Liepų g.1, Girionys",
+    "city": "Kauno rajonas",
+    "postal_code": "LT-53101"
+  },
+  {
+    "location_code": "699 - Išduotas naudoti ūkinis inventorius",
+    "description": "699 - Išduotas naudoti ūkinis inventorius",
+    "address": "Saulėtekio al. 11, LT-10223, Vilnius",
+    "address_line_1": "Saulėtekio al. 11",
+    "city": "Vilnius",
+    "postal_code": "LT-10223"
+  },
+  {
+    "location_code": "688 - Išduoti naudojimui blankai",
+    "description": "688 - Išduoti naudojimui blankai",
+    "address": "Saulėtekio al. 11, LT-10223, Vilnius",
+    "address_line_1": "Saulėtekio al. 11",
+    "city": "Vilnius",
+    "postal_code": "LT-10223"
+  },
+  {
+    "location_code": "717- Trumpalaikis turtas",
+    "description": "717- Trumpalaikis turtas",
+    "address": "Sporto g. 6, LT-44221, Kaunas",
+    "address_line_1": "Sporto g. 6",
+    "city": "Kaunas",
+    "postal_code": "LT-44221"
+  },
+  {
+    "location_code": "021-Atsargos skirtos parduoti",
+    "description": "021-Atsargos skirtos parduoti",
+    "address": "Donelaičio g. 73, 44029, Kaunas",
+    "address_line_1": "Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "44029"
+  },
+  {
+    "location_code": "LEU Centriniai rūmai",
+    "description": "Lietuvos edukologijos universitetas",
+    "address": "Studentų g. 39, LT-08106, Vilnius",
+    "address_line_1": "Studentų g. 39",
+    "city": "Vilnius",
+    "postal_code": "LT-08106"
+  },
+  {
+    "location_code": "KAUKO Centriniai rūmai",
+    "description": "KAUKO Centriniai rūmai",
+    "address": "Pramonės pr. 20, LT-50468, Kaunas",
+    "address_line_1": "Pramonės pr. 20",
+    "city": "Kaunas",
+    "postal_code": "LT-50468"
+  },
+  {
+    "location_code": "KU Centriniai rūmai",
+    "description": "KU Centriniai rūmai",
+    "address": "Herkaus Manto g. 84, LT-92294, Klaipėda",
+    "address_line_1": "Herkaus Manto g. 84",
+    "city": "Klaipėda",
+    "postal_code": "LT-92294"
+  },
+  {
+    "location_code": "KVK Centriniai rūmai",
+    "description": "Klaipėdos valstybinė kolegija",
+    "address": "Jaunystės g. 1, LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 1",
+    "city": "Klaipėda",
+    "postal_code": "LT-91274"
+  },
+  {
+    "location_code": "LAJM Centriniai rūmai",
+    "description": "LAJM Centriniai rūmai",
+    "address": "I.Kanto 7, Klaipėda, LT-92123, Klaipėda",
+    "address_line_1": "I.Kanto 7, Klaipėda",
+    "city": "Klaipėda",
+    "postal_code": "LT-92123"
+  },
+  {
+    "location_code": "L01",
+    "description": "L01 (L01-Medžiagos ir žaliavos)",
+    "address": "Jaunystės g. 2, LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 2",
+    "city": "Klaipėda",
+    "postal_code": "LT-91274"
+  },
+  {
+    "location_code": "L02",
+    "description": "L02 (L02-Kuras)",
+    "address": "Jaunystės g. 2, .LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 2",
+    "city": "Klaipėda",
+    "postal_code": ".LT-91274"
+  },
+  {
+    "location_code": "L03",
+    "description": "L03 (L03-Ūkinis inventorius)",
+    "address": "Jaunystės g. 2, LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 2",
+    "city": "Klaipėda",
+    "postal_code": "LT-91274"
+  },
+  {
+    "location_code": "L04",
+    "description": "L04 (L04-Paslaugos, darbai)",
+    "address": "Jaunystės g. 2, LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 2",
+    "city": "Klaipėda",
+    "postal_code": "LT-91274"
+  },
+  {
+    "location_code": "L05",
+    "description": "L05 (L05-Ūkinis inventorius nebalansinėje apskaitoje)",
+    "address": "Jaunystės g. 2, .LT-91274, Klaipėda",
+    "address_line_1": "Jaunystės g. 2",
+    "city": "Klaipėda",
+    "postal_code": ".LT-91274"
+  },
+  {
+    "location_code": "J00",
+    "description": "J00-Pagrindinė",
+    "address": "Kanto g.7, LT-92123, Klaipėda",
+    "address_line_1": "Kanto g.7",
+    "city": "Klaipėda",
+    "postal_code": "LT-92123"
+  },
+  {
+    "location_code": "RTC",
+    "description": "Regioninis technologijų centras",
+    "address": "Studentų g. 11, LT-62252, Alytus",
+    "address_line_1": "Studentų g. 11",
+    "city": "Alytus",
+    "postal_code": "LT-62252"
+  },
+  {
+    "location_code": "XVI",
+    "description": "XVI rūmai",
+    "address": "K. Baršausko g. 59, 51423, Kaunas",
+    "address_line_1": "K. Baršausko g. 59",
+    "city": "Kaunas",
+    "postal_code": "51423"
+  },
+  {
+    "location_code": "A00 - Pagrindinė",
+    "description": "A00 - Pagrindinė",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A08 - Statybinės  medžiagos",
+    "description": "A08 - Statybinės  medžiagos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A06 - Tara",
+    "description": "A06 - Tara",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A04 - Kitos medžiagos",
+    "description": "A04 - Kitos medžiagos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A03 - Kuras, degalai ir tepalai",
+    "description": "A03 - Kuras, degalai ir tepalai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A17 - Ilgalaikis materialusis turtas skirtas parduoti",
+    "description": "A17 - Ilgalaikis materialusis turtas skirtas parduoti",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A18 - Griežtos atskaitomybės blankai",
+    "description": "A18 - Griežtos atskaitomybės blankai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A16 - Knygynas Nr. 3-Knygininkas",
+    "description": "A16 - Knygynas Nr. 3-Knygininkas",
+    "address": "K. Donelaičio g.  73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g.  73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A21- Atsargos skirtos parduoti",
+    "description": "A21- Atsargos skirtos parduoti",
+    "address": "Donelaičio g. 73, 44029, Kaunas",
+    "address_line_1": "Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "44029"
+  },
+  {
+    "location_code": "A01 - Medžiagos mokslo ir mokymo tikslams",
+    "description": "A01 - Medžiagos mokslo ir mokymo tikslams",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A02 - Ūkinės medžiagos ir raštinės reikmenys",
+    "description": "A02 - Ūkinės medžiagos ir raštinės reikmenys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A05 - Atsarginės dalys",
+    "description": "A05 - Atsarginės dalys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A07 - Atsargos kelyje",
+    "description": "A07 - Atsargos kelyje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A09 - Nebaigtos statybos atsargos",
+    "description": "A09 - Nebaigtos statybos atsargos",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A10 - Montuotinos dalys",
+    "description": "A10 - Montuotinos dalys",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A12 - Medžiagos moksliniams tiriamiesiems darbams",
+    "description": "A12 - Medžiagos moksliniams tiriamiesiems darbams",
+    "address": "Studentų g. 54, LT-51424, Kaunas",
+    "address_line_1": "Studentų g. 54",
+    "city": "Kaunas",
+    "postal_code": "LT-51424"
+  },
+  {
+    "location_code": "A14 - Knygynas Nr.1",
+    "description": "A14 - Knygynas Nr.1",
+    "address": "Radvilėnų pl. 19, LT-50254, Kaunas",
+    "address_line_1": "Radvilėnų pl. 19",
+    "city": "Kaunas",
+    "postal_code": "LT-50254"
+  },
+  {
+    "location_code": "A15 - Leidiniai skirti parduoti (kiti)",
+    "description": "A15 - Leidiniai skirti parduoti (kiti)",
+    "address": "K. Donelaičio g.  73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g.  73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A41 - Ūkinis inventorius nebalansinėje apskaitoje",
+    "description": "A41 - Ūkinis inventorius nebalansinėje apskaitoje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A42 - Griežtos apskaitos blankai nebalansinėje apskaitoje",
+    "description": "A42 - Griežtos apskaitos blankai nebalansinėje apskaitoje",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A19 - Ūkinis inventorius",
+    "description": "A19 - Ūkinis inventorius",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A13 - Pagaminta produkcija (Leidyba)",
+    "description": "A13 - Pagaminta produkcija (Leidyba)",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A11 - Maisto produktai",
+    "description": "A11 - Maisto produktai",
+    "address": "K. Donelaičio g. 73, LT-44029, Kaunas",
+    "address_line_1": "K. Donelaičio g. 73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "A20 - Išlaidos",
+    "description": "A20 - Išlaidos",
+    "address": "Studentų g.54, LT-51424, Kaunas",
+    "address_line_1": "Studentų g.54",
+    "city": "Kaunas",
+    "postal_code": "LT-51424"
+  },
+  {
+    "location_code": "A40 - Turtas",
+    "description": "A40 - Turtas",
+    "address": "K.Donelaičio g.73, LT-44029, Kaunas",
+    "address_line_1": "K.Donelaičio g.73",
+    "city": "Kaunas",
+    "postal_code": "LT-44029"
+  },
+  {
+    "location_code": "VIII rūmai b",
+    "description": "Technologinių sistemų diagnostikos institutas",
+    "address": "Kęstučio g. 27b, 44312, Kaunas",
+    "address_line_1": "Kęstučio g. 27b",
+    "city": "Kaunas",
+    "postal_code": "44312"
+  }
+]
