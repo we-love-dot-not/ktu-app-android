@@ -13,7 +13,7 @@
     <string name="settings">Settings</string>
     <string name="error">Error</string>
     <string name="loading_new_grades">Loading new grades</string>
-    <string name="received">Received</string>
+    <string name="received">Received:</string>
     <string name="version">Version:</string>
     <string name="input_login_infomation">Input login information.</string>
     <string name="semester">semester</string>

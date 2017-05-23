@@ -25,7 +25,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 public class KTUNotification {
 
     public void sendGradeNotification(GradeUpdateModel model, Context context) {
-        String title = context.getString(R.string.received) + model.getMark();
+        String title = context.getString(R.string.received) + " " + model.getMark();
         String text = model.getName() + ", " + model.getType();
         sendNotification(model.hashCode(), title, text, context);
     }
