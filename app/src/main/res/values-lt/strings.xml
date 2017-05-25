@@ -6,7 +6,7 @@
     <string name="LoginBtn">Prisijungti</string>
     <string name="week">savaitė</string>
     <string name="login_success">Prisijungta</string>
-    <string name="login_progress">Krauna...</string>
+    <string name="login_progress">Krauna…</string>
     <string name="grades">Pažymiai</string>
     <string name="contacts">Dėstytojai</string>
     <string name="map">Žemėlapis</string>

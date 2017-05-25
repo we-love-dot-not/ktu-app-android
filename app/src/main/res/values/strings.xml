@@ -18,13 +18,13 @@
     <string name="input_login_infomation">Input login information.</string>
     <string name="semester">semester</string>
     <string name="autumn">Autumn</string>
-    <string name="spring">Sprint</string>
-    <string name="current_semestras">Current semester</string>
+    <string name="spring">Spring</string>
+    <string name="current_semestras">Shown semester</string>
     <string name="update_interval_title">Update Interval</string>
     <string name="update_interval_summary">Specifies how ofter user data will be refreshed.</string>
     <string name="show_notification_title">Show Notifications</string>
     <string name="show_notification_summary">A notification will tell you about new grades.</string>
-    <string name="general_settings">Genral Settings</string>
+    <string name="general_settings">General Settings</string>
     <string name="cat_grades">Grades</string>
     <string name="cat_other">Other</string>
     <string name="logout">Logout</string>
