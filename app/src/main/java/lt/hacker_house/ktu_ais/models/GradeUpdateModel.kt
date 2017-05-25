@@ -7,5 +7,5 @@ package lt.hacker_house.ktu_ais.models
 class GradeUpdateModel(
         var name: String,
         var type: String,
-        var mark: String
-)
+        var mark: String) {
+}

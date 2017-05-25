@@ -79,7 +79,7 @@ open class GetGradesResponse: RealmObject() {
                     week == other.week,
                     typeId == other.typeId
             )
-            return eqList.filter { it == false}.size == 0
+            return eqList.filter { !it }.isEmpty()
         } else {
             return super.equals(other)
         }
@@ -88,14 +88,23 @@ open class GetGradesResponse: RealmObject() {
     fun diff(model: GetGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
         val marksCopy = mark
         marksCopy.forEachIndexed { index, item ->
-            val updatedMark = model.mark[index]
-            if (updatedMark != item) {
+            if (model.mark.size <= index) {
                 val updateModel = GradeUpdateModel(
                         name = name!!,
                         type = type!!,
                         mark = item
                 )
                 callback.invoke(updateModel)
+            } else {
+                val updatedMark = model.mark[index]
+                if (updatedMark != item) {
+                    val updateModel = GradeUpdateModel(
+                            name = name!!,
+                            type = type!!,
+                            mark = item
+                    )
+                    callback.invoke(updateModel)
+                }
             }
         }
     }

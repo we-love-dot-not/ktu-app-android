@@ -83,7 +83,7 @@ fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): 
         val newItemList = newList.findAll(oldItem)
         val oldItemList = this.findAll(oldItem)
         newItemList.forEachIndexed { index, newListItem ->
-            var oldListItem = oldItemList[index]
+            val oldListItem = oldItemList[index]
             newListItem.diff(oldListItem) { newGrade ->
                 val comp = oldListItem
                 val new = newListItem
