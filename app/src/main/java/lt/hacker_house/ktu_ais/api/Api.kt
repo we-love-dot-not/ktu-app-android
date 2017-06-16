@@ -17,7 +17,7 @@ object Api {
     private val retrofit: Retrofit
         get() =
         Retrofit.Builder()
-                .baseUrl(ApiConf.HTTPS_URL)
+                .baseUrl(ApiConf.HTTP_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
