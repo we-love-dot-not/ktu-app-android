@@ -152,7 +152,7 @@ object User {
      * Clear user data cache
      */
     fun logout(): Boolean {
-        exec {
+        execTrans {
             Prefs.clear()
             GetGradesIntentService.cancel(App.context)
             val del = where(RlUserModel::class.java).findAll().deleteAllFromRealm()
