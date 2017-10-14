@@ -2,7 +2,7 @@ package lt.hacker_house.ktu_ais.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
-import lt.hacker_house.ktu_ais.models.WeekModel
+import lt.hacker_house.ktu_ais.models.RlWeekModel
 import lt.hacker_house.ktu_ais.views.components.WeekItem
 
 /**
@@ -10,7 +10,7 @@ import lt.hacker_house.ktu_ais.views.components.WeekItem
  */
 
 class WeekListAdapter : RecyclerView.Adapter<WeekListAdapter.WeekVH>() {
-    val list: MutableList<WeekModel> = mutableListOf()
+    val list: MutableList<RlWeekModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeekVH? {
         val view = WeekItem(parent.context)

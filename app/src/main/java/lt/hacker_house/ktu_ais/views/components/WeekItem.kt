@@ -6,7 +6,7 @@ import android.widget.RelativeLayout
 import com.mcxiaoke.koi.ext.dpToPx
 import kotlinx.android.synthetic.main.week_item.view.*
 import lt.hacker_house.ktu_ais.R
-import lt.hacker_house.ktu_ais.models.WeekModel
+import lt.hacker_house.ktu_ais.models.RlWeekModel
 import lt.hacker_house.ktu_ais.utils.setMargin
 
 
@@ -25,7 +25,7 @@ class WeekItem: RelativeLayout {
         inflate(context, R.layout.week_item, this)
     }
 
-    fun setModel(model: WeekModel): WeekItem {
+    fun setModel(model: RlWeekModel): WeekItem {
         weekNumber.text = "${model.weekNumbersString} ${context.getString(R.string.week)}"
         gradesLinearLayout.removeAllViews()
 

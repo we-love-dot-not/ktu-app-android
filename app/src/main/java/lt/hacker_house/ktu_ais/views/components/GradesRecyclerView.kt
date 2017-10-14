@@ -3,7 +3,7 @@ package lt.hacker_house.ktu_ais.views.components
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
-import lt.hacker_house.ktu_ais.models.WeekModel
+import lt.hacker_house.ktu_ais.models.RlWeekModel
 import lt.hacker_house.ktu_ais.adapters.WeekListAdapter
 import android.support.v7.widget.LinearLayoutManager
 
@@ -31,7 +31,7 @@ class GradesRecyclerView : RecyclerView {
         setAdapter(adapter)
     }
 
-    fun setModels(modelList: Collection<WeekModel>) {
+    fun setModels(modelList: Collection<RlWeekModel>) {
         adapter.list.clear()
         adapter.list.addAll(modelList)
         adapter.notifyDataSetChanged()

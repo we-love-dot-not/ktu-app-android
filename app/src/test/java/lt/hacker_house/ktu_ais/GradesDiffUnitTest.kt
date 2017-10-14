@@ -1,6 +1,6 @@
 package lt.hacker_house.ktu_ais
 
-import lt.hacker_house.ktu_ais.models.GetGradesResponse
+import lt.hacker_house.ktu_ais.models.RlGradesResponse
 import lt.hacker_house.ktu_ais.utils.diff
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -10,11 +10,11 @@ import org.junit.Test
  */
 
 class GradesDiffUnitTest {
-    val oldData = mutableListOf<GetGradesResponse>()
-    val newData = mutableListOf<GetGradesResponse>()
+    val oldData = mutableListOf<RlGradesResponse>()
+    val newData = mutableListOf<RlGradesResponse>()
 
     init {
-        val grade1 = GetGradesResponse()
+        val grade1 = RlGradesResponse()
         grade1.id = "MODULE1"
         grade1.name = "MODULE1 04"
         grade1.typeId = "LB"
@@ -23,7 +23,7 @@ class GradesDiffUnitTest {
         grade1.week = "3"
         grade1.mark = mutableListOf("1", "2", "3")
 
-        val grade2 = GetGradesResponse()
+        val grade2 = RlGradesResponse()
         grade2.id = "MODULE2"
         grade2.name = "MODULE2 04"
         grade2.typeId = "LB"
@@ -32,7 +32,7 @@ class GradesDiffUnitTest {
         grade2.week = "2"
         grade2.mark = mutableListOf("1", "", "3")
 
-        val grade3 = GetGradesResponse()
+        val grade3 = RlGradesResponse()
         grade3.id = "MODULE3"
         grade3.name = "MODULE3 04"
         grade3.typeId = "LB"
@@ -45,7 +45,7 @@ class GradesDiffUnitTest {
         oldData.add(grade2)
         oldData.add(grade3)
 
-        val grade2Fresh = GetGradesResponse()
+        val grade2Fresh = RlGradesResponse()
         grade2Fresh.id = "MODULE2"
         grade2Fresh.name = "MODULE2 04"
         grade2Fresh.typeId = "LB"
@@ -54,7 +54,7 @@ class GradesDiffUnitTest {
         grade2Fresh.week = "2"
         grade2Fresh.mark = mutableListOf("1", "4", "3")
 
-        val grade3Fresh = GetGradesResponse()
+        val grade3Fresh = RlGradesResponse()
         grade3Fresh.id = "MODULE3"
         grade3Fresh.name = "MODULE3 04"
         grade3Fresh.typeId = "LB"

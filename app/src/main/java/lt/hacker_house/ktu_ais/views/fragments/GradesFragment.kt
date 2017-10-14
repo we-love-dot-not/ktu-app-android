@@ -10,7 +10,7 @@ import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.events.EventFragment
 import lt.hacker_house.ktu_ais.events.UpdateEvent
-import lt.hacker_house.ktu_ais.models.UserModel
+import lt.hacker_house.ktu_ais.models.RlUserModel
 
 /**
  * Created by Mindaugas on 5/1/2017.
@@ -25,10 +25,10 @@ class GradesFragment : EventFragment() {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        User.get { it?.also { loadData(it) } }
+        User.get()?.also { loadData(it) }
     }
 
-    fun loadData(userModel: UserModel) {
+    fun loadData(userModel: RlUserModel) {
         view?.gradesListView?.setModels(userModel.weekList!!.toList())
     }
 

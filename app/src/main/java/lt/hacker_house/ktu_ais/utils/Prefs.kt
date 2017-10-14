@@ -4,8 +4,8 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import lt.hacker_house.ktu_ais.App
 import lt.hacker_house.ktu_ais.db.User
-import lt.hacker_house.ktu_ais.models.SemesterInfoModel
-import lt.hacker_house.ktu_ais.models.UserModel
+import lt.hacker_house.ktu_ais.models.RlSemesterInfoModel
+import lt.hacker_house.ktu_ais.models.RlUserModel
 
 /**
  * Created by simonas on 5/20/17.
@@ -28,10 +28,10 @@ object Prefs {
     val sp: SharedPreferences
         get() = PreferenceManager.getDefaultSharedPreferences(App.context)
 
-    fun getCurrentSemester(userModel: UserModel = User.getSync()!!): SemesterInfoModel {
+    fun getCurrentSemester(userModel: RlUserModel = User.get()!!): RlSemesterInfoModel {
         val defaultSemesterStr = userModel.defaultSemester.toDataString()
         val dataString = sp.getString(SELECTED_SEMESTER, defaultSemesterStr)
-        return SemesterInfoModel.fromString(dataString)
+        return RlSemesterInfoModel.fromString(dataString)
     }
 
     fun getRefreshInterval(): Double {

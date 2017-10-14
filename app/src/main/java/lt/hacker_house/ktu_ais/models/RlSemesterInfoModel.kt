@@ -4,14 +4,14 @@ package lt.hacker_house.ktu_ais.models
  * Created by simonas on 5/20/17.
  */
 
-class SemesterInfoModel(val year: Int, val semesterString: String) {
+class RlSemesterInfoModel(val year: Int, val semesterString: String) {
 
     companion object {
         val SEPARATOR = '-'
 
-        fun fromString(dataString: String): SemesterInfoModel {
+        fun fromString(dataString: String): RlSemesterInfoModel {
             val dataSplit = dataString.split(SEPARATOR)
-            return SemesterInfoModel(
+            return RlSemesterInfoModel(
                     year = dataSplit[0].toInt(),
                     semesterString = dataSplit[1]
             )

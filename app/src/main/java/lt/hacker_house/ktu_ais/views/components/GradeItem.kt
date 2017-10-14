@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.grade_item.view.*
 import lt.hacker_house.ktu_ais.R
-import lt.hacker_house.ktu_ais.models.GradeModel
+import lt.hacker_house.ktu_ais.models.RlGradeModel
 import android.support.v4.content.ContextCompat.getColor
 import babushkatext.BabushkaText
 
@@ -26,7 +26,7 @@ class GradeItem: RelativeLayout {
         inflate(context, R.layout.grade_item, this)
     }
 
-    fun setModel(model: GradeModel) {
+    fun setModel(model: RlGradeModel) {
         className.text = model.name
         gradeType.text = model.type
         val gradeList = model.mark?.split(";")
@@ -37,7 +37,7 @@ class GradeItem: RelativeLayout {
             if (index < gradeList.size-1) {
                 gradePieceMut += " "
             }
-            if (gradePiece != GradeModel.EMPTY_MARK) {
+            if (gradePiece != RlGradeModel.EMPTY_MARK) {
                 lastMarkIndex = index
             }
             textList.add(gradePieceMut)

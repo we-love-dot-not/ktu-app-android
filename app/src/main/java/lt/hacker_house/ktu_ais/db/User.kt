@@ -1,216 +1,201 @@
 package lt.hacker_house.ktu_ais.db
 
-import android.os.Handler
-import android.os.Looper
 import io.realm.Realm
 import lt.hacker_house.ktu_ais.App
-import lt.hacker_house.ktu_ais.App.Companion.context
 import lt.hacker_house.ktu_ais.R
-import lt.hacker_house.ktu_ais.api.Api
 import lt.hacker_house.ktu_ais.events.UpdateEvent
-import lt.hacker_house.ktu_ais.utils.diff
-import lt.hacker_house.ktu_ais.utils.filterSemester
-import lt.hacker_house.ktu_ais.models.*
+import lt.hacker_house.ktu_ais.models.GradeUpdateModel
+import lt.hacker_house.ktu_ais.models.RlGradesResponse
+import lt.hacker_house.ktu_ais.models.RlSemesterInfoModel
+import lt.hacker_house.ktu_ais.models.RlUserModel
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
 import lt.hacker_house.ktu_ais.utils.Prefs
+import lt.hacker_house.ktu_ais.utils.diff
+import lt.hacker_house.ktu_ais.utils.filterSemester
 import lt.hacker_house.ktu_ais.utils.toWeekList
+import lt.welovedotnot.ktu_ais_api.KtuApiClient
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import java.util.*
 
 /**
  * Created by simonas on 4/30/17.
  */
 object User {
-    private var rl: Realm = Realm.getDefaultInstance()
+    fun login(username: String, password:String, callback: (Boolean)->Unit) {
+        doAsync {
+            try {
+                val loginResp = loginSync(username, password)
+                uiThread {
+                    callback.invoke(loginResp)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                uiThread {
+                    callback.invoke(false)
+                }
+            }
+        }
+    }
 
     /**
      * Login and get all user data.
      */
-    fun login(username: String, password:String, callback: (Boolean) -> (Unit)) {
-        val loginReq = LoginRequest()
-        loginReq.username = username
-        loginReq.password = password
+    private fun loginSync(username: String, password:String): Boolean {
+        val loginModel = KtuApiClient.login(username, password)
+        val rlLoginModel = RlUserModel.from(loginModel)
 
-        Api.login(loginReq) { userModel ->
-            if (userModel == null) {
-                runUI {
-                    callback.invoke(false)
-                }
-            } else {
-                userModel.yearList.sortWith(compareBy { it.year })
-                getCurrentYear { year, semesterAdder ->
-                    val yearModel = userModel.yearList.find { it.year == year.toString() }
-                    val indexOf = userModel.yearList.indexOf(yearModel)
-                    val semester = indexOf * 2 + semesterAdder
-                    userModel.defaultSemester = SemesterInfoModel(
-                            year = year,
-                            semesterString = semester.toKtuSemesterString()
-                    )
-                }
-
-                updateGrades(userModel, callback)
-            }
+        if (rlLoginModel == null) {
+            return false
+        } else {
+            rlLoginModel.username = username
+            rlLoginModel.password = password
+            rlLoginModel.yearList.sortWith(compareBy { it.year })
+            val pair = getCurrentYear()
+            val year = pair.first
+            val semesterAdder = pair.second
+            val yearModel = rlLoginModel.yearList.find { it.year == year.toString() }
+            val indexOf = rlLoginModel.yearList.indexOf(yearModel)
+            val semester = indexOf * 2 + semesterAdder
+            rlLoginModel.defaultSemester = RlSemesterInfoModel(
+                    year = year,
+                    semesterString = semester.toKtuSemesterString()
+            )
+            updateGrades(rlLoginModel)
         }
+        return true
     }
 
     /**
      * Loads new grades on existing user.
      */
-    private fun updateGrades(userModel: UserModel, callback: (Boolean) -> (Unit)) {
-        val moduleReq = ModulesRequest()
+    private fun updateGrades(userModel: RlUserModel) {
         val selectedSemester = Prefs.getCurrentSemester(userModel)
-        val module = userModel.yearList.findLast{ it.year == selectedSemester.year.toString()}!!
-        moduleReq.year = module.year?.toInt()
-        moduleReq.studId = module.id?.toInt()
+        val module = userModel.yearList.findLast {
+            val yearL = it.year!!
+            val yearS = selectedSemester.year.toString()
+            val isEq = yearL == yearS
+            isEq
+        }!!
+        val gradeList = KtuApiClient.getGrades(userModel.cookie!!, module.year!!, module.id!!)
+        val rlGradesList = RlGradesResponse.from(gradeList)
+        val currentSemester = Prefs.getCurrentSemester(userModel).semesterString
+        val weekList = rlGradesList.toWeekList(currentSemester)
 
-        Api.grades(moduleReq, userModel.cookie!!) { gradeList: List<GetGradesResponse>? ->
-            val currentSemester = Prefs.getCurrentSemester(userModel).semesterString
-            val weekList = gradeList?.toWeekList(currentSemester)
-
-            userModel.timestamp = System.currentTimeMillis()
-            userModel.weekList.clear()
-            userModel.gradeList.clear()
-
-            weekList?.also {
-                userModel.weekList.addAll(it.toList())
-                userModel.gradeList.addAll(gradeList)
-
-                rl.executeTransactionAsync {
-                    it.copyToRealmOrUpdate(userModel)
-                    runUI {
-                        callback.invoke(true)
-                    }
-                }
-            }
+        userModel.timestamp = System.currentTimeMillis()
+        userModel.weekList.clear()
+        userModel.gradeList.clear()
+        userModel.weekList.addAll(weekList.toList())
+        userModel.gradeList.addAll(rlGradesList)
+        execTrans {
+            copyToRealmOrUpdate(userModel)
         }
     }
 
-    /**
-     * Gets cached user data.
-     */
-    fun get(callback: (UserModel?)->(Unit)) {
-        rl.executeTransactionAsync {
-            var model = it.where(UserModel::class.java).findFirst()
-            if (model != null) {
-                model = it.copyFromRealm(model)
-                runUI {
-                    callback.invoke(model)
-                }
-            } else {
-                runUI {
-                    callback.invoke(null)
-                }
+    fun get(): RlUserModel? {
+        exec {
+            where(RlUserModel::class.java).findFirst()?.let {
+                return copyFromRealm(it)
             }
         }
-    }
-
-    fun getSync(): UserModel? {
-        var model: UserModel? = null
-        rl.executeTransaction {
-            val managedModel = it.where(UserModel::class.java).findFirst()
-            if (managedModel != null) {
-                model = it.copyFromRealm(managedModel)
-            }
-        }
-        return model
+        return null
     }
 
     /**
      * Checks if cached user data exists.
      */
-    fun isLoggedIn(callback: (Boolean) -> Unit) {
-        User.get { model ->
-            callback(model!=null)
-        }
-    }
+    fun isLoggedIn(): Boolean
+        = User.get() != null
 
     /**
      * Full relogin
      */
     fun update(callback: (Boolean, Collection<GradeUpdateModel>) -> (Unit)) {
-        User.get { userModel ->
-            val semesterString = Prefs.getCurrentSemester(userModel!!).semesterString
-            val oldGrades = userModel.gradeList.filterSemester(semesterString)
-            User.login(userModel.username!!, userModel.password!!) { isSuccess ->
-                User.get { freshUser ->
-                    val freshGrades = freshUser!!.gradeList.filterSemester(semesterString)
-                    val diff = oldGrades.diff(freshGrades)
-                    callback.invoke(isSuccess, diff)
-                    UpdateEvent.send(freshUser) // Notify about updated data.
-                }
-            }
+        val userModel = User.get()
+        val semesterString = Prefs.getCurrentSemester(userModel!!).semesterString
+        val oldGrades = userModel.gradeList.filterSemester(semesterString)
+        User.login(userModel.username!!, userModel.password!!) { isSuccess ->
+            val freshUser = User.get()
+            val freshGrades = freshUser!!.gradeList.filterSemester(semesterString)
+            val diff = oldGrades.diff(freshGrades)
+            callback.invoke(isSuccess, diff)
+            UpdateEvent.send(freshUser) // Notify about updated data.
         }
     }
 
-    fun getSemesters(callback: (UserModel, Array<String>, Array<String>)->(Unit)) {
-        User.get { userModel ->
-            val semesterEntries = mutableSetOf<String>()
-            val semesterValues = mutableSetOf<String>()
-            val semesterList = userModel?.yearList?.sortedWith(compareBy { it.year })
+    fun getSemesters(callback: (RlUserModel, Array<String>, Array<String>)->(Unit)) {
+        val userModel = User.get()
+        val semesterEntries = mutableSetOf<String>()
+        val semesterValues = mutableSetOf<String>()
+        val semesterList = userModel?.yearList?.sortedWith(compareBy { it.year })
 
-            var semesterNo = 1
-            semesterList?.forEach { yearModel ->
-                val autumnNo = semesterNo
-                semesterNo++
-                val springNo = semesterNo
-                semesterNo++
-                val autumNoStr = autumnNo.toKtuSemesterString()
-                val springNoStr = springNo.toKtuSemesterString()
-                val year = yearModel.year.toString()
-                semesterEntries.add("$year ${App.context.getString(R.string.autumn)}. $autumNoStr")
-                semesterValues.add(year + "-" + autumNoStr)
+        var semesterNo = 1
+        semesterList?.forEach { yearModel ->
+            val autumnNo = semesterNo
+            semesterNo++
+            val springNo = semesterNo
+            semesterNo++
+            val autumNoStr = autumnNo.toKtuSemesterString()
+            val springNoStr = springNo.toKtuSemesterString()
+            val year = yearModel.year.toString()
+            semesterEntries.add("$year ${App.context.getString(R.string.autumn)}. $autumNoStr")
+            semesterValues.add(year + "-" + autumNoStr)
 
-                semesterEntries.add("$year ${App.context.getString(R.string.spring)}. $springNoStr")
-                semesterValues.add(year + "-" + springNoStr)
+            semesterEntries.add("$year ${App.context.getString(R.string.spring)}. $springNoStr")
+            semesterValues.add(year + "-" + springNoStr)
 
-                callback.invoke(userModel, semesterEntries.toTypedArray(), semesterValues.toTypedArray())
-            }
-        }
-    }
-
-    /**
-     * Get Sorted User semesters
-     */
-    fun getSemesters(callback: (Array<String>, Array<String>)->(Unit)) {
-        getSemesters { _, semesterEntries, semesterValues ->
-            callback.invoke(semesterEntries, semesterValues)
+            callback.invoke(userModel, semesterEntries.toTypedArray(), semesterValues.toTypedArray())
         }
     }
 
     /**
      * Clear user data cache
      */
-    fun logout(callback:(Boolean)->(Unit)) {
-        rl.executeTransactionAsync {
+    fun logout(): Boolean {
+        exec {
             Prefs.clear()
             GetGradesIntentService.cancel(App.context)
-            val del = it.where(UserModel::class.java).findAll().deleteAllFromRealm()
-            runUI {
-                callback.invoke(del)
-            }
+            val del = where(RlUserModel::class.java).findAll().deleteAllFromRealm()
+            return del
         }
-    }
-
-    private fun runUI(run: (Unit)->(Unit)) {
-        Handler(Looper.getMainLooper()).post {
-            run.invoke(Unit)
-        }
+        return false
     }
 
     /**
      * Utils method used to calculate current semester.
      * @param callback First param -- year; Second -- 0 if its first semester of the year, 1 if second.
      */
-    private fun getCurrentYear(callback: (Int, Int) -> Unit) {
+    private fun getCurrentYear(): Pair<Int, Int> {
         val time = Calendar.getInstance()
         val year = time.get(Calendar.YEAR)
         val month = time.get(Calendar.MONTH)
         if (month in 2..8) {
-            return callback(year-1, 2)
+            return year-1 to 2
         } else {
-            return callback(year,1)
+            return year to 1
         }
     }
 
     private fun Int.toKtuSemesterString()
             = String.format("%02d", this)
+
+    private inline fun exec(task: Realm.()->Unit) {
+        val rl = Realm.getDefaultInstance()
+        try {
+            task.invoke(rl)
+        } finally {
+            rl.close()
+        }
+    }
+
+    private inline fun execTrans(task: Realm.()->Unit) {
+        val rl = Realm.getDefaultInstance()
+        rl.beginTransaction()
+        try {
+            task.invoke(rl)
+            rl.commitTransaction()
+        } finally {
+            rl.close()
+        }
+    }
 }

@@ -10,7 +10,7 @@ import io.realm.annotations.RealmClass
  */
 
 @RealmClass
-open class WeekModel: RealmObject() {
+open class RlWeekModel : RealmObject() {
 
     open var weekNumbersString: String? = null
         set(value) {
@@ -18,7 +18,7 @@ open class WeekModel: RealmObject() {
             weekNumbers = parseWeekString(value!!)
         }
 
-    open var grades: RealmList<GradeModel> = RealmList()
+    open var grades: RealmList<RlGradeModel> = RealmList()
 
     @Ignore
     var weekNumbers: List<Int> = listOf()

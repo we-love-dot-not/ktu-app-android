@@ -1,16 +1,15 @@
 package lt.hacker_house.ktu_ais.views.fragments
 
-import android.os.Bundle
-import android.preference.PreferenceFragment
-import lt.hacker_house.ktu_ais.R
-import android.preference.Preference
 import android.content.SharedPreferences
-import android.preference.ListPreference
+import android.os.Bundle
 import android.preference.CheckBoxPreference
+import android.preference.ListPreference
+import android.preference.Preference
+import android.preference.PreferenceFragment
 import android.widget.ListView
-import android.widget.Toast
 import com.mcxiaoke.koi.ext.toast
 import lt.hacker_house.ktu_ais.BuildConfig
+import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
 import lt.hacker_house.ktu_ais.utils.Prefs
@@ -58,10 +57,8 @@ class SettingsFragment: PreferenceFragment(), SharedPreferences.OnSharedPreferen
         showNotification.isChecked = Prefs.SHOW_NOTIFICATION_DEFAULT
 
         logout.setOnPreferenceClickListener { _ ->
-            User.logout { isSuccess ->
-                if (isSuccess) {
-                    activity.startActivityNoBack(SplashActivity::class.java)
-                }
+            if (User.logout()) {
+                activity.startActivityNoBack(SplashActivity::class.java)
             }
             false
         }

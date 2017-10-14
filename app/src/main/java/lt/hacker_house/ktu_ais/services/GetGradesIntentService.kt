@@ -47,18 +47,16 @@ class GetGradesIntentService : IntentService("GetGradesIntentService") {
     override fun onHandleIntent(intent: Intent?) {
         // Gets data from the incoming Intent
         Handler(Looper.getMainLooper()).post {
-            User.isLoggedIn { isLoggedIn ->
-                if (isLoggedIn) {
-                    User.update { _, updatedGrades ->
-                        if (Prefs.areNotificationEnabled()) {
-                            updatedGrades.forEach { updatedGrade ->
-                                KTUNotificationsK.notifyGradeUpdated(this, updatedGrade)
-                            }
+            if (User.isLoggedIn()) {
+                User.update { _, updatedGrades ->
+                    if (Prefs.areNotificationEnabled()) {
+                        updatedGrades.forEach { updatedGrade ->
+                            KTUNotificationsK.notifyGradeUpdated(this, updatedGrade)
                         }
                     }
-                } else {
-                    getAlarmManager().cancel(getServiceIntent(this))
                 }
+            } else {
+                getAlarmManager().cancel(getServiceIntent(this))
             }
         }
     }

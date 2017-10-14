@@ -5,13 +5,41 @@ import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
 import io.realm.annotations.Ignore
 import io.realm.annotations.RealmClass
+import lt.welovedotnot.ktu_ais_api.models.MarkModel
 
 /**
  * Created by simonas on 5/2/17.
  */
 
 @RealmClass
-open class GetGradesResponse: RealmObject() {
+open class RlGradesResponse : RealmObject() {
+
+    companion object {
+
+        fun from(model: MarkModel): RlGradesResponse {
+            return RlGradesResponse().apply {
+                name = model.name
+                id = model.id
+                semester = model.semester
+                moduleCode = model.module_code
+                moduleName = model.module_name
+                semesterNumber = model.semester_number
+                language = model.language
+                profestor = model.profestor
+                typeId = model.typeId
+                type = model.type
+                week = model.week
+                rlMark = model.mark.joinToString(";")
+            }
+        }
+
+        fun from(modelList: List<MarkModel>): List<RlGradesResponse> {
+            return mutableListOf<RlGradesResponse>().apply {
+                modelList.forEach { add(RlGradesResponse.from(it)) }
+            }
+        }
+
+    }
 
     @SerializedName("name")
     @Expose
@@ -72,7 +100,7 @@ open class GetGradesResponse: RealmObject() {
     open var rlMark: String = ""
 
     override fun equals(other: Any?): Boolean {
-        if (other is GetGradesResponse) {
+        if (other is RlGradesResponse) {
             val eqList = listOf(
                     id == other.id,
                     semesterNumber == other.semesterNumber,
@@ -85,7 +113,7 @@ open class GetGradesResponse: RealmObject() {
         }
     }
 
-    fun diff(model: GetGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
+    fun diff(model: RlGradesResponse, callback: (GradeUpdateModel)->(Unit)) {
         val marksCopy = mark
         marksCopy.forEachIndexed { index, item ->
             if (model.mark.size <= index) {

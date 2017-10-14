@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
-import lt.hacker_house.ktu_ais.models.GetGradesResponse
-import lt.hacker_house.ktu_ais.models.GradeModel
+import lt.hacker_house.ktu_ais.models.RlGradesResponse
+import lt.hacker_house.ktu_ais.models.RlGradeModel
 import lt.hacker_house.ktu_ais.models.GradeUpdateModel
-import lt.hacker_house.ktu_ais.models.WeekModel
+import lt.hacker_house.ktu_ais.models.RlWeekModel
 
 /**
  * Created by simonas on 5/2/17.
@@ -36,9 +36,9 @@ fun ViewGroup.setMargin(left: Int = -1, top: Int = -1, right: Int = -1, bottom: 
 /**
  * @param selectedSemester string of a number in this format ##. e.g 04
  */
-fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableList<WeekModel> {
+fun Collection<RlGradesResponse>.toWeekList(selectedSemester: String): MutableList<RlWeekModel> {
 
-    val map: HashMap<String, MutableList<GetGradesResponse>> = HashMap()
+    val map: HashMap<String, MutableList<RlGradesResponse>> = HashMap()
 
     this.filter { it.semesterNumber == selectedSemester }.forEach {
         var get = map[it.week!!]
@@ -51,12 +51,12 @@ fun Collection<GetGradesResponse>.toWeekList(selectedSemester: String): MutableL
         map.put(it.week!!, get)
     }
 
-    val respList = mutableListOf<WeekModel>()
+    val respList = mutableListOf<RlWeekModel>()
     map.forEach { (key, item) ->
-        val model = WeekModel()
+        val model = RlWeekModel()
         model.weekNumbersString = key
         item.forEach {
-            val gradeModel = GradeModel()
+            val gradeModel = RlGradeModel()
             gradeModel.typeId = it.typeId
             gradeModel.type = it.type
             gradeModel.name = it.name
@@ -76,7 +76,7 @@ fun Activity.startActivityNoBack(target: Class<*>) {
     this.startActivity(intent)
 }
 
-fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): Collection<GradeUpdateModel> {
+fun Collection<RlGradesResponse>.diff(newList: Collection<RlGradesResponse>): Collection<GradeUpdateModel> {
     val resultList = mutableListOf<GradeUpdateModel>()
 
     this.forEach { oldItem ->
@@ -94,8 +94,8 @@ fun Collection<GetGradesResponse>.diff(newList: Collection<GetGradesResponse>): 
     return resultList
 }
 
-fun Collection<GetGradesResponse>.findAll(other: GetGradesResponse): List<GetGradesResponse> {
-    val resultList = mutableListOf<GetGradesResponse>()
+fun Collection<RlGradesResponse>.findAll(other: RlGradesResponse): List<RlGradesResponse> {
+    val resultList = mutableListOf<RlGradesResponse>()
     this.forEach { item ->
         if (item == other) {
             resultList.add(item)
@@ -120,5 +120,5 @@ fun View.addOnViewShrinkListener(isSmaller: (Boolean)->(Unit)) {
     }
 }
 
-fun Collection<GetGradesResponse>.filterSemester(semersterNum: String)
+fun Collection<RlGradesResponse>.filterSemester(semersterNum: String)
         = this.filter { it.semesterNumber == semersterNum }

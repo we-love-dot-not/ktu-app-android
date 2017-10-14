@@ -12,13 +12,11 @@ import lt.hacker_house.ktu_ais.db.User
 class SplashActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        User.get { userModel ->
-            if (userModel == null) {
-                proceedToLogin()
-            } else {
-                proceedToHome()
-            }
+        val userModel = User.get()
+        if (userModel == null) {
+            proceedToLogin()
+        } else {
+            proceedToHome()
         }
     }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KTU AIS</string>
+    <string name="app_name">K T U A I S</string>
     <string name="EtUserHint">Username</string>
     <string name="EtPwHint">Password</string>
     <string name="LoginBtn">Log In</string>

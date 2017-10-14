@@ -6,6 +6,7 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
+import lt.welovedotnot.ktu_ais_api.models.LoginModel
 
 
 /**
@@ -13,7 +14,21 @@ import io.realm.annotations.RealmClass
  */
 
 @RealmClass
-open class UserModel: RealmObject() {
+open class RlUserModel : RealmObject() {
+
+    companion object {
+
+        fun from(model: LoginModel?): RlUserModel? {
+            return if (model == null)
+                null else RlUserModel().apply {
+                cookie = model.studCookie
+                studId = model.studentId
+                fullName = model.studentName
+                yearList.addAll(RlYearModel.from(model.studentSemesters))
+            }
+        }
+
+    }
 
     @PrimaryKey // rl
     open var id = "one_id_to_rule_them_all"
@@ -32,11 +47,11 @@ open class UserModel: RealmObject() {
 
     @Expose // retro
     @SerializedName("student_semesters") // retro
-    open var yearList: RealmList<YearModel> = RealmList()
+    open var yearList: RealmList<RlYearModel> = RealmList()
 
-    open var weekList: RealmList<WeekModel> = RealmList()
+    open var weekList: RealmList<RlWeekModel> = RealmList()
 
-    open var gradeList: RealmList<GetGradesResponse> = RealmList()
+    open var gradeList: RealmList<RlGradesResponse> = RealmList()
 
     open var username: String? = null
 
@@ -46,9 +61,9 @@ open class UserModel: RealmObject() {
 
     open var defaultSemesterDataString: String? = null
 
-    var defaultSemester: SemesterInfoModel
+    var defaultSemester: RlSemesterInfoModel
         set(value) {
             defaultSemesterDataString = value.toDataString()
         }
-        get() = SemesterInfoModel.fromString(defaultSemesterDataString!!)
+        get() = RlSemesterInfoModel.fromString(defaultSemesterDataString!!)
 }

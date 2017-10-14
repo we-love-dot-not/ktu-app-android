@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.view.View
-import lt.hacker_house.ktu_ais.R
 import kotlinx.android.synthetic.main.activity_home.*
-import lt.hacker_house.ktu_ais.models.UserModel
-import lt.hacker_house.ktu_ais.db.User
+import lt.hacker_house.ktu_ais.R
 import lt.hacker_house.ktu_ais.adapters.DrawerItemCustomAdapter
+import lt.hacker_house.ktu_ais.db.User
 import lt.hacker_house.ktu_ais.events.EventActivity
 import lt.hacker_house.ktu_ais.events.UpdateEvent
+import lt.hacker_house.ktu_ais.models.RlUserModel
 import lt.hacker_house.ktu_ais.models.ScreenModel
 import lt.hacker_house.ktu_ais.services.GetGradesIntentService
 import lt.hacker_house.ktu_ais.utils.Prefs
@@ -52,7 +52,9 @@ class HomeActivity: EventActivity() {
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
 
-        User.get { it?.also { loadData(it) } }
+        User.get()?.let {
+            loadData(it)
+        }
     }
 
     override fun onUpdateEvent(event: UpdateEvent) {
@@ -60,7 +62,7 @@ class HomeActivity: EventActivity() {
         loadData(event.userModel)
     }
 
-    fun loadData(userModel: UserModel) {
+    fun loadData(userModel: RlUserModel) {
         setUserModel(userModel)
         loadDrawer(userModel)
 
@@ -71,7 +73,7 @@ class HomeActivity: EventActivity() {
         }
     }
 
-    fun loadDrawer(model: UserModel) {
+    fun loadDrawer(model: RlUserModel) {
         val semesterNum = Prefs.getCurrentSemester(model).semesterString.toInt()
         mScreenList = listOf(
                 ScreenModel(
@@ -109,7 +111,7 @@ class HomeActivity: EventActivity() {
         }
     }
 
-    fun setUserModel(model: UserModel) {
+    fun setUserModel(model: RlUserModel) {
         drawerStudentCode.text = model.studId
         drawerStudentName.text = model.fullName
         val currentSemester = Prefs.getCurrentSemester(model)

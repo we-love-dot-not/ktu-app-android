@@ -9,7 +9,7 @@ import io.realm.annotations.RealmClass
  */
 
 @RealmClass
-open class GradeModel: RealmObject() {
+open class RlGradeModel : RealmObject() {
     open var name: String? = null
     open var id: String? = null
     open var profestor: String? = null
