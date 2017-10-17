@@ -75,10 +75,11 @@ class HomeActivity: EventActivity() {
 
     fun loadDrawer(model: RlUserModel) {
         val semesterNum = Prefs.getCurrentSemester(model).semesterString.toInt()
+        val weekNum = model.currentWeek
         mScreenList = listOf(
                 ScreenModel(
                         name = getString(R.string.grades),
-                        subtitle = "$semesterNum ${getString(R.string.semester)}",
+                        subtitle = "$semesterNum ${getString(R.string.semester)}, $weekNum ${getString(R.string.week)}",
                         fragment = GradesFragment(),
                         isEnabled = true),
                 ScreenModel(

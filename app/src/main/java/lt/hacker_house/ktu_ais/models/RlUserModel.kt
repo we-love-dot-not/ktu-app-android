@@ -1,7 +1,5 @@
 package lt.hacker_house.ktu_ais.models
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
@@ -24,6 +22,7 @@ open class RlUserModel : RealmObject() {
                 cookie = model.studCookie
                 studId = model.studentId
                 fullName = model.studentName
+                currentWeek = model.currentWeek
                 yearList.addAll(RlYearModel.from(model.studentSemesters))
             }
         }
@@ -32,33 +31,16 @@ open class RlUserModel : RealmObject() {
 
     @PrimaryKey // rl
     open var id = "one_id_to_rule_them_all"
-
-    @Expose // retro
-    @SerializedName("cookie") // retro
+    open var currentWeek: String? = null
     open var cookie: String? = null
-
-    @Expose // retro
-    @SerializedName("student_id") // retro
     open var studId: String? = null
-
-    @Expose // retro
-    @SerializedName("student_name") // retro
     open var fullName: String? = null
-
-    @Expose // retro
-    @SerializedName("student_semesters") // retro
     open var yearList: RealmList<RlYearModel> = RealmList()
-
     open var weekList: RealmList<RlWeekModel> = RealmList()
-
     open var gradeList: RealmList<RlGradesResponse> = RealmList()
-
     open var username: String? = null
-
     open var password: String? = null
-
     open var timestamp: Long = 0L
-
     open var defaultSemesterDataString: String? = null
 
     var defaultSemester: RlSemesterInfoModel

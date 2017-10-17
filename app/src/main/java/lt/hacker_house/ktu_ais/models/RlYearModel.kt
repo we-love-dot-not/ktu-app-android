@@ -1,7 +1,5 @@
 package lt.hacker_house.ktu_ais.models
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 import io.realm.RealmObject
 import io.realm.annotations.RealmClass
 import lt.welovedotnot.ktu_ais_api.models.YearModel
@@ -13,12 +11,7 @@ import lt.welovedotnot.ktu_ais_api.models.YearModel
 @RealmClass
 open class RlYearModel : RealmObject() {
 
-    @Expose // retro
-    @SerializedName("id") // retro
     open var id: String? = null
-
-    @Expose // retro
-    @SerializedName("year") // retro
     open var year: String? = null
 
     companion object {

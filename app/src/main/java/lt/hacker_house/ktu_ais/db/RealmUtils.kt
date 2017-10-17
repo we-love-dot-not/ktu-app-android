@@ -15,7 +15,7 @@ object RealmUtils {
 
         val config = RealmConfiguration.Builder()
                 .name("db.realm")
-                .deleteRealmIfMigrationNeeded()
+                .deleteRealmIfMigrationNeeded() // I ain't paid enough for this shit...
                 .build()
 
         Realm.setDefaultConfiguration(config)
