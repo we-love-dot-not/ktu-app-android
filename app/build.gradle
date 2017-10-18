@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 10
-        versionName "2.1.0"
+        versionName "2.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -24,8 +24,9 @@ android {
 
     buildTypes {
         release {
+//            TODO I'll fix this tomorrow...
 //            minifyEnabled true
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            proguardFiles geLtDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
