@@ -16,7 +16,7 @@ object Prefs {
     val UPDATE_INTERVAL = "update_interval"
     val SHOW_NOTIFICATION = "show_notification"
 
-    val UPDATE_INTERVAL_DEFAULT = "30"
+    val UPDATE_INTERVAL_DEFAULT = "120"
     val UPDATE_INTERVAL_ENTRIES_VALUES = arrayOf("15", "30", "60", "120", "240", "480")
     val UPDATE_INTERVAL_ENTRIES_NAMES = arrayOf("15 min", "30 min", "1 val", "2 val", "4 val", "8 val")
 
