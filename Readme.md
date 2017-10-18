@@ -19,7 +19,7 @@ We moved from Node.js implementation [we-love-dot-not/ktu-ais-api](https://githu
 [Mindaugas Nakrošis](https://github.com/Elminday)
 
 # Example APK
-
+[Download](https://gitlab.com/we-love-dot-not/ktu-app-android/raw/master/app/app-release.apk)
 
 # Disclaimer and Notice
 THIS SOFTWARE IS NOT APPROVED BY KAUNAS UNIVERSITY OF TECHNOLOGY
