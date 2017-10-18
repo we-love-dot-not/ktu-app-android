@@ -19,7 +19,7 @@
             android:id="@+id/imageView"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@mipmap/ktu_logo"
+            android:src="@mipmap/trash_app_icon"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
 
