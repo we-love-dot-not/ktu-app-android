@@ -14,4 +14,5 @@
 .idea/markdown-navigator.xml
 .idea/markdown-navigator/
 *.apk
+!app/release/app-release.apk
 *.keystore
