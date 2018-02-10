@@ -11,13 +11,15 @@ import lt.hacker_house.ktu_ais.R;
 import lt.hacker_house.ktu_ais.models.GradeUpdateModel;
 import lt.hacker_house.ktu_ais.models.RlWeekModel;
 import lt.hacker_house.ktu_ais.views.activities.LoginActivity;
+import lt.hacker_house.ktu_ais.views.activities.SplashActivity;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
  * Created by Vartotojas on 2017-05-06.
+ *
+ * TODO Refactor this bullshit.
  */
-
 public class KTUNotification {
 
     public void sendGradeNotification(GradeUpdateModel model, Context context) {
@@ -26,6 +28,9 @@ public class KTUNotification {
         sendNotification(model.hashCode(), title, text, context);
     }
 
+    /**
+     * @deprecated WIP Feature
+     */
     @Deprecated
     public void sendUpcomingTestNotification(RlWeekModel model, Context context) {
         String title = "Kitos savaitės atsiskaitymai";
@@ -54,7 +59,7 @@ public class KTUNotification {
         // your application to the Home screen.
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         // Adds the back stack for the Intent (but not the Intent itself)
-        stackBuilder.addParentStack(LoginActivity.class);
+        stackBuilder.addParentStack(SplashActivity.class);
         // Adds the Intent that starts the Activity to the top of the stack
         stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent =
