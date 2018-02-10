@@ -76,7 +76,7 @@ object User {
             val yearS = selectedSemester.year.toString()
             val isEq = yearL == yearS
             isEq
-        }!!
+        } ?: userModel.yearList.last()
         val gradeList = KtuApiClient.getGrades(userModel.cookie!!, module.year!!, module.id!!)
         val rlGradesList = RlGradesResponse.from(gradeList)
         val currentSemester = Prefs.getCurrentSemester(userModel).semesterString
@@ -152,13 +152,14 @@ object User {
      * Clear user data cache
      */
     fun logout(): Boolean {
+        var isSuccessful = false
         execTrans {
             Prefs.clear()
             GetGradesIntentService.cancel(App.context)
-            val del = where(RlUserModel::class.java).findAll().deleteAllFromRealm()
-            return del
+            val userModels = where(RlUserModel::class.java).findAll()
+            isSuccessful = userModels.deleteAllFromRealm()
         }
-        return false
+        return isSuccessful
     }
 
     /**
@@ -169,10 +170,10 @@ object User {
         val time = Calendar.getInstance()
         val year = time.get(Calendar.YEAR)
         val month = time.get(Calendar.MONTH)
-        if (month in 2..8) {
-            return year-1 to 2
+        return if (month in Calendar.FEBRUARY..Calendar.AUGUST) {
+            year-1 to 2
         } else {
-            return year to 1
+            year to 1
         }
     }
 
